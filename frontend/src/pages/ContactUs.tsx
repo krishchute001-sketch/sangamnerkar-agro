@@ -76,7 +76,7 @@ export const ContactUs: React.FC = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>+91 99239 00943 (Direct & International)</span>
+                  <span>+91 (120) 4060-300 (Domestic & International)</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-4 h-4 text-amber-400 shrink-0" />

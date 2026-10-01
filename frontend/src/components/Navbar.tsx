@@ -40,9 +40,9 @@ export const Navbar: React.FC = () => {
 
           {/* Contact & Admin Portal */}
           <div className="flex items-center space-x-4">
-            <a href="tel:+919923900943" className="hidden md:flex items-center hover:text-amber-300 transition-colors">
+            <a href="tel:+911204060300" className="hidden md:flex items-center hover:text-amber-300 transition-colors">
               <Phone className="w-3 h-3 mr-1 text-amber-400" />
-              +91 99239 00943
+              +91 (120) 4060-300
             </a>
             <a href="mailto:export@sangamnerkaragro.com" className="hidden lg:flex items-center hover:text-amber-300 transition-colors">
               <Mail className="w-3 h-3 mr-1 text-amber-400" />
