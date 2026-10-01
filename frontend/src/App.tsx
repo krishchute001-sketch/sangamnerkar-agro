@@ -10,9 +10,7 @@ import { AboutUs } from './pages/AboutUs';
 import { Portfolio } from './pages/Portfolio';
 import { ProductDetail } from './pages/ProductDetail';
 import { ExploreRice } from './pages/ExploreRice';
-import { InvestorRelations } from './pages/InvestorRelations';
 import { Sustainability } from './pages/Sustainability';
-import { MediaNews } from './pages/MediaNews';
 import { Careers } from './pages/Careers';
 import { ContactUs } from './pages/ContactUs';
 import { AdminLogin } from './pages/admin/AdminLogin';
@@ -53,9 +51,7 @@ export const App: React.FC = () => {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/products/:slug" element={<ProductDetail />} />
             <Route path="/explore-rice" element={<ExploreRice />} />
-            <Route path="/investor-relations" element={<InvestorRelations />} />
             <Route path="/sustainability" element={<Sustainability />} />
-            <Route path="/media-news" element={<MediaNews />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/admin/login" element={<AdminLogin />} />

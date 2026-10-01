@@ -40,9 +40,9 @@ export const Navbar: React.FC = () => {
 
           {/* Contact & Admin Portal */}
           <div className="flex items-center space-x-4">
-            <a href="tel:+911204060300" className="hidden md:flex items-center hover:text-amber-300 transition-colors">
+            <a href="tel:+919923900943" className="hidden md:flex items-center hover:text-amber-300 transition-colors">
               <Phone className="w-3 h-3 mr-1 text-amber-400" />
-              +91 (120) 4060-300
+              +91 99239 00943
             </a>
             <a href="mailto:export@sangamnerkaragro.com" className="hidden lg:flex items-center hover:text-amber-300 transition-colors">
               <Mail className="w-3 h-3 mr-1 text-amber-400" />
@@ -150,30 +150,12 @@ export const Navbar: React.FC = () => {
               </Link>
 
               <Link
-                to="/investor-relations"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  isActive('/investor-relations') ? 'text-amber-400 font-semibold border-b-2 border-amber-400' : 'text-slate-200 hover:text-amber-300'
-                }`}
-              >
-                Investor Relations
-              </Link>
-
-              <Link
                 to="/sustainability"
                 className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
                   isActive('/sustainability') ? 'text-amber-400 font-semibold border-b-2 border-amber-400' : 'text-slate-200 hover:text-amber-300'
                 }`}
               >
                 Sustainability
-              </Link>
-
-              <Link
-                to="/media-news"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  isActive('/media-news') ? 'text-amber-400 font-semibold border-b-2 border-amber-400' : 'text-slate-200 hover:text-amber-300'
-                }`}
-              >
-                Media & News
               </Link>
 
               <Link
@@ -253,25 +235,11 @@ export const Navbar: React.FC = () => {
               Explore Rice & Milling
             </Link>
             <Link
-              to="/investor-relations"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:text-amber-400"
-            >
-              Investor Relations & Reports
-            </Link>
-            <Link
               to="/sustainability"
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-2 text-base font-medium text-slate-200 hover:text-amber-400"
             >
               Sustainability & ESG
-            </Link>
-            <Link
-              to="/media-news"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:text-amber-400"
-            >
-              Media & News
             </Link>
             <Link
               to="/careers"

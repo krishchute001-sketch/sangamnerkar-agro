@@ -11,7 +11,6 @@ import {
   Globe2,
   Sparkles,
   Leaf,
-  FileText,
   Clock,
   CheckCircle,
 } from 'lucide-react';
@@ -262,43 +261,6 @@ export const Home: React.FC = () => {
                 100% of discarded paddy husk fuels our 145 MW captive clean power plant, while bran is
                 physically refined into heart-healthy gamma oryzanol oil.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Investor Relations Quick Banner */}
-      <section className="py-16 bg-[#0f172a] border-t border-slate-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-[#131d33] via-[#1a2846] to-[#131d33] rounded-2xl p-8 sm:p-12 border border-amber-500/30 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xl">
-            <div className="space-y-3 max-w-2xl">
-              <div className="inline-flex items-center space-x-2 text-amber-400 text-xs font-semibold tracking-wider uppercase">
-                <FileText className="w-4 h-4" />
-                <span>Investor Relations & Corporate Disclosures</span>
-              </div>
-              <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white">
-                Integrated Annual Report FY 2025-26
-              </h3>
-              <p className="text-slate-300 text-xs sm:text-sm">
-                Explore our audited balance sheet, quarterly filings, corporate governance charters, and strategic ESG metrics.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-              <a
-                href="https://krblrice.com/wp-content/uploads/2026/08/KRBL-Annual-Report-2026.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="px-6 py-3.5 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs uppercase tracking-wider text-center hover:bg-amber-400 transition-colors shadow-md"
-              >
-                Download Annual Report (PDF)
-              </a>
-              <Link
-                to="/investor-relations"
-                className="px-6 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 hover:text-white font-bold text-xs uppercase tracking-wider text-center hover:bg-slate-800 transition-colors"
-              >
-                Investor Hub
-              </Link>
             </div>
           </div>
         </div>

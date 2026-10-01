@@ -58,11 +58,11 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>+91 (120) 4060-300 (Export Desk)</span>
+                <span>+91 99239 00943</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>export@sangamnerkaragro.com | investor@sangamnerkaragro.com</span>
+                <span>export@sangamnerkaragro.com | sales@sangamnerkaragro.com</span>
               </div>
             </div>
           </div>
@@ -113,11 +113,6 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/investor-relations" className="hover:text-amber-300 transition-colors">
-                  Annual Reports & Filings
-                </Link>
-              </li>
-              <li>
                 <Link to="/sustainability" className="hover:text-amber-300 transition-colors">
                   ESG & Farmer Prosperity
                 </Link>
@@ -149,16 +144,6 @@ export const Footer: React.FC = () => {
               <li>
                 <Link to="/contact-us?type=Institutional" className="hover:text-amber-300 transition-colors">
                   Horeca & Hotel Institutional Supply
-                </Link>
-              </li>
-              <li>
-                <Link to="/investor-relations" className="hover:text-amber-300 transition-colors">
-                  SEBI / Stock Disclosures
-                </Link>
-              </li>
-              <li>
-                <Link to="/media-news" className="hover:text-amber-300 transition-colors">
-                  Press Releases & Media Kit
                 </Link>
               </li>
               <li>

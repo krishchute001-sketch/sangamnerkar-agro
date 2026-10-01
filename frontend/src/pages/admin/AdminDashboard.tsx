@@ -2,29 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
-import { Inquiry, Product, Category, InvestorCategory } from '../../types';
+import { Inquiry, Product, Category } from '../../types';
 import {
   Inbox,
   Package,
-  FileText,
   LogOut,
   CheckCircle,
   Clock,
   Trash2,
   Plus,
   RefreshCw,
-  ExternalLink,
 } from 'lucide-react';
 
 export const AdminDashboard: React.FC = () => {
   const { user, logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  const [activeTab, setActiveTab] = useState<'inquiries' | 'products' | 'investors'>('inquiries');
+  const [activeTab, setActiveTab] = useState<'inquiries' | 'products'>('inquiries');
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [investorCats, setInvestorCats] = useState<InvestorCategory[]>([]);
   const [loading, setLoading] = useState(true);
 
   // New Product Modal State
@@ -53,16 +50,14 @@ export const AdminDashboard: React.FC = () => {
   const loadData = async () => {
     setLoading(true);
     try {
-      const [inq, prods, cats, inv] = await Promise.all([
+      const [inq, prods, cats] = await Promise.all([
         api.getAdminInquiries().catch(() => []),
         api.getProducts(),
         api.getCategories(),
-        api.getInvestorCategories(),
       ]);
       setInquiries(inq);
       setProducts(prods);
       setCategories(cats);
-      setInvestorCats(inv);
       if (cats.length > 0 && !newProduct.category_id) {
         setNewProduct((prev) => ({ ...prev, category_id: cats[0].id }));
       }
@@ -163,13 +158,6 @@ export const AdminDashboard: React.FC = () => {
               {products.length}
             </span>
           </div>
-
-          <div className="bg-[#0e1728] p-6 rounded-2xl border border-slate-800 shadow-md">
-            <span className="text-xs text-slate-400 uppercase tracking-wider block">Investor Documents</span>
-            <span className="font-heading text-3xl font-bold text-amber-400 mt-2 block">
-              {investorCats.reduce((acc, c) => acc + c.documents.length, 0)}
-            </span>
-          </div>
         </div>
 
         {/* Tab Controls */}
@@ -196,18 +184,6 @@ export const AdminDashboard: React.FC = () => {
           >
             <Package className="w-4 h-4 mr-2" />
             Products Manager ({products.length})
-          </button>
-
-          <button
-            onClick={() => setActiveTab('investors')}
-            className={`px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center transition-colors ${
-              activeTab === 'investors'
-                ? 'bg-amber-500 text-slate-950'
-                : 'bg-slate-900 text-slate-400 hover:text-white'
-            }`}
-          >
-            <FileText className="w-4 h-4 mr-2" />
-            Investor Filings
           </button>
         </div>
 
@@ -315,31 +291,6 @@ export const AdminDashboard: React.FC = () => {
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Tab 3: Investor Filings */}
-        {activeTab === 'investors' && (
-          <div className="bg-[#0e1728] rounded-2xl border border-slate-800 p-6">
-            <h3 className="font-heading text-lg font-bold text-white mb-6">Published Statutory Documents</h3>
-            <div className="space-y-4">
-              {investorCats.flatMap((c) => c.documents).map((doc) => (
-                <div key={doc.id} className="p-4 bg-slate-900/60 rounded-xl border border-slate-800 flex justify-between items-center">
-                  <div>
-                    <h4 className="text-xs font-bold text-white">{doc.title}</h4>
-                    <span className="text-[11px] text-slate-400 mt-0.5 block">{doc.fiscal_year} • {doc.published_date}</span>
-                  </div>
-                  <a
-                    href={doc.file_url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2 rounded-lg bg-slate-800 text-amber-400 hover:text-amber-300"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
                 </div>
               ))}
             </div>
