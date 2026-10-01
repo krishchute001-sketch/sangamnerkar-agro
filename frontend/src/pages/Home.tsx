@@ -8,17 +8,16 @@ import {
   ArrowRight,
   ShieldCheck,
   Award,
+  Globe2,
   Sparkles,
   Leaf,
   FileText,
   Clock,
-  ChevronDown,
-  HelpCircle,
+  CheckCircle,
 } from 'lucide-react';
 
 export const Home: React.FC = () => {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [stats, setStats] = useState<CorporateStats>({
     global_export_countries: 90,
     milling_capacity_mt_per_hour: 195,
@@ -28,33 +27,7 @@ export const Home: React.FC = () => {
     purity_guarantee_percent: 100,
     green_energy_mw: 145,
   });
-
-  const faqs = [
-    {
-      q: "What makes Manipur Chak-Hao Black Rice unique, and why is it called 'Forbidden Rice'?",
-      a: "Chak-Hao is an indigenous heirloom grain native to the valleys of Manipur, India, protected by an official Geographical Indication (GI) tag. Historically reserved exclusively for imperial royalty due to its longevity and health benefits, it boasts 180mg of natural anthocyanin antioxidants per 100g (higher than blueberries), low glycemic index, and an exquisite roasted hazelnut fragrance.",
-    },
-    {
-      q: "What is Balaghat Chinnor Rice and why does it hold a Geographical Indication (GI) tag?",
-      a: "Balaghat Chinnor is an internationally celebrated heritage scented rice native to the Wainganga river basin in Balaghat, Madhya Pradesh. Officially granted the GI-696 accreditation, it is famous for its natural floral perfume, sweet flavor profile, and velvety tenderness that melts in the mouth. It is the premier grain for authentic Indian kheer, royal pulao, and auspicious celebratory feasts.",
-    },
-    {
-      q: "What is Jai Shree Rice and what are its culinary characteristics?",
-      a: "Jai Shree is a prized traditional fine-grain rice variety known for its pristine pearly white luster, delicate non-sticky fluffiness, and gentle natural fragrance. Highly digestible and light on the palate, Jai Shree is the premier choice for daily luxury dining, signature spiced rice dishes, and gourmet hospitality service.",
-    },
-    {
-      q: "What is your Minimum Order Quantity (MOQ) for international containerized exports?",
-      a: "Our standard export MOQ is one 20-foot Full Container Load (FCL, approximately 20 to 25 Metric Tons). We also support multi-SKU consolidated shipments combining Chak-Hao Black Rice, GI Balaghat Chinnor Rice, and Jai Shree Rice for international specialty food importers and supermarket distributors.",
-    },
-    {
-      q: "Which international food safety and organic accreditations do you possess?",
-      a: "Our milling and processing complexes are certified under BRCGS Grade AA, US FDA Registration, ISO 22000 & 9001, USDA Organic, India Organic (NPOP), Halal, and Kosher standards. Every export consignment undergoes genetic testing and chemical residue screening.",
-    },
-    {
-      q: "Do you offer private label (OEM) packaging for supermarket brands?",
-      a: "Yes. We offer turnkey private label packaging solutions including nitrogen-flushed stand-up zipper pouches (500g, 1kg), vacuum bricks, premium woven jute bags (5kg, 10kg), and bulk 25kg/50kg poly-woven sacks branded with your company's artwork and barcode specifications.",
-    },
-  ];
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
@@ -67,6 +40,8 @@ export const Home: React.FC = () => {
         setStats(statsData);
       } catch (err) {
         console.error('Failed to fetch home page data', err);
+      } finally {
+        setLoading(false);
       }
     };
     loadData();
@@ -91,20 +66,19 @@ export const Home: React.FC = () => {
           {/* Heritage Pill */}
           <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-950/60 border border-amber-600/50 text-amber-300 text-xs font-semibold tracking-widest uppercase mb-8 shadow-lg">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>ESTABLISHED 1889 • INDIGENOUS SPECIALTY GRAIN MASTERY</span>
+            <span>ESTABLISHED 1889 • 135 YEARS OF GRAIN MASTERY</span>
           </div>
 
           <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight max-w-5xl mx-auto drop-shadow-md">
-            The Pinnacle of <br className="hidden sm:inline" />
+            Sangamnerkar Agro <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-100">
-              Black Rice, Chinnor Rice & Jai Shree
+              Black Rice & Chinnor Rice
             </span>
           </h1>
 
           <p className="mt-6 text-base sm:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed">
-            From the heirloom terraces of Manipur to the aromatic terroirs of Balaghat. We cultivate,
-            naturally cure, and export certified **Chak-Hao Black Rice**, **GI-tagged Chinnor Rice**,
-            and pristine **Jai Shree Traditional Rice** to over 90+ countries worldwide.
+            World-class cultivators and global exporters of certified Manipur Chak-Hao Black Rice,
+            GI-Tagged Balaghat Chinnor Rice, and pristine Jai Shree Traditional Rice to over 90+ countries.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -129,7 +103,7 @@ export const Home: React.FC = () => {
       {/* 2. Corporate Metrics Ticker */}
       <CorporateTicker stats={stats} />
 
-      {/* 3. Spotlighting Heirloom Black Rice & Balaghat Chinnor */}
+      {/* 3. Spotlighting Imperial Black Rice & Heritage */}
       <section className="py-24 bg-[#0a111e] text-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -139,18 +113,18 @@ export const Home: React.FC = () => {
               <div className="relative rounded-2xl overflow-hidden border border-amber-500/30 shadow-2xl">
                 <img
                   src="https://images.unsplash.com/photo-1596797882870-8c33deeac224?auto=format&fit=crop&w=1000&q=80"
-                  alt="Imperial Black Rice & Chinnor Rice Heritage"
+                  alt="Imperial Black Rice Heritage"
                   className="w-full h-[480px] object-cover object-center"
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-8">
                   <span className="text-amber-400 font-mono text-xs uppercase tracking-widest font-semibold block mb-1">
-                    Heirloom GI Tag Grain Portfolio
+                    Heirloom GI Tag Grain
                   </span>
                   <h4 className="font-heading text-2xl font-bold text-white">
-                    Manipur Chak-Hao & Balaghat Chinnor
+                    Manipur Chak-Hao Forbidden Grain
                   </h4>
                   <p className="text-xs text-slate-300 mt-2">
-                    Rich in natural anthocyanins (180mg/100g) and enchanting floral terpenes, representing India's finest agricultural treasures.
+                    Rich in natural anthocyanins (180mg/100g), with a roasted hazelnut finish and gluten-free vitality.
                   </p>
                 </div>
               </div>
@@ -160,32 +134,33 @@ export const Home: React.FC = () => {
             <div className="space-y-6">
               <div className="inline-flex items-center space-x-2 text-amber-400 text-xs font-semibold tracking-widest uppercase">
                 <Award className="w-4 h-4" />
-                <span>Indigenous Heritage & Superfood Excellence</span>
+                <span>Superfood Innovation & Agricultural Purity</span>
               </div>
 
               <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                Pioneering India's Most Celebrated Traditional Rice Cultivars
+                Honoring 135 Years of Farmer Partnerships & Modern Agronomy
               </h2>
 
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                Rather than generic bulk commodity grains, Krish Agro specializes in three of India's most
-                prized heritage cultivars: antioxidant-dense **Manipur Chak-Hao Black Rice**, the sweet
-                floral perfume of **GI-Tagged Balaghat Chinnor Rice**, and the silky elegance of **Jai Shree Traditional Rice**.
+                Pioneering the global renaissance of indigenous superfoods and fragrant heritage grains,
+                Sangamnerkar Agro brings together generational breeding with modern circular processing.
+                We work directly with over 140,000 contracted farming families, providing non-GMO certified seeds,
+                satellite crop health monitoring, and fair trade assured buybacks.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                 <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
                   <ShieldCheck className="w-6 h-6 text-amber-400 mb-2" />
-                  <h5 className="font-semibold text-sm text-white">Authentic GI Origin Verification</h5>
+                  <h5 className="font-semibold text-sm text-white">DNA Fingerprint Purity</h5>
                   <p className="text-xs text-slate-400 mt-1">
-                    Direct traceability to native terroirs ensuring genuine Geographical Indication pedigree.
+                    Every export batch is genetically verified for 100% varietal purity and heirloom authenticity.
                   </p>
                 </div>
                 <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
                   <Leaf className="w-6 h-6 text-emerald-400 mb-2" />
                   <h5 className="font-semibold text-sm text-white">Zero Pesticide Residue</h5>
                   <p className="text-xs text-slate-400 mt-1">
-                    Fully compliant with strict European Union (EU) & US FDA MRL food safety standards.
+                    Fully compliant with strict European Union (EU) & US FDA MRL safety tolerances.
                   </p>
                 </div>
               </div>
@@ -213,7 +188,7 @@ export const Home: React.FC = () => {
                 Curated Selection
               </span>
               <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                Our Signature Grain Portfolio
+                Our Signature Product Portfolio
               </h2>
             </div>
             <Link
@@ -245,7 +220,7 @@ export const Home: React.FC = () => {
             </h2>
             <p className="text-slate-400 text-sm mt-4 leading-relaxed">
               Operating world-class contact-less milling plants equipped with Swiss Bühler optical sorting,
-              temperature-controlled silos, and automated packaging lines designed to preserve natural aromas and delicate bran pigments.
+              temperature-controlled silos, and automated packaging lines.
             </p>
           </div>
 
@@ -255,10 +230,11 @@ export const Home: React.FC = () => {
                 <Clock className="w-6 h-6" />
               </div>
               <h3 className="font-heading text-xl font-bold text-white mb-2">
-                Scientific Silo Maturation
+                24-Month Silo Maturation
               </h3>
               <p className="text-slate-400 text-xs leading-relaxed">
-                Aging under temperature management stabilizes moisture at 12%, protecting delicate anthocyanins in Black Rice and aromatic volatiles in Chinnor Rice.
+                Aging under scientific humidity management crystallizes starch, reducing moisture to 12%
+                for zero stickiness and exceptional elongation during cooking.
               </p>
             </div>
 
@@ -271,7 +247,7 @@ export const Home: React.FC = () => {
               </h3>
               <p className="text-slate-400 text-xs leading-relaxed">
                 High-definition camera sorters inspect individual grains at 50,000 frames per second,
-                ejecting discolored kernels and foreign particulates.
+                ejecting imperfect kernels and foreign particulates.
               </p>
             </div>
 
@@ -283,7 +259,7 @@ export const Home: React.FC = () => {
                 Circular Zero-Waste Milling
               </h3>
               <p className="text-slate-400 text-xs leading-relaxed">
-                100% of discarded paddy husk fuels captive clean power, while fresh bran is
+                100% of discarded paddy husk fuels our 145 MW captive clean power plant, while bran is
                 physically refined into heart-healthy gamma oryzanol oil.
               </p>
             </div>
@@ -328,63 +304,14 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 6.5. Frequently Asked Questions (FAQ) Section - Anchorable via #faq */}
-      <section id="faq" className="py-24 bg-[#fafaf7] scroll-mt-20 border-t border-slate-200/80">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-1.5 text-amber-700 text-xs font-bold uppercase tracking-widest mb-2">
-              <HelpCircle className="w-3.5 h-3.5" />
-              <span>Buyer & Importer Knowledge Hub</span>
-            </div>
-            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Frequently Asked Questions (FAQ)
-            </h2>
-            <p className="text-slate-600 text-sm mt-3 leading-relaxed">
-              Common questions regarding our heirloom Black Rice, GI-Tagged Balaghat Chinnor, Jai Shree rice, export logistics, and private labeling.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, index) => {
-              const isOpen = openFaq === index;
-              return (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:border-amber-500/40 transition-all"
-                >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : index)}
-                    className="w-full p-6 text-left flex items-center justify-between gap-4 hover:bg-slate-50/50 transition-colors focus:outline-none"
-                  >
-                    <span className="font-heading text-sm sm:text-base font-bold text-slate-900">
-                      {faq.q}
-                    </span>
-                    <ChevronDown
-                      className={`w-5 h-5 text-amber-600 shrink-0 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-                  {isOpen && (
-                    <div className="px-6 pb-6 pt-1 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 bg-slate-50/30">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* 7. Global B2B Export Call to Action */}
       <section className="py-20 bg-amber-600 text-slate-950 text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="font-heading text-3xl sm:text-5xl font-extrabold tracking-tight">
-            Partner With India's Premier Specialty Grain Exporter
+            Partner With India's Leading Grain Exporter
           </h2>
           <p className="mt-4 text-base sm:text-lg text-amber-950/90 font-medium max-w-2xl mx-auto">
-            Looking for containerized shipments of Certified Black Rice, GI Balaghat Chinnor, Jai Shree rice, or private label retail packaging?
+            Looking for containerized shipments of Heirloom Black Rice, GI-Tagged Balaghat Chinnor Rice, or customized private label packaging?
           </p>
           <div className="mt-8 flex justify-center">
             <Link

@@ -43,13 +43,13 @@ export const Footer: React.FC = () => {
                   🌾
                 </div>
               </div>
-              <span className="font-heading text-2xl font-bold tracking-wider text-amber-200">
-                KRISH AGRO
+              <span className="font-heading text-xl sm:text-2xl font-bold tracking-wider text-amber-200">
+                SANGAMNERKAR AGRO
               </span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              World’s premier exporter of Heirloom Manipur Chak-Hao Black Rice, GI-Tagged Balaghat Chinnor Rice,
-              and Jai Shree Traditional Rice. Empowering 140,000+ farming families across India since 1889.
+              World’s premier producer and exporter of Heirloom Manipur Chak-Hao Black Rice, GI-Tagged Balaghat Chinnor Rice, and Jai Shree Traditional Rice.
+              Empowering farming families across India with sustainable agriculture since 1889.
             </p>
             <div className="pt-2 text-xs text-slate-400 space-y-2">
               <div className="flex items-start space-x-2">
@@ -62,7 +62,7 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>export@krishagro.com | investor@krishagro.com</span>
+                <span>export@sangamnerkaragro.com | investor@sangamnerkaragro.com</span>
               </div>
             </div>
           </div>
@@ -84,18 +84,18 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/portfolio?category=chinnor-rice-range" className="hover:text-amber-300 transition-colors">
+                  Balaghat Chinnor Aromatic Special
+                </Link>
+              </li>
+              <li>
                 <Link to="/portfolio?category=jai-shree-rice-range" className="hover:text-amber-300 transition-colors">
-                  Jai Shree Select Traditional Rice
+                  Jai Shree Premium Scented Rice
                 </Link>
               </li>
               <li>
                 <Link to="/portfolio?category=uplife-health-range" className="hover:text-amber-300 transition-colors">
-                  Uplife Black Rice Flakes & Health
-                </Link>
-              </li>
-              <li>
-                <Link to="/portfolio?category=agro-by-products" className="hover:text-amber-300 transition-colors">
-                  Physico-Refined Rice Bran Oil
+                  Uplife Black Rice Superfoods
                 </Link>
               </li>
               <li>
@@ -139,7 +139,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/careers" className="hover:text-amber-300 transition-colors">
-                  Life at Krish Agro / Careers
+                  Life at Sangamnerkar Agro / Careers
                 </Link>
               </li>
             </ul>
@@ -187,7 +187,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
-          <p>© {new Date().getFullYear()} Krish Agro & Black Rice Limited. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Sangamnerkar Agro Black Rice & Chinnor Rice Limited. All rights reserved.</p>
           <div className="flex space-x-6">
             <span className="hover:text-slate-400 cursor-pointer">Privacy Policy</span>
             <span className="hover:text-slate-400 cursor-pointer">Terms of Use</span>

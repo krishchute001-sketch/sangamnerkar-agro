@@ -15,14 +15,14 @@ async def seed_database():
         await conn.run_sync(Base.metadata.create_all)
 
     async with AsyncSessionLocal() as db:
-        admin_check = await db.execute(select(AdminUser).where(AdminUser.email == "admin@krblrice.com"))
+        admin_check = await db.execute(select(AdminUser).where(AdminUser.email == "admin@sangamnerkaragro.com"))
         if admin_check.scalar_one_or_none():
             return
 
         print("Seeding corporate database with Black Rice, Chinnor Rice, and Jai Shree Rice...")
 
         admin = AdminUser(
-            email="admin@krblrice.com",
+            email="admin@sangamnerkaragro.com",
             full_name="Executive Administrator",
             hashed_password=get_password_hash("Admin@123456"),
             role="admin",
@@ -72,8 +72,8 @@ async def seed_database():
         # Products
         p1 = Product(
             category_id=cat_black.id,
-            name="Krish Heritage Royal Black Rice (Chak-Hao)",
-            slug="krish-heritage-black-rice-chak-hao",
+            name="Sangamnerkar Royal Black Rice (Chak-Hao)",
+            slug="sangamnerkar-royal-black-rice-chak-hao",
             tagline="The Emperor's Forbidden Grain - 3x Anthocyanin Antioxidants & Deep Nutty Aroma",
             description="Cultivated in the pristine valleys of Northeast India and certified pesticide-free, our Imperial Black Rice (Chak-Hao) is revered worldwide for its lustrous midnight hue, rich antioxidant profile (higher than blueberries), and distinct roasted hazelnut finish. Ideal for gourmet pilafs, risotto, health bowls, and heritage desserts.",
             grain_length_mm="7.10 mm",
@@ -242,8 +242,8 @@ async def seed_database():
         db.add_all([doc1, doc2, doc3])
 
         n1 = NewsArticle(
-            title="Krish Agro Expands Organic Black Rice & GI Chinnor Export Footprint to 18 New European & Gulf Markets",
-            slug="krish-agro-expands-black-rice-chinnor-europe-gulf-export",
+            title="Sangamnerkar Agro Expands Organic Black Rice & GI Chinnor Export Footprint to 18 New European & Gulf Markets",
+            slug="sangamnerkar-agro-expands-black-rice-chinnor-europe-gulf-export",
             category="Press Release",
             excerpt="Empowered by surging international demand for antioxidant-dense functional grains and fragrant Chinnor rice, global shipments scaled past 15,000 metric tons this fiscal year.",
             content_html="<p>Our commitment to regenerative agriculture, certified Manipur Chak-Hao Black Rice, and authentic Balaghat Chinnor continues to unlock premium international markets across the EU, UK, and GCC.</p>",
@@ -270,7 +270,7 @@ async def seed_database():
             email="m.vance@vancefoods.co.uk",
             phone="+44 20 7946 0991",
             country="United Kingdom",
-            product_interest="Krish Heritage Royal Black Rice & Balaghat Chinnor",
+            product_interest="Sangamnerkar Royal Black Rice & Balaghat Chinnor",
             quantity_metric_tons="40 MT monthly",
             message="We require USDA and EU organic certified Black Rice (Chak-Hao) and GI Balaghat Chinnor rice in 25kg bulk kraft bags for our UK distribution network. Please send CIF Felixstowe pricing.",
             status="Pending",

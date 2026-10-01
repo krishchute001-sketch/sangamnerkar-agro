@@ -2,7 +2,7 @@ from typing import List
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "Krish Agro & Black Rice Corporate API"
+    PROJECT_NAME: str = "Sangamnerkar Agro Black Rice & Chinnor Rice Corporate API"
     VERSION: str = "1.0.0"
     API_V1_STR: str = "/api/v1"
     

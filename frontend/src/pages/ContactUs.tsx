@@ -63,7 +63,7 @@ export const ContactUs: React.FC = () => {
                   Global Headquarters
                 </span>
                 <h3 className="font-heading text-xl font-bold text-white">
-                  Krish Agro & Black Rice Limited
+                  Sangamnerkar Agro Black Rice & Chinnor Rice Limited
                 </h3>
               </div>
 
@@ -80,7 +80,7 @@ export const ContactUs: React.FC = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>export@krishagro.com | trade@krishagro.com</span>
+                  <span>export@sangamnerkaragro.com | trade@sangamnerkaragro.com</span>
                 </div>
               </div>
 

@@ -43,7 +43,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } catch {
       setUser({
         id: 'admin-fallback',
-        email: 'admin@krblrice.com',
+        email: 'admin@sangamnerkaragro.com',
         full_name: 'Executive Administrator',
         role: 'admin',
       });

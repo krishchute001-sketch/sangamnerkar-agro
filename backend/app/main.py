@@ -17,7 +17,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
-    description="Enterprise Corporate and B2B Portal API for Black Rice, Balaghat Chinnor Rice, and Jai Shree Rice Exports.",
+    description="Enterprise Corporate and B2B Portal API for Sangamnerkar Agro Black Rice & Chinnor Rice.",
     lifespan=lifespan,
     docs_url="/docs",
     redoc_url="/redoc",

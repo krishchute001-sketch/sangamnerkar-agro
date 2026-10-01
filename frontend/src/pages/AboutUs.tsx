@@ -39,7 +39,7 @@ export const AboutUs: React.FC = () => {
             Since 1889 • A Legacy of Purity
           </span>
           <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-100">
-            About Krish Agro & Black Rice
+            About Sangamnerkar Agro
           </h1>
           <p className="mt-4 text-slate-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
             From our founding over a century ago to becoming the world's most trusted grain exporter,
@@ -61,15 +61,14 @@ export const AboutUs: React.FC = () => {
             <div className="space-y-4 text-slate-600 text-sm mt-6 leading-relaxed">
               <p>
                 Founded in 1889, our enterprise has stood at the vanguard of the indigenous specialty
-                grain and superfood revolution. What began as a regional agricultural trading venture
-                has blossomed into an integrated farm-to-fork powerhouse catering to health-conscious
-                families and international food distributors across six continents.
+                grain and superfood revolution. What began as a regional grain trading venture in India
+                has blossomed into an integrated farm-to-fork powerhouse catering to health-conscious families
+                across six continents.
               </p>
               <p>
-                Today, Krish Agro is recognized as the global authority on indigenous heritage grains:
-                championing the certified GI-tagged <strong>Manipur Chak-Hao Black Rice</strong>,
-                the exquisitely aromatic <strong>GI-tagged Balaghat Chinnor Rice</strong>, and the
-                pristine, fine-grain <strong>Jai Shree Traditional Rice</strong>.
+                Today, as <strong>Sangamnerkar Agro Black Rice & Chinnor Rice</strong>, we have pioneered the revitalization of rare heirloom grains:
+                championing the certified GI-tagged <strong>Manipur Chak-Hao Black Rice</strong>, the exquisitely aromatic <strong>GI-tagged Balaghat Chinnor Rice</strong>,
+                and the pristine, fine-grain <strong>Jai Shree Traditional Rice</strong>.
               </p>
             </div>
 

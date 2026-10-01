@@ -53,7 +53,7 @@ export const InvestorRelations: React.FC = () => {
               <TrendingUp className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">NSE: KRISHAGRO • BSE: 530813</span>
+              <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">NSE: SANGAMAGRO • BSE: 530813</span>
               <h3 className="font-heading text-2xl font-bold text-white flex items-center">
                 ₹428.50 <span className="text-emerald-400 text-sm font-semibold ml-2">▲ +2.45% (+10.25)</span>
               </h3>
@@ -153,7 +153,7 @@ export const InvestorRelations: React.FC = () => {
             <div>
               <span className="font-bold text-slate-900 block mb-1">Company Secretary & Compliance Officer</span>
               <p>Ashok Sharma, FCS</p>
-              <p className="mt-1">compliance@krishagro.com</p>
+              <p className="mt-1">compliance@sangamnerkaragro.com</p>
             </div>
             <div>
               <span className="font-bold text-slate-900 block mb-1">Registrar & Share Transfer Agent (RTA)</span>

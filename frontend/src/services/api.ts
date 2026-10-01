@@ -81,8 +81,8 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 'p-1',
     category_id: 'cat-1',
-    name: 'Krish Heritage Royal Black Rice (Chak-Hao)',
-    slug: 'krish-heritage-black-rice-chak-hao',
+    name: 'Sangamnerkar Royal Black Rice (Chak-Hao)',
+    slug: 'sangamnerkar-royal-black-rice-chak-hao',
     tagline: "The Emperor's Forbidden Grain - 3x Anthocyanin Antioxidants & Deep Nutty Aroma",
     description: 'Cultivated in pristine Northeast India valleys and certified chemical-free. Known worldwide for its lustrous deep midnight color, high antioxidant density (surpassing wild blueberries), and roasted nutty taste profile.',
     grain_length_mm: '7.10 mm',
@@ -327,8 +327,8 @@ export const api = {
       return [
         {
           id: 'news-1',
-          title: 'Krish Agro Expands Organic Black Rice & GI Chinnor Export Footprint to 18 New European & Gulf Markets',
-          slug: 'krish-agro-expands-black-rice-chinnor-europe-gulf-export',
+          title: 'Sangamnerkar Agro Expands Organic Black Rice & GI Chinnor Export Footprint to 18 New European & Gulf Markets',
+          slug: 'sangamnerkar-agro-expands-black-rice-chinnor-europe-gulf-export',
           category: 'Press Release',
           excerpt: 'Shipments of certified Chak-Hao black rice and aromatic Balaghat Chinnor scaled past 15,000 metric tons this fiscal year.',
           content_html: '<p>Direct partnerships with smallholder farmers deliver guaranteed buyback rates for indigenous specialty grains.</p>',

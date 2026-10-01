@@ -117,13 +117,13 @@ export const AdminDashboard: React.FC = () => {
           <div className="flex items-center space-x-3">
             <span className="text-xl">🌾</span>
             <span className="font-heading text-lg font-bold text-amber-300">
-              KRISH AGRO • Staff CMS
+              SANGAMNERKAR AGRO • Staff CMS
             </span>
           </div>
 
           <div className="flex items-center space-x-4 text-xs">
             <span className="text-slate-400">
-              Logged in as: <strong className="text-amber-400">{user?.email || 'admin@krblrice.com'}</strong>
+              Logged in as: <strong className="text-amber-400">{user?.email || 'admin@sangamnerkaragro.com'}</strong>
             </span>
             <button
               onClick={() => {

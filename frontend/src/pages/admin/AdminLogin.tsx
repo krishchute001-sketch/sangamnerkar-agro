@@ -5,7 +5,7 @@ import { api } from '../../services/api';
 import { ShieldCheck, Lock, Mail, ArrowRight, ArrowLeft } from 'lucide-react';
 
 export const AdminLogin: React.FC = () => {
-  const [email, setEmail] = useState('admin@krblrice.com');
+  const [email, setEmail] = useState('admin@sangamnerkaragro.com');
   const [password, setPassword] = useState('Admin@123456');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -25,7 +25,7 @@ export const AdminLogin: React.FC = () => {
     } catch (err: any) {
       console.warn('Backend login failure, simulating demo admin login', err);
       // Fallback demo token for offline UI testing
-      await login('demo_token_admin_session_krbl');
+      await login('demo_token_admin_session_sangamnerkar');
       navigate('/admin/dashboard');
     } finally {
       setLoading(false);

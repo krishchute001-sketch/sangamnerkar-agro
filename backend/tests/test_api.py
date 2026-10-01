@@ -64,7 +64,7 @@ async def test_submit_inquiry():
 async def test_admin_login():
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
         payload = {
-            "email": "admin@krblrice.com",
+            "email": "admin@sangamnerkaragro.com",
             "password": "Admin@123456"
         }
         response = await ac.post("/api/v1/auth/login-json", json=payload)

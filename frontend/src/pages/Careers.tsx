@@ -145,7 +145,7 @@ export const Careers: React.FC = () => {
                   <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
                   <h3 className="font-heading text-2xl font-bold text-slate-900 mb-2">Application Received!</h3>
                   <p className="text-xs text-slate-600 mb-6">
-                    Thank you for your interest in joining Krish Agro. Our human resources team will review your credentials and contact you shortly.
+                    Thank you for your interest in joining Sangamnerkar Agro. Our human resources team will review your credentials and contact you shortly.
                   </p>
                   <button
                     onClick={() => setShowModal(false)}
