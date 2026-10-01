@@ -36,14 +36,14 @@ export const AboutUs: React.FC = () => {
       <div className="bg-[#0b1320] text-white py-20 border-b border-amber-900/40 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="text-amber-400 font-mono text-xs uppercase tracking-widest font-semibold block mb-3">
-            Since 1889 • A Legacy of Purity
+            6+ Years of Excellence • A Legacy of Purity
           </span>
           <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-100">
             About Sangamnerkar Agro
           </h1>
           <p className="mt-4 text-slate-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-            From our founding over a century ago to becoming the world's most trusted grain exporter,
-            our journey is defined by agricultural integrity, scientific innovation, and community upliftment.
+            With over 6+ years of dedicated agricultural leadership, our journey is defined by grain integrity,
+            scientific innovation, and community upliftment.
           </p>
         </div>
       </div>
@@ -56,12 +56,12 @@ export const AboutUs: React.FC = () => {
               Our Heritage & Origin
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-slate-900 leading-tight">
-              135 Years of Generational Grain Stewardship
+              6+ Years of Dedicated Specialty Grain Stewardship
             </h2>
             <div className="space-y-4 text-slate-600 text-sm mt-6 leading-relaxed">
               <p>
-                Founded in 1889, our enterprise has stood at the vanguard of the indigenous specialty
-                grain and superfood revolution. What began as a regional grain trading venture in India
+                Established over 6+ years ago, our enterprise has stood at the vanguard of the indigenous specialty
+                grain and superfood revolution. What began as a regional agricultural initiative in India
                 has blossomed into an integrated farm-to-fork powerhouse catering to health-conscious families
                 across six continents.
               </p>

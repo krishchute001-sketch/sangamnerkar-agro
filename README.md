@@ -1,7 +1,7 @@
-# Krish Agro & Black Rice Corporate Enterprise Platform
-*Inspired by [KRBL Limited](https://krblrice.com/) (India Gate Basmati Rice)*
+# Sangamnerkar Agro Black Rice & Chinnor Rice Corporate Platform
+*Inspired by [KRBL Limited](https://krblrice.com/)*
 
-An enterprise-grade, high-performance web platform for global agricultural FMCG exports, heritage Basmati, and Manipur Chak-Hao Black Rice. Featuring a public corporate portal, B2B wholesale lead processing, investor relations filing center, and a secure staff Content Management System (CMS).
+An enterprise-grade, high-performance web platform for global agricultural exports, certified GI-tagged Balaghat Chinnor Rice, and Manipur Chak-Hao Black Rice. Featuring a public corporate portal, B2B wholesale lead processing, investor relations filing center, and a secure staff Content Management System (CMS).
 
 ---
 
