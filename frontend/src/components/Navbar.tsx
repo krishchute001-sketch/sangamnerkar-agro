@@ -117,18 +117,18 @@ export const Navbar: React.FC = () => {
                 </Link>
 
                 {portfolioDropdown && (
-                  <div className="absolute top-full left-0 w-64 bg-[#0d1627] border border-amber-800/40 rounded-b-lg shadow-2xl py-2 z-50">
+                  <div className="absolute top-full left-0 w-72 bg-[#0d1627] border border-amber-800/40 rounded-b-lg shadow-2xl py-2 z-50">
                     <Link
                       to="/portfolio?category=black-rice"
                       className="block px-4 py-2.5 text-xs text-amber-300 hover:bg-amber-950/50 hover:text-amber-100 transition-colors"
                     >
-                      👑 Sangamnerkar Black Rice (Chak-Hao)
+                      👑 Sangamnerkar Royal Black Rice (Chak-Hao)
                     </Link>
                     <Link
                       to="/portfolio?category=chinnor-rice"
                       className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-amber-950/50 hover:text-amber-300 transition-colors"
                     >
-                      🌾 GI-Tagged Chinnor Rice (Balaghat)
+                      🌾 Royal Balaghat Chinnor Rice (GI Tagged)
                     </Link>
                     <Link
                       to="/portfolio?category=jai-shree-ram-rice"

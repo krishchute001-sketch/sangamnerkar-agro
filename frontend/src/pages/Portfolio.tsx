@@ -31,6 +31,11 @@ export const Portfolio: React.FC = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const cat = searchParams.get('category');
+    setSelectedCategory(cat || 'all');
+  }, [searchParams]);
+
   const handleCategoryChange = (slug: string) => {
     setSelectedCategory(slug);
     if (slug === 'all') {

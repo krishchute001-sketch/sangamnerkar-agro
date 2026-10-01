@@ -35,7 +35,7 @@ async def seed_database():
             name="Black Rice Range",
             slug="black-rice",
             description="Rare heirloom Manipur Chak-Hao and anthocyanin-rich forbidden black rice cultivated through sustainable regenerative farming.",
-            banner_image_url="https://images.unsplash.com/photo-1596797882870-8c33deeac224?auto=format&fit=crop&w=1200&q=80",
+            banner_image_url="https://plus.unsplash.com/premium_photo-1726877060096-882c2ac6d13c?auto=format&fit=crop&w=1200&q=80",
             display_order=1,
         )
         cat_chinnor = Category(
@@ -71,10 +71,9 @@ async def seed_database():
             is_featured=True,
             is_export_grade=True,
             is_organic=True,
-            hero_image_url="https://images.unsplash.com/photo-1596797882870-8c33deeac224?auto=format&fit=crop&w=800&q=80",
+            hero_image_url="https://plus.unsplash.com/premium_photo-1726877060096-882c2ac6d13c?auto=format&fit=crop&w=800&q=80",
             gallery_urls=[
-                "https://images.unsplash.com/photo-1596797882870-8c33deeac224?auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1505253758473-96b46deae2cd?auto=format&fit=crop&w=800&q=80",
+                "https://plus.unsplash.com/premium_photo-1726877060096-882c2ac6d13c?auto=format&fit=crop&w=800&q=80",
             ],
             nutritional_facts={
                 "serving_size": "100g",
@@ -195,7 +194,7 @@ async def seed_database():
             category="Press Release",
             excerpt="Empowered by surging international demand for antioxidant-dense functional grains and fragrant Chinnor rice, global shipments scaled past 15,000 metric tons this fiscal year.",
             content_html="<p>Our commitment to regenerative agriculture, certified Manipur Chak-Hao Black Rice, and authentic Balaghat Chinnor continues to unlock premium international markets across the EU, UK, and GCC.</p>",
-            cover_image_url="https://images.unsplash.com/photo-1596797882870-8c33deeac224?auto=format&fit=crop&w=800&q=80",
+            cover_image_url="https://plus.unsplash.com/premium_photo-1726877060096-882c2ac6d13c?auto=format&fit=crop&w=800&q=80",
             author="Corporate Communications",
         )
         db.add(n1)

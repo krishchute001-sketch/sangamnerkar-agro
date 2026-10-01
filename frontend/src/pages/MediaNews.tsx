@@ -46,7 +46,7 @@ export const MediaNews: React.FC = () => {
               <div>
                 <div className="h-52 bg-slate-900 overflow-hidden relative">
                   <img
-                    src={item.cover_image_url || 'https://images.unsplash.com/photo-1596797882870-8c33deeac224?auto=format&fit=crop&w=800&q=80'}
+                    src={item.cover_image_url || 'https://plus.unsplash.com/premium_photo-1726877060096-882c2ac6d13c?auto=format&fit=crop&w=800&q=80'}
                     alt={item.title}
                     className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
                   />

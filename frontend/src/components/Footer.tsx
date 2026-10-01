@@ -48,8 +48,8 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              World’s premier producer and exporter of Heirloom Manipur Chak-Hao Black Rice, GI-Tagged Balaghat Chinnor Rice, and Jai Shree Ram Traditional Rice.
-              Empowering farming families across India with sustainable agriculture for over 6+ years.
+              World’s premier producer and exporter of Heirloom Manipur Chak-Hao Black Rice, GI-Tagged Balaghat Chinnor Rice, and Jai Shree Traditional Rice.
+              Empowering farming families across India with sustainable agriculture since 1889.
             </p>
             <div className="pt-2 text-xs text-slate-400 space-y-2">
               <div className="flex items-start space-x-2">
@@ -99,7 +99,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
                 <Link to="/about-us" className="hover:text-amber-300 transition-colors">
-                  Our Heritage & Journey
+                  Our 135-Year Heritage
                 </Link>
               </li>
               <li>
