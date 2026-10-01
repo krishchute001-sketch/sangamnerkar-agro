@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { AuthProvider } from './context/AuthContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { AccessibilityWidget } from './components/AccessibilityWidget';
+import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 
 // Pages
 import { Home } from './pages/Home';
@@ -31,10 +33,12 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const isAdminPath = pathname.startsWith('/admin');
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#FBF6EE]">
       {!isAdminPath && <Navbar />}
       <main className="flex-grow">{children}</main>
       {!isAdminPath && <Footer />}
+      {!isAdminPath && <AccessibilityWidget />}
+      {!isAdminPath && <FloatingWhatsApp />}
     </div>
   );
 };

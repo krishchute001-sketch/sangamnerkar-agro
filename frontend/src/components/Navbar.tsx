@@ -1,272 +1,330 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import {
-  Globe,
-  Phone,
-  Mail,
-  ChevronDown,
-  Menu,
-  X,
-  ShieldCheck,
-  TrendingUp,
-  Sparkles,
-  ExternalLink,
-} from 'lucide-react';
+import { ChevronDown, Menu, X, MessageCircle } from 'lucide-react';
+import { theme } from '../theme';
+import { Button } from './ui/Button';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [portfolioDropdown, setPortfolioDropdown] = useState(false);
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const location = useLocation();
+
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const productsRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdowns on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (aboutRef.current && !aboutRef.current.contains(event.target as Node)) {
+        setAboutDropdownOpen(false);
+      }
+      if (productsRef.current && !productsRef.current.contains(event.target as Node)) {
+        setProductsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Close menus on route navigation
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setAboutDropdownOpen(false);
+    setProductsDropdownOpen(false);
+  }, [location.pathname]);
 
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 w-full shadow-lg">
-      {/* Top Corporate Utility Bar */}
-      <div className="bg-[#0b1320] text-slate-300 text-xs py-2 px-4 border-b border-amber-900/30">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
-          {/* Market & Global Presence */}
-          <div className="flex items-center space-x-4">
-            <span className="flex items-center text-amber-400 font-semibold tracking-wider">
-              <TrendingUp className="w-3.5 h-3.5 mr-1 text-emerald-400" />
-              SANGAMNERKAR AGRO (NSE): ₹428.50 <span className="text-emerald-400 ml-1">▲ +2.45%</span>
-            </span>
-            <span className="hidden sm:inline text-slate-500">|</span>
-            <span className="hidden sm:flex items-center text-slate-300">
-              <Globe className="w-3.5 h-3.5 mr-1 text-amber-400" />
-              Global Presence: 90+ Countries
-            </span>
+    <header className="sticky top-0 z-30 bg-[#FBF6EE]/95 backdrop-blur-md border-b border-[#E8DEC8] transition-all">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          
+          {/* 1. Left: Brand Logo & Nagpur Identity */}
+          <Link
+            to="/"
+            className="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-[#5A2A27] rounded-xl p-1"
+            aria-label="Sangamnerkar Agro - Return to homepage"
+          >
+            <div className="w-11 h-11 rounded-2xl bg-[#5A2A27] flex items-center justify-center text-xl text-[#FBF6EE] shadow-sm group-hover:scale-105 transition-transform">
+              🌾
+            </div>
+            <div className="flex flex-col">
+              <span className="font-heading text-xl sm:text-2xl font-bold tracking-tight text-[#5A2A27] group-hover:text-[#441F1D] transition-colors">
+                Sangamnerkar Agro
+              </span>
+              <span className="text-[10px] tracking-wider uppercase font-semibold text-[#2F6B3A]">
+                Nagpur • Family-Run • 6+ Years
+              </span>
+            </div>
+          </Link>
+
+          {/* 2. Center: Centered Navigation (Desktop) */}
+          <nav
+            aria-label="Main Navigation"
+            className="hidden lg:flex items-center space-x-1 xl:space-x-2"
+          >
+            {/* Home */}
+            <Link
+              to="/"
+              className={`px-3.5 py-2 text-sm font-medium rounded-xl transition-colors ${
+                isActive('/')
+                  ? 'text-[#2F6B3A] font-semibold bg-[#EAF3EC]'
+                  : 'text-[#2C221E] hover:text-[#5A2A27] hover:bg-[#F5ECE0]'
+              }`}
+            >
+              Home
+            </Link>
+
+            {/* About Us (Dropdown) */}
+            <div
+              ref={aboutRef}
+              className="relative"
+              onMouseEnter={() => setAboutDropdownOpen(true)}
+              onMouseLeave={() => setAboutDropdownOpen(false)}
+            >
+              <button
+                onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
+                aria-expanded={aboutDropdownOpen}
+                aria-haspopup="true"
+                className={`px-3.5 py-2 text-sm font-medium rounded-xl inline-flex items-center gap-1 transition-colors ${
+                  location.pathname.startsWith('/about-us')
+                    ? 'text-[#2F6B3A] font-semibold bg-[#EAF3EC]'
+                    : 'text-[#2C221E] hover:text-[#5A2A27] hover:bg-[#F5ECE0]'
+                }`}
+              >
+                <span>About Us</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${aboutDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {aboutDropdownOpen && (
+                <div className="absolute left-0 top-full pt-2 w-52 z-40">
+                  <div className="bg-[#FFFFFF] border border-[#E8DEC8] rounded-2xl p-2 shadow-xl animate-in fade-in slide-in-from-top-1 duration-150">
+                    <Link
+                      to="/about-us#story"
+                      className="block px-3 py-2 text-xs font-medium text-[#2C221E] rounded-xl hover:bg-[#F5ECE0] hover:text-[#5A2A27] transition-colors"
+                    >
+                      <span className="font-semibold block text-sm">Our Story</span>
+                      <span className="text-[#665952] text-[11px]">6+ years supplying Nagpur hotels</span>
+                    </Link>
+                    <Link
+                      to="/about-us#people"
+                      className="block px-3 py-2 text-xs font-medium text-[#2C221E] rounded-xl hover:bg-[#F5ECE0] hover:text-[#5A2A27] transition-colors mt-1"
+                    >
+                      <span className="font-semibold block text-sm">Our People</span>
+                      <span className="text-[#665952] text-[11px]">Sangamnerkar family leadership</span>
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Our Products (Dropdown) */}
+            <div
+              ref={productsRef}
+              className="relative"
+              onMouseEnter={() => setProductsDropdownOpen(true)}
+              onMouseLeave={() => setProductsDropdownOpen(false)}
+            >
+              <button
+                onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
+                aria-expanded={productsDropdownOpen}
+                aria-haspopup="true"
+                className={`px-3.5 py-2 text-sm font-medium rounded-xl inline-flex items-center gap-1 transition-colors ${
+                  location.pathname.startsWith('/portfolio')
+                    ? 'text-[#2F6B3A] font-semibold bg-[#EAF3EC]'
+                    : 'text-[#2C221E] hover:text-[#5A2A27] hover:bg-[#F5ECE0]'
+                }`}
+              >
+                <span>Our Products</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${productsDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {productsDropdownOpen && (
+                <div className="absolute left-0 top-full pt-2 w-64 z-40">
+                  <div className="bg-[#FFFFFF] border border-[#E8DEC8] rounded-2xl p-2 shadow-xl animate-in fade-in slide-in-from-top-1 duration-150">
+                    <Link
+                      to="/portfolio?category=black-rice"
+                      className="block px-3 py-2.5 text-xs font-medium text-[#2C221E] rounded-xl hover:bg-[#F5ECE0] hover:text-[#5A2A27] transition-colors"
+                    >
+                      <span className="font-semibold block text-sm text-[#5A2A27]">Black Rice (Chak-Hao)</span>
+                      <span className="text-[#665952] text-[11px]">Anthocyanin-rich heirloom superfood</span>
+                    </Link>
+                    <Link
+                      to="/portfolio?category=chinnor-rice"
+                      className="block px-3 py-2.5 text-xs font-medium text-[#2C221E] rounded-xl hover:bg-[#F5ECE0] hover:text-[#5A2A27] transition-colors mt-1"
+                    >
+                      <span className="font-semibold block text-sm text-[#5A2A27]">Balaghat Chinnor Rice</span>
+                      <span className="text-[#665952] text-[11px]">Certified GI-tagged fragrant grain</span>
+                    </Link>
+                    <Link
+                      to="/portfolio?category=jai-shree-ram-rice"
+                      className="block px-3 py-2.5 text-xs font-medium text-[#2C221E] rounded-xl hover:bg-[#F5ECE0] hover:text-[#5A2A27] transition-colors mt-1"
+                    >
+                      <span className="font-semibold block text-sm text-[#5A2A27]">Jai Shree Ram Rice</span>
+                      <span className="text-[#665952] text-[11px]">Silky daily fine-grain luxury</span>
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Why Black Rice */}
+            <Link
+              to="/explore-rice"
+              className={`px-3.5 py-2 text-sm font-medium rounded-xl transition-colors ${
+                isActive('/explore-rice')
+                  ? 'text-[#2F6B3A] font-semibold bg-[#EAF3EC]'
+                  : 'text-[#2C221E] hover:text-[#5A2A27] hover:bg-[#F5ECE0]'
+              }`}
+            >
+              Why Black Rice
+            </Link>
+
+            {/* Gallery */}
+            <Link
+              to="/explore-rice#gallery"
+              className="px-3.5 py-2 text-sm font-medium text-[#2C221E] hover:text-[#5A2A27] hover:bg-[#F5ECE0] rounded-xl transition-colors"
+            >
+              Gallery
+            </Link>
+
+            {/* Contact Us */}
+            <Link
+              to="/contact-us"
+              className={`px-3.5 py-2 text-sm font-medium rounded-xl transition-colors ${
+                isActive('/contact-us')
+                  ? 'text-[#2F6B3A] font-semibold bg-[#EAF3EC]'
+                  : 'text-[#2C221E] hover:text-[#5A2A27] hover:bg-[#F5ECE0]'
+              }`}
+            >
+              Contact Us
+            </Link>
+          </nav>
+
+          {/* 3. Right: Green "Order on WhatsApp" Button */}
+          <div className="hidden sm:flex items-center space-x-3">
+            <Button
+              href={theme.contact.whatsappUrl}
+              external
+              variant="whatsapp"
+              size="md"
+              leftIcon={<MessageCircle className="w-4 h-4 text-white" />}
+              aria-label="Order on WhatsApp with Sangamnerkar Agro"
+            >
+              Order on WhatsApp
+            </Button>
           </div>
 
-          {/* Contact & Admin Portal */}
-          <div className="flex items-center space-x-4">
-            <a href="tel:+919923900943" className="hidden md:flex items-center hover:text-amber-300 transition-colors">
-              <Phone className="w-3 h-3 mr-1 text-amber-400" />
-              +91 99239 00943
-            </a>
-            <a href="mailto:export@sangamnerkaragro.com" className="hidden lg:flex items-center hover:text-amber-300 transition-colors">
-              <Mail className="w-3 h-3 mr-1 text-amber-400" />
-              export@sangamnerkaragro.com
-            </a>
-            <Link
-              to="/admin/login"
-              className="flex items-center text-amber-400 hover:text-amber-300 bg-amber-950/60 px-2.5 py-0.5 rounded border border-amber-800/40 font-medium transition-all"
+          {/* Mobile Menu Hamburger Button */}
+          <div className="flex sm:hidden items-center">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle mobile navigation menu"
+              aria-expanded={mobileMenuOpen}
+              className="p-2 rounded-xl text-[#5A2A27] hover:bg-[#F5ECE0] transition-colors focus:outline-none focus:ring-2 focus:ring-[#2F6B3A]"
             >
-              <ShieldCheck className="w-3.5 h-3.5 mr-1" />
-              Admin CMS
-            </Link>
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Main Luxury Brand Navigation */}
-      <nav className="bg-[#0f172a] border-b border-amber-900/40 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            {/* Brand Logo & Heritage Crest */}
-            <Link to="/" className="flex items-center space-x-3 group">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-600 via-amber-400 to-amber-200 p-0.5 shadow-md shadow-amber-900/30 group-hover:scale-105 transition-transform">
-                <div className="w-full h-full bg-[#0b1320] rounded-full flex items-center justify-center">
-                  <span className="text-xl">🌾</span>
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-heading text-lg sm:text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-100">
-                  SANGAMNERKAR AGRO
-                </span>
-                <span className="text-[10px] tracking-[0.2em] text-amber-400/80 uppercase font-medium">
-                  Black Rice & Chinnor Rice
-                </span>
-              </div>
+      {/* Mobile Drawer Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden border-t border-[#E8DEC8] bg-[#FBF6EE] px-4 pt-3 pb-6 space-y-2 animate-in fade-in duration-200">
+          <Link
+            to="/"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2 text-base font-semibold text-[#5A2A27] rounded-xl hover:bg-[#F5ECE0]"
+          >
+            Home
+          </Link>
+
+          <div className="pt-1 pb-1 pl-3 space-y-1">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#665952]">About Us</span>
+            <Link
+              to="/about-us#story"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-1.5 text-sm text-[#2C221E] hover:text-[#5A2A27]"
+            >
+              • Our Story & Nagpur Roots
             </Link>
+            <Link
+              to="/about-us#people"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-1.5 text-sm text-[#2C221E] hover:text-[#5A2A27]"
+            >
+              • Our People (Sangamnerkar Family)
+            </Link>
+          </div>
 
-            {/* Desktop Navigation Links */}
-            <div className="hidden xl:flex items-center space-x-1 lg:space-x-4">
-              <Link
-                to="/"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  isActive('/') ? 'text-amber-400 font-semibold border-b-2 border-amber-400' : 'text-slate-200 hover:text-amber-300'
-                }`}
-              >
-                Home
-              </Link>
+          <div className="pt-1 pb-1 pl-3 space-y-1">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#665952]">Our Products</span>
+            <Link
+              to="/portfolio?category=black-rice"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-1.5 text-sm text-[#2C221E] hover:text-[#5A2A27]"
+            >
+              • Black Rice (Chak-Hao)
+            </Link>
+            <Link
+              to="/portfolio?category=chinnor-rice"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-1.5 text-sm text-[#2C221E] hover:text-[#5A2A27]"
+            >
+              • Balaghat Chinnor Rice (GI Tagged)
+            </Link>
+            <Link
+              to="/portfolio?category=jai-shree-ram-rice"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-1.5 text-sm text-[#2C221E] hover:text-[#5A2A27]"
+            >
+              • Jai Shree Ram Rice
+            </Link>
+          </div>
 
-              <Link
-                to="/about-us"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  isActive('/about-us') ? 'text-amber-400 font-semibold border-b-2 border-amber-400' : 'text-slate-200 hover:text-amber-300'
-                }`}
-              >
-                About Us
-              </Link>
+          <Link
+            to="/explore-rice"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2 text-base font-medium text-[#2C221E] rounded-xl hover:bg-[#F5ECE0]"
+          >
+            Why Black Rice
+          </Link>
 
-              {/* Portfolio Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setPortfolioDropdown(true)}
-                onMouseLeave={() => setPortfolioDropdown(false)}
-              >
-                <Link
-                  to="/portfolio"
-                  className={`px-3 py-2 text-sm font-medium tracking-wide inline-flex items-center transition-colors ${
-                    isActive('/portfolio') ? 'text-amber-400 font-semibold border-b-2 border-amber-400' : 'text-slate-200 hover:text-amber-300'
-                  }`}
-                >
-                  Our Portfolio
-                  <ChevronDown className="w-4 h-4 ml-1" />
-                </Link>
+          <Link
+            to="/explore-rice#gallery"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2 text-base font-medium text-[#2C221E] rounded-xl hover:bg-[#F5ECE0]"
+          >
+            Gallery
+          </Link>
 
-                {portfolioDropdown && (
-                  <div className="absolute top-full left-0 w-72 bg-[#0d1627] border border-amber-800/40 rounded-b-lg shadow-2xl py-2 z-50">
-                    <Link
-                      to="/portfolio?category=black-rice"
-                      className="block px-4 py-2.5 text-xs text-amber-300 hover:bg-amber-950/50 hover:text-amber-100 transition-colors"
-                    >
-                      👑 Sangamnerkar Royal Black Rice (Chak-Hao)
-                    </Link>
-                    <Link
-                      to="/portfolio?category=chinnor-rice"
-                      className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-amber-950/50 hover:text-amber-300 transition-colors"
-                    >
-                      🌾 Royal Balaghat Chinnor Rice (GI Tagged)
-                    </Link>
-                    <Link
-                      to="/portfolio?category=jai-shree-ram-rice"
-                      className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-amber-950/50 hover:text-amber-300 transition-colors"
-                    >
-                      ✨ Jai Shree Ram Premium Rice
-                    </Link>
-                  </div>
-                )}
-              </div>
+          <Link
+            to="/contact-us"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2 text-base font-medium text-[#2C221E] rounded-xl hover:bg-[#F5ECE0]"
+          >
+            Contact Us
+          </Link>
 
-              <Link
-                to="/explore-rice"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  isActive('/explore-rice') ? 'text-amber-400 font-semibold border-b-2 border-amber-400' : 'text-slate-200 hover:text-amber-300'
-                }`}
-              >
-                Explore Rice
-              </Link>
-
-              <Link
-                to="/sustainability"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  isActive('/sustainability') ? 'text-amber-400 font-semibold border-b-2 border-amber-400' : 'text-slate-200 hover:text-amber-300'
-                }`}
-              >
-                Sustainability
-              </Link>
-
-              <Link
-                to="/careers"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  isActive('/careers') ? 'text-amber-400 font-semibold border-b-2 border-amber-400' : 'text-slate-200 hover:text-amber-300'
-                }`}
-              >
-                Careers
-              </Link>
-
-              <Link
-                to="/contact-us"
-                className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
-                  isActive('/contact-us') ? 'text-amber-400 font-semibold border-b-2 border-amber-400' : 'text-slate-200 hover:text-amber-300'
-                }`}
-              >
-                Contact Us
-              </Link>
-            </div>
-
-            {/* B2B Export CTA Button */}
-            <div className="hidden lg:flex items-center">
-              <Link
-                to="/contact-us?type=Export"
-                className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-semibold rounded-full group bg-gradient-to-br from-amber-400 via-amber-500 to-amber-700 shadow-lg shadow-amber-900/40 hover:shadow-amber-500/30 transition-all"
-              >
-                <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-[#0d1627] rounded-full group-hover:bg-opacity-0 text-amber-200 group-hover:text-slate-900 font-bold uppercase tracking-wider flex items-center">
-                  <Sparkles className="w-3.5 h-3.5 mr-1.5 text-amber-400 group-hover:text-slate-900" />
-                  B2B Export Enquiry
-                </span>
-              </Link>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="xl:hidden flex items-center">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-md text-amber-400 hover:text-amber-200 hover:bg-slate-800 focus:outline-none"
-                aria-label="Toggle Navigation Menu"
-              >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
+          <div className="pt-3">
+            <Button
+              href={theme.contact.whatsappUrl}
+              external
+              variant="whatsapp"
+              size="md"
+              className="w-full"
+              leftIcon={<MessageCircle className="w-4 h-4 text-white" />}
+            >
+              Order on WhatsApp
+            </Button>
           </div>
         </div>
-
-        {/* Mobile Navigation Drawer */}
-        {mobileMenuOpen && (
-          <div className="xl:hidden bg-[#0a101d] border-b border-amber-800/40 px-4 pt-2 pb-6 space-y-2">
-            <Link
-              to="/"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:text-amber-400"
-            >
-              Home
-            </Link>
-            <Link
-              to="/about-us"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:text-amber-400"
-            >
-              About Us
-            </Link>
-            <Link
-              to="/portfolio"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-amber-300 hover:text-amber-100"
-            >
-              Our Portfolio (Black Rice, Chinnor & Jai Shree Ram)
-            </Link>
-            <Link
-              to="/explore-rice"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:text-amber-400"
-            >
-              Explore Rice & Milling
-            </Link>
-            <Link
-              to="/sustainability"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:text-amber-400"
-            >
-              Sustainability & ESG
-            </Link>
-            <Link
-              to="/careers"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:text-amber-400"
-            >
-              Careers
-            </Link>
-            <Link
-              to="/contact-us"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-slate-200 hover:text-amber-400"
-            >
-              Contact Us
-            </Link>
-            <div className="pt-4 border-t border-slate-800">
-              <Link
-                to="/contact-us?type=Export"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center block bg-gradient-to-r from-amber-500 to-amber-700 text-slate-950 font-bold py-2.5 rounded-lg shadow-md"
-              >
-                Submit B2B Export Enquiry
-              </Link>
-            </div>
-          </div>
-        )}
-      </nav>
+      )}
     </header>
   );
 };
+
+export const Header = Navbar;

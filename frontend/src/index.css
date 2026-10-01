@@ -1,32 +1,79 @@
 @import "tailwindcss";
 
-:root {
-  --font-heading: 'Cinzel', 'Playfair Display', serif;
+@theme {
+  --color-cream: #FBF6EE;
+  --color-cream-surface: #F5ECE0;
+  --color-maroon: #5A2A27;
+  --color-maroon-dark: #441F1D;
+  --color-maroon-muted: #784340;
+  --color-forest-green: #2F6B3A;
+  --color-forest-green-hover: #24542D;
+  --color-forest-green-light: #EAF3EC;
+  --color-gold: #C9962B;
+  --color-gold-light: #FDF7EB;
+  --color-warm-border: #E8DEC8;
+  --color-espresso: #2C221E;
+  --font-heading: 'Fraunces', serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+:root {
+  --font-heading: 'Fraunces', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --bg-primary: #FBF6EE;
+  --text-primary: #2C221E;
+  --color-maroon: #5A2A27;
+  --color-forest-green: #2F6B3A;
+  --color-gold: #C9962B;
 }
 
 body {
   font-family: var(--font-body);
-  color: #1a202c;
-  background-color: #fdfdfc;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   overflow-x: hidden;
+  transition: background-color 0.2s ease, color 0.2s ease, font-size 0.2s ease;
+}
+
+/* Accessibility High-Contrast Mode */
+body.high-contrast {
+  --bg-primary: #FFFFFF;
+  --text-primary: #000000;
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  filter: contrast(115%);
+}
+
+body.high-contrast * {
+  border-color: #000000 !important;
+}
+
+/* Accessibility Text Size Modifiers */
+body.text-size-lg {
+  font-size: 110%;
+}
+
+body.text-size-xl {
+  font-size: 122%;
 }
 
 h1, h2, h3, h4, .font-heading {
   font-family: var(--font-heading);
+  letter-spacing: -0.015em;
 }
 
-/* Custom Scrollbar */
+/* Warm Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d1520;
+  background: #FBF6EE;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c5a059;
-  border-radius: 4px;
+  background: #DFBA6A;
+  border-radius: 6px;
+  border: 2px solid #FBF6EE;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #dfb96c;
+  background: #5A2A27;
 }

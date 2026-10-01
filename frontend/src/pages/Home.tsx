@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { api } from '../services/api';
 import { Product, CorporateStats } from '../types';
 import { ProductCard } from '../components/ProductCard';
-import { CorporateTicker } from '../components/CorporateTicker';
+import { Hero } from '../components/Hero';
 import {
   ArrowRight,
   ShieldCheck,
@@ -47,60 +47,9 @@ export const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* 1. Grand Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center justify-center bg-[#070e1b] overflow-hidden">
-        {/* Background Image & Cinematic Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=2000&q=85"
-            alt="Paddy Fields at Sunrise"
-            className="w-full h-full object-cover object-center opacity-35 scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070e1b] via-[#070e1b]/70 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070e1b] via-transparent to-[#070e1b]/60"></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-          {/* Heritage Pill */}
-          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-950/60 border border-amber-600/50 text-amber-300 text-xs font-semibold tracking-widest uppercase mb-8 shadow-lg">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>6+ YEARS OF PROVEN GRAIN MASTERY</span>
-          </div>
-
-          <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight max-w-5xl mx-auto drop-shadow-md">
-            Sangamnerkar Agro <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-100">
-              Black Rice & Chinnor Rice
-            </span>
-          </h1>
-
-          <p className="mt-6 text-base sm:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed">
-            World-class cultivators and global exporters of certified Manipur Chak-Hao Black Rice,
-            GI-Tagged Balaghat Chinnor Rice, and pristine Jai Shree Ram Traditional Rice to over 90+ countries.
-          </p>
-
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/portfolio"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 text-slate-950 font-bold text-sm tracking-wider uppercase shadow-xl hover:shadow-amber-500/20 hover:scale-105 transition-all flex items-center justify-center"
-            >
-              Explore Our Portfolio
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
-
-            <Link
-              to="/contact-us?type=Export"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-amber-500/40 text-amber-300 font-bold text-sm tracking-wider uppercase transition-all backdrop-blur-sm flex items-center justify-center"
-            >
-              Request Bulk Export Quote
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. Corporate Metrics Ticker */}
-      <CorporateTicker stats={stats} />
+    <div className="flex flex-col min-h-screen bg-[#FBF6EE]">
+      {/* 1. Warm Brand Hero Carousel */}
+      <Hero />
 
       {/* 3. Spotlighting Imperial Black Rice & Heritage */}
       <section className="py-24 bg-[#0a111e] text-white relative">
