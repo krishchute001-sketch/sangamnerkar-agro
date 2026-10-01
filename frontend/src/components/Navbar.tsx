@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   TrendingUp,
   Sparkles,
-  ExternalLink,
 } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
@@ -34,7 +33,7 @@ export const Navbar: React.FC = () => {
             <span className="hidden sm:inline text-slate-500">|</span>
             <span className="hidden sm:flex items-center text-slate-300">
               <Globe className="w-3.5 h-3.5 mr-1 text-amber-400" />
-              Global Presence: 90+ Countries
+              Global Exports: 90+ Countries
             </span>
           </div>
 
@@ -74,8 +73,8 @@ export const Navbar: React.FC = () => {
                 <span className="font-heading text-xl sm:text-2xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-100">
                   KRISH AGRO
                 </span>
-                <span className="text-[10px] tracking-[0.25em] text-amber-400/80 uppercase font-medium">
-                  Heritage Basmati & Black Rice
+                <span className="text-[10px] tracking-[0.22em] text-amber-400/80 uppercase font-medium">
+                  Black Rice • Chinnor Rice • Jai Shree
                 </span>
               </div>
             </Link>
@@ -117,36 +116,36 @@ export const Navbar: React.FC = () => {
                 </Link>
 
                 {portfolioDropdown && (
-                  <div className="absolute top-full left-0 w-64 bg-[#0d1627] border border-amber-800/40 rounded-b-lg shadow-2xl py-2 z-50">
+                  <div className="absolute top-full left-0 w-72 bg-[#0d1627] border border-amber-800/40 rounded-b-lg shadow-2xl py-2 z-50">
                     <Link
                       to="/portfolio?category=imperial-black-rice"
                       className="block px-4 py-2.5 text-xs text-amber-300 hover:bg-amber-950/50 hover:text-amber-100 transition-colors"
                     >
-                      👑 Imperial Black Rice (Chak-Hao)
+                      👑 Imperial Black Rice (Manipur Chak-Hao)
                     </Link>
                     <Link
-                      to="/portfolio?category=royal-basmati-range"
+                      to="/portfolio?category=chinnor-rice-range"
                       className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-amber-950/50 hover:text-amber-300 transition-colors"
                     >
-                      Royal Basmati Range (1121 & Traditional)
+                      🌾 GI-Tagged Balaghat Chinnor Rice (Floral Scent)
                     </Link>
                     <Link
-                      to="/portfolio?category=regional-heritage-grains"
+                      to="/portfolio?category=jai-shree-rice-range"
                       className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-amber-950/50 hover:text-amber-300 transition-colors"
                     >
-                      Regional Grains (Sona Masoori, Gobindobhog)
+                      🍚 Jai Shree Select Traditional Rice (Daily Luxury)
                     </Link>
                     <Link
                       to="/portfolio?category=uplife-health-range"
                       className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-amber-950/50 hover:text-amber-300 transition-colors"
                     >
-                      Uplife Health (Low GI & Organic)
+                      🌱 Uplife Health & Superfoods
                     </Link>
                     <Link
                       to="/portfolio?category=agro-by-products"
                       className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-amber-950/50 hover:text-amber-300 transition-colors"
                     >
-                      Physico-Refined Rice Bran Oil
+                      🌻 Physico-Refined Rice Bran Oil
                     </Link>
                   </div>
                 )}
@@ -222,7 +221,7 @@ export const Navbar: React.FC = () => {
               >
                 <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-[#0d1627] rounded-full group-hover:bg-opacity-0 text-amber-200 group-hover:text-slate-900 font-bold uppercase tracking-wider flex items-center">
                   <Sparkles className="w-3.5 h-3.5 mr-1.5 text-amber-400 group-hover:text-slate-900" />
-                  B2B Export Enquiry
+                  B2B Trade Enquiry
                 </span>
               </Link>
             </div>
@@ -262,14 +261,14 @@ export const Navbar: React.FC = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-2 text-base font-medium text-amber-300 hover:text-amber-100"
             >
-              Our Portfolio (Black Rice & Basmati)
+              Our Portfolio (Black Rice, Chinnor & Jai Shree)
             </Link>
             <Link
               to="/explore-rice"
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-2 text-base font-medium text-slate-200 hover:text-amber-400"
             >
-              Explore Rice & Milling
+              Explore Rice & Agronomy
             </Link>
             <Link
               to="/investor-relations"

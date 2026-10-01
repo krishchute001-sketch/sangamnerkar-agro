@@ -50,7 +50,7 @@ async def test_submit_inquiry():
             "email": "importer@globalgrain.com",
             "phone": "+1 555 123 4567",
             "country": "United States",
-            "product_interest": "Imperial Reserve 1121 Basmati",
+            "product_interest": "Royal Balaghat Chinnor Rice",
             "quantity_metric_tons": "100 MT",
             "message": "Testing automated API verification inquiry submission."
         }

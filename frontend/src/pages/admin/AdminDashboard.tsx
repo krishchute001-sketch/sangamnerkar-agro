@@ -367,7 +367,7 @@ export const AdminDashboard: React.FC = () => {
                       })
                     }
                     className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white"
-                    placeholder="e.g. Royal Imperial Jasmine Basmati"
+                    placeholder="e.g. Heritage Balaghat Chinnor Aromatic Special"
                   />
                 </div>
 

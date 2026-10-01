@@ -18,21 +18,12 @@ import { ContactUs } from './pages/ContactUs';
 import { AdminLogin } from './pages/admin/AdminLogin';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
 
-// Scroll to hash or top helper on route change
+// Scroll to top helper on route change
 const ScrollToTop = () => {
-  const { pathname, hash } = useLocation();
+  const { pathname } = useLocation();
   useEffect(() => {
-    if (hash) {
-      setTimeout(() => {
-        const element = document.getElementById(hash.substring(1));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 50);
-    } else {
-      window.scrollTo(0, 0);
-    }
-  }, [pathname, hash]);
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return null;
 };
 

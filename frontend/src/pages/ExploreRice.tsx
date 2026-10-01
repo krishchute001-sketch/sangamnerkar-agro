@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Clock, CheckCircle2, Shield, HeartPulse, Flame } from 'lucide-react';
+import { Sparkles, Clock, CheckCircle2, Shield, HeartPulse, Flame, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const ExploreRice: React.FC = () => {
@@ -9,49 +9,45 @@ export const ExploreRice: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-amber-700 text-xs font-bold uppercase tracking-widest block mb-2">
-            The Science & Art of Grain
+            Agronomy & Heritage Encyclopedia
           </span>
           <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Explore Rice & Agronomy Mastery
+            Explore Black Rice, Chinnor & Jai Shree
           </h1>
           <p className="text-slate-600 text-sm mt-4 leading-relaxed">
-            Understand the botanical wonder of Himalayan Basmati, the medicinal heritage of Manipur Black Rice,
-            and the rigorous ageing science that produces the world's most fragrant dining experience.
+            Discover the botanical wonder of Manipur Chak-Hao, the sweet floral enchantment of
+            GI-tagged Balaghat Chinnor, and the silky everyday elegance of Jai Shree traditional rice.
           </p>
         </div>
 
-        {/* Section 1: The Aging Science in Concrete Silos */}
+        {/* Section 1: Manipur Chak-Hao Forbidden Black Rice */}
         <div className="bg-[#0b1320] text-white rounded-3xl p-8 sm:p-14 border border-amber-900/40 shadow-xl mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <span className="text-amber-400 font-mono text-xs uppercase tracking-widest font-semibold block">
-                The Science of Maturation
+              <span className="text-purple-400 font-mono text-xs uppercase tracking-widest font-semibold block">
+                The Emperor's Superfood Grain
               </span>
               <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                Why Authentic Basmati Must Age for 12 to 24 Months
+                Manipur Chak-Hao Black Rice
               </h2>
               <div className="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
                 <p>
-                  Freshly harvested paddy contains up to 18% moisture and soft, loose starch amylose
-                  chains. If cooked immediately, the grains burst, clump together, and release sticky
-                  starches.
-                </p>
-                <p>
-                  In our 1,000,000 MT climate-controlled silos, the grain is cured over two full seasons.
-                  Moisture is gradually drawn down to a stable 11.5–12.5%. During this natural maturation:
+                  Native to the emerald hills and wetlands of Manipur, India, Chak-Hao has been granted
+                  a prestigious Geographical Indication (GI) tag. Historically reserved exclusively for emperors
+                  to bestow vitality and longevity, its dark purple-black pigment is powered by concentrated anthocyanins.
                 </p>
                 <ul className="space-y-2 text-slate-200">
                   <li className="flex items-center">
-                    <CheckCircle2 className="w-4 h-4 text-amber-400 mr-2 shrink-0" />
-                    Amylose starches crystallize, providing resilient grain firmness.
+                    <CheckCircle2 className="w-4 h-4 text-purple-400 mr-2 shrink-0" />
+                    <strong>180mg Natural Anthocyanins:</strong> Surpassing blueberries in antioxidant ORAC score.
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle2 className="w-4 h-4 text-amber-400 mr-2 shrink-0" />
-                    The natural 2-acetyl-1-pyrroline (2-AP) floral aroma intensifies.
+                    <CheckCircle2 className="w-4 h-4 text-purple-400 mr-2 shrink-0" />
+                    <strong>Low Glycemic Index:</strong> Delivers sustained energy without sharp glucose spikes.
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle2 className="w-4 h-4 text-amber-400 mr-2 shrink-0" />
-                    Grain elongates up to 2.8x its raw length upon cooking without swelling sideways.
+                    <CheckCircle2 className="w-4 h-4 text-purple-400 mr-2 shrink-0" />
+                    <strong>Roasted Nutty Profile:</strong> Delightful toasted hazelnut texture ideal for salads and desserts.
                   </li>
                 </ul>
               </div>
@@ -59,83 +55,114 @@ export const ExploreRice: React.FC = () => {
 
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=1000&q=80"
-                alt="Aged Basmati Grain"
-                className="rounded-2xl border border-amber-500/30 object-cover h-[380px] w-full"
+                src="https://images.unsplash.com/photo-1596797882870-8c33deeac224?auto=format&fit=crop&w=1000&q=80"
+                alt="Manipur Chak-Hao Black Rice"
+                className="rounded-2xl border border-purple-500/30 object-cover h-[380px] w-full"
               />
             </div>
           </div>
         </div>
 
-        {/* Section 2: Spotlighting Heirloom Manipur Chak-Hao Black Rice */}
+        {/* Section 2: Balaghat Chinnor Rice (GI Tagged) */}
         <div className="bg-white rounded-3xl p-8 sm:p-14 border border-slate-200/80 shadow-sm mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
               <img
-                src="https://images.unsplash.com/photo-1596797882870-8c33deeac224?auto=format&fit=crop&w=1000&q=80"
-                alt="Black Rice"
+                src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=1000&q=80"
+                alt="Balaghat Chinnor Rice"
                 className="rounded-2xl shadow-lg object-cover h-[380px] w-full"
               />
             </div>
 
             <div className="space-y-6 order-1 lg:order-2">
-              <span className="text-purple-800 text-xs font-bold uppercase tracking-widest block">
-                The Emperor's Superfood Grain
+              <span className="text-amber-700 text-xs font-bold uppercase tracking-widest block">
+                The Fragrant Pride of Central India
               </span>
               <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
-                Manipur Chak-Hao (Forbidden Black Rice)
+                GI-Tagged Balaghat Chinnor Rice
               </h2>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Revered in Asian royal dynasties for its longevity benefits, Chak-Hao derives its deep
-                black-purple sheen from anthocyanins—the same potent plant antioxidant pigments found in
-                blueberries and acai, but in higher concentrations.
+                Nurtured by the mineral-abundant Wainganga river soils of Balaghat (Madhya Pradesh), Chinnor is
+                widely crowned the "Queen of Aromatic Indigenous Rices". Awarded the official GI-696 designation,
+                it features an unforgettable sweet floral fragrance and tender, velvety texture that stays moist for hours.
               </p>
 
               <div className="grid grid-cols-2 gap-4 pt-2">
-                <div className="p-4 rounded-xl bg-purple-50 border border-purple-100">
-                  <HeartPulse className="w-6 h-6 text-purple-700 mb-2" />
-                  <span className="font-bold text-slate-900 text-sm block">180mg Anthocyanins</span>
-                  <span className="text-xs text-slate-500">Natural heart & cellular defense</span>
+                <div className="p-4 rounded-xl bg-amber-50 border border-amber-200/60">
+                  <Award className="w-6 h-6 text-amber-700 mb-2" />
+                  <span className="font-bold text-slate-900 text-sm block">Official GI Tag</span>
+                  <span className="text-xs text-slate-500">Certified authentic Balaghat terroir</span>
                 </div>
-                <div className="p-4 rounded-xl bg-purple-50 border border-purple-100">
-                  <Flame className="w-6 h-6 text-purple-700 mb-2" />
-                  <span className="font-bold text-slate-900 text-sm block">Roasted Nutty Finish</span>
-                  <span className="text-xs text-slate-500">Gourmet culinary texture</span>
+                <div className="p-4 rounded-xl bg-amber-50 border border-amber-200/60">
+                  <Flame className="w-6 h-6 text-amber-700 mb-2" />
+                  <span className="font-bold text-slate-900 text-sm block">Natural Floral Perfume</span>
+                  <span className="text-xs text-slate-500">Divine aroma for royal kheer & pulao</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Section 3: Master Chef Guide to Cooking Non-Sticky Basmati */}
+        {/* Section 3: Jai Shree Traditional Rice */}
+        <div className="bg-[#0b1320] text-white rounded-3xl p-8 sm:p-14 border border-slate-800 shadow-xl mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <span className="text-amber-400 font-mono text-xs uppercase tracking-widest font-semibold block">
+                Daily Dining Elegance
+              </span>
+              <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                Jai Shree Traditional Scented Rice
+              </h2>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                Jai Shree is celebrated for its slender, pearly white grain, gentle comforting scent, and
+                fluffy non-sticky finish. Milled with utmost care to protect grain integrity, it is the grain
+                of choice for Indian households and fine-dining restaurants demanding consistent elegance.
+              </p>
+              <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300">
+                <strong>Digestibility & Purity:</strong> Low in heavy starches, Jai Shree digests easily,
+                making it the wholesome daily choice for all generations.
+              </div>
+            </div>
+
+            <div>
+              <img
+                src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=1000&q=80"
+                alt="Jai Shree Traditional Rice"
+                className="rounded-2xl border border-amber-500/30 object-cover h-[380px] w-full"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Section 4: Master Cooking Guide */}
         <div className="bg-[#f4f4ee] rounded-3xl p-8 sm:p-12 border border-slate-200">
           <h3 className="font-heading text-2xl font-bold text-slate-900 text-center mb-8">
-            Master Chef Method: Cooking Fluffy, Non-Sticky Basmati
+            Culinary Preparation Guide by Variety
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80">
-              <span className="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold inline-flex items-center justify-center mb-4 text-xs">1</span>
-              <h4 className="font-bold text-slate-900 text-sm mb-2">Gentle Wash</h4>
-              <p className="text-xs text-slate-600">Rinse gently 2-3 times in cold water until runoff is clear without rubbing grains harshly.</p>
+              <span className="text-xs uppercase font-bold text-purple-700 tracking-wider block mb-2">Imperial Black Rice</span>
+              <h4 className="font-bold text-slate-900 text-base mb-2">Soak 1-2 Hours (1:2 Water)</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Because black rice retains its nutrient-dense bran layer, pre-soaking softens the outer hull. Cook on gentle low heat for 30 minutes for a chewy, nutty texture.
+              </p>
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80">
-              <span className="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold inline-flex items-center justify-center mb-4 text-xs">2</span>
-              <h4 className="font-bold text-slate-900 text-sm mb-2">30 Min Soak</h4>
-              <p className="text-xs text-slate-600">Soaking rehydrates the inner starch core, permitting maximum elongation during thermal expansion.</p>
+              <span className="text-xs uppercase font-bold text-amber-700 tracking-wider block mb-2">Balaghat Chinnor Rice</span>
+              <h4 className="font-bold text-slate-900 text-base mb-2">Gentle Simmer (1:1.75 Water)</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Rinse gently without breaking delicate kernels. Chinnor cooks quickly in 12–15 minutes, producing an intoxicating floral aroma and soft velvety bite.
+              </p>
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80">
-              <span className="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold inline-flex items-center justify-center mb-4 text-xs">3</span>
-              <h4 className="font-bold text-slate-900 text-sm mb-2">Rolling Boil (1:5)</h4>
-              <p className="text-xs text-slate-600">Cook in plenty of rolling boiling water with a pinch of salt and drop of oil for 7-8 minutes.</p>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80">
-              <span className="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold inline-flex items-center justify-center mb-4 text-xs">4</span>
-              <h4 className="font-bold text-slate-900 text-sm mb-2">Drain & Rest</h4>
-              <p className="text-xs text-slate-600">Drain excess water completely. Cover pan and let steam rest for 5 minutes before fluffing with a fork.</p>
+              <span className="text-xs uppercase font-bold text-slate-700 tracking-wider block mb-2">Jai Shree Traditional</span>
+              <h4 className="font-bold text-slate-900 text-base mb-2">Fluffy Steam (1:2 Water)</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Soak for 15 minutes. Bring to a rolling boil, cover tightly, and steam on low for 10 minutes. Fluff with a fork for individual, non-sticky pearly grains.
+              </p>
             </div>
           </div>
         </div>

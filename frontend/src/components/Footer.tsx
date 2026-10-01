@@ -48,8 +48,8 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              World’s premier exporter of Himalayan Aged Basmati Rice and Heirloom Manipur Chak-Hao Black Rice.
-              Empowering 140,000+ farming families across India with sustainable agriculture since 1889.
+              World’s premier exporter of Heirloom Manipur Chak-Hao Black Rice, GI-Tagged Balaghat Chinnor Rice,
+              and Jai Shree Traditional Rice. Empowering 140,000+ farming families across India since 1889.
             </p>
             <div className="pt-2 text-xs text-slate-400 space-y-2">
               <div className="flex items-start space-x-2">
@@ -79,23 +79,23 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/portfolio?category=royal-basmati-range" className="hover:text-amber-300 transition-colors">
-                  Aged 1121 XXL Basmati
+                <Link to="/portfolio?category=chinnor-rice-range" className="hover:text-amber-300 transition-colors">
+                  GI-Tagged Balaghat Chinnor Rice
                 </Link>
               </li>
               <li>
-                <Link to="/portfolio?category=royal-basmati-range" className="hover:text-amber-300 transition-colors">
-                  Traditional Himalayan Basmati
-                </Link>
-              </li>
-              <li>
-                <Link to="/portfolio?category=regional-heritage-grains" className="hover:text-amber-300 transition-colors">
-                  Sona Masoori & Gobindobhog
+                <Link to="/portfolio?category=jai-shree-rice-range" className="hover:text-amber-300 transition-colors">
+                  Jai Shree Select Traditional Rice
                 </Link>
               </li>
               <li>
                 <Link to="/portfolio?category=uplife-health-range" className="hover:text-amber-300 transition-colors">
-                  Uplife Low-GI Diabetic Rice
+                  Uplife Black Rice Flakes & Health
+                </Link>
+              </li>
+              <li>
+                <Link to="/portfolio?category=agro-by-products" className="hover:text-amber-300 transition-colors">
+                  Physico-Refined Rice Bran Oil
                 </Link>
               </li>
               <li>

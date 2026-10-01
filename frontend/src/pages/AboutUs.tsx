@@ -7,7 +7,7 @@ export const AboutUs: React.FC = () => {
     {
       name: 'Anil Kumar Mittal',
       title: 'Chairman & Managing Director',
-      role: 'Visionary behind modern Indian Basmati industrialization and global containerized trade.',
+      role: 'Visionary behind indigenous heritage grain modernization, Chinnor revival, and global containerized trade.',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
     },
     {
@@ -60,15 +60,16 @@ export const AboutUs: React.FC = () => {
             </h2>
             <div className="space-y-4 text-slate-600 text-sm mt-6 leading-relaxed">
               <p>
-                Founded in 1889, our enterprise has stood at the vanguard of the global Basmati and
-                specialty agro revolution. What began as a regional grain trading venture in Northern India
-                has blossomed into an integrated farm-to-fork powerhouse catering to millions of families
-                across six continents.
+                Founded in 1889, our enterprise has stood at the vanguard of the indigenous specialty
+                grain and superfood revolution. What began as a regional agricultural trading venture
+                has blossomed into an integrated farm-to-fork powerhouse catering to health-conscious
+                families and international food distributors across six continents.
               </p>
               <p>
-                Today, as Krish Agro, we have pioneered the revitalization of rare heirloom grains,
-                most notably the GI-tagged **Manipur Chak-Hao Black Rice**, while maintaining our dominant
-                stewardship in aged 1121 and Traditional Himalayan Basmati varieties.
+                Today, Krish Agro is recognized as the global authority on indigenous heritage grains:
+                championing the certified GI-tagged <strong>Manipur Chak-Hao Black Rice</strong>,
+                the exquisitely aromatic <strong>GI-tagged Balaghat Chinnor Rice</strong>, and the
+                pristine, fine-grain <strong>Jai Shree Traditional Rice</strong>.
               </p>
             </div>
 
