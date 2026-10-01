@@ -12,11 +12,11 @@ export const ExploreRice: React.FC = () => {
             Agronomy & Heritage Encyclopedia
           </span>
           <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Explore Black Rice, Chinnor & Jai Shree Ram
+            Explore Black Rice, Chinnor & Jai Shree
           </h1>
           <p className="text-slate-600 text-sm mt-4 leading-relaxed">
             Discover the botanical wonder of Manipur Chak-Hao, the sweet floral enchantment of
-            GI-tagged Balaghat Chinnor, and the silky everyday elegance of Jai Shree Ram Traditional Rice.
+            GI-tagged Balaghat Chinnor, and the silky everyday elegance of Jai Shree traditional rice.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ export const ExploreRice: React.FC = () => {
           </div>
         </div>
 
-        {/* Section 3: Jai Shree Ram Traditional Rice */}
+        {/* Section 3: Jai Shree Traditional Rice */}
         <div className="bg-[#0b1320] text-white rounded-3xl p-8 sm:p-14 border border-slate-800 shadow-xl mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -111,15 +111,15 @@ export const ExploreRice: React.FC = () => {
                 Daily Dining Elegance
               </span>
               <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                Jai Shree Ram Traditional Scented Rice
+                Jai Shree Traditional Scented Rice
               </h2>
               <p className="text-slate-300 text-sm leading-relaxed">
-                Jai Shree Ram is celebrated for its slender, pearly white grain, gentle comforting scent, and
+                Jai Shree is celebrated for its slender, pearly white grain, gentle comforting scent, and
                 fluffy non-sticky finish. Milled with utmost care to protect grain integrity, it is the grain
                 of choice for Indian households and fine-dining restaurants demanding consistent elegance.
               </p>
               <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300">
-                <strong>Digestibility & Purity:</strong> Low in heavy starches, Jai Shree Ram digests easily,
+                <strong>Digestibility & Purity:</strong> Low in heavy starches, Jai Shree digests easily,
                 making it the wholesome daily choice for all generations.
               </div>
             </div>
@@ -127,7 +127,7 @@ export const ExploreRice: React.FC = () => {
             <div>
               <img
                 src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=1000&q=80"
-                alt="Jai Shree Ram Traditional Rice"
+                alt="Jai Shree Traditional Rice"
                 className="rounded-2xl border border-amber-500/30 object-cover h-[380px] w-full"
               />
             </div>
@@ -158,7 +158,7 @@ export const ExploreRice: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80">
-              <span className="text-xs uppercase font-bold text-slate-700 tracking-wider block mb-2">Jai Shree Ram Traditional</span>
+              <span className="text-xs uppercase font-bold text-slate-700 tracking-wider block mb-2">Jai Shree Traditional</span>
               <h4 className="font-bold text-slate-900 text-base mb-2">Fluffy Steam (1:2 Water)</h4>
               <p className="text-xs text-slate-600 leading-relaxed">
                 Soak for 15 minutes. Bring to a rolling boil, cover tightly, and steam on low for 10 minutes. Fluff with a fork for individual, non-sticky pearly grains.

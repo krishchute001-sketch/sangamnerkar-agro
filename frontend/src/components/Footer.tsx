@@ -113,6 +113,11 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/gallery" className="hover:text-amber-300 transition-colors">
+                  Visual Photo Gallery
+                </Link>
+              </li>
+              <li>
                 <Link to="/sustainability" className="hover:text-amber-300 transition-colors">
                   ESG & Farmer Prosperity
                 </Link>

@@ -273,7 +273,7 @@ export const ContactUs: React.FC = () => {
                           value={formData.product_interest}
                           onChange={(e) => setFormData({ ...formData, product_interest: e.target.value })}
                           className="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500"
-                          placeholder="e.g. Imperial Black Rice, Balaghat Chinnor, Jai Shree Ram"
+                          placeholder="e.g. Imperial Black Rice, Balaghat Chinnor, Jai Shree"
                         />
                       </div>
                       <div>
