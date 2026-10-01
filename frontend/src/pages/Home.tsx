@@ -8,16 +8,17 @@ import {
   ArrowRight,
   ShieldCheck,
   Award,
-  Globe2,
   Sparkles,
   Leaf,
   FileText,
   Clock,
-  CheckCircle,
+  ChevronDown,
+  HelpCircle,
 } from 'lucide-react';
 
 export const Home: React.FC = () => {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [stats, setStats] = useState<CorporateStats>({
     global_export_countries: 90,
     milling_capacity_mt_per_hour: 195,
@@ -27,7 +28,33 @@ export const Home: React.FC = () => {
     purity_guarantee_percent: 100,
     green_energy_mw: 145,
   });
-  const [loading, setLoading] = useState(true);
+
+  const faqs = [
+    {
+      q: "What makes Manipur Chak-Hao Black Rice unique, and why is it called 'Forbidden Rice'?",
+      a: "Chak-Hao is an indigenous heirloom grain native to the valleys of Manipur, India, protected by a prestigious Geographical Indication (GI) tag. Historically reserved exclusively for imperial royalty due to its longevity and health benefits, it boasts 180mg of natural anthocyanins per 100g (higher antioxidant density than wild blueberries), low glycemic index, and an exquisite roasted hazelnut fragrance.",
+    },
+    {
+      q: "How long is your Basmati aged, and why does silo aging matter?",
+      a: "Our signature Basmati varieties (such as 1121 XXL and Traditional Himalayan Basmati) are aged for a minimum of 12 to 24 months in our climate-monitored 1,000,000 MT concrete silos. Curing naturally reduces internal moisture to 11.5–12.5% and crystallizes the starch amylose chains, ensuring the grains expand over 2.5x in length upon cooking without clumping or breaking.",
+    },
+    {
+      q: "What is your Minimum Order Quantity (MOQ) for international containerized exports?",
+      a: "Our standard export MOQ is one 20-foot Full Container Load (FCL, approximately 20 to 25 Metric Tons). We also support multi-SKU consolidated shipments combining aged Basmati, Chak-Hao Black Rice, and Rice Bran Oil for international distributors and retail supermarket chains.",
+    },
+    {
+      q: "Which international food safety and organic accreditations do you possess?",
+      a: "Our milling and processing complexes are certified under BRCGS Grade AA, US FDA Registration, ISO 22000 & 9001, USDA Organic, India Organic (NPOP), Halal, and Kosher standards. Every export consignment is genetically fingerprinted for 100% varietal purity.",
+    },
+    {
+      q: "Do you offer private label (OEM) packaging for supermarket brands?",
+      a: "Yes. We offer turnkey private label packaging solutions including nitrogen-flushed stand-up zipper pouches, vacuum bricks, premium woven jute bags, and bulk 25kg/50kg poly-woven sacks branded with your company's artwork and barcode specifications.",
+    },
+    {
+      q: "How can I request commercial pricing or CIF/FOB export quotes?",
+      a: "You can submit an inquiry directly through our online B2B Trade Enquiry form on this website or email export@krishagro.com. Our international trade specialists will prepare a formal CIF/FOB quotation with shipping schedules within 24 business hours.",
+    },
+  ];
 
   useEffect(() => {
     const loadData = async () => {
@@ -40,8 +67,6 @@ export const Home: React.FC = () => {
         setStats(statsData);
       } catch (err) {
         console.error('Failed to fetch home page data', err);
-      } finally {
-        setLoading(false);
       }
     };
     loadData();
@@ -300,6 +325,55 @@ export const Home: React.FC = () => {
                 Investor Hub
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6.5. Frequently Asked Questions (FAQ) Section - Anchorable via #faq */}
+      <section id="faq" className="py-24 bg-[#fafaf7] scroll-mt-20 border-t border-slate-200/80">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-1.5 text-amber-700 text-xs font-bold uppercase tracking-widest mb-2">
+              <HelpCircle className="w-3.5 h-3.5" />
+              <span>Buyer & Importer Knowledge Hub</span>
+            </div>
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Frequently Asked Questions (FAQ)
+            </h2>
+            <p className="text-slate-600 text-sm mt-3 leading-relaxed">
+              Common questions regarding our heirloom Black Rice, 24-month silo aging, container export logistics, and private labeling.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => {
+              const isOpen = openFaq === index;
+              return (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:border-amber-500/40 transition-all"
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 hover:bg-slate-50/50 transition-colors focus:outline-none"
+                  >
+                    <span className="font-heading text-sm sm:text-base font-bold text-slate-900">
+                      {faq.q}
+                    </span>
+                    <ChevronDown
+                      className={`w-5 h-5 text-amber-600 shrink-0 transition-transform duration-300 ${
+                        isOpen ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="px-6 pb-6 pt-1 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 bg-slate-50/30">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

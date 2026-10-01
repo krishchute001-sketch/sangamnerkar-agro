@@ -197,6 +197,13 @@ export const Navbar: React.FC = () => {
                 Careers
               </Link>
 
+              <a
+                href="/#faq"
+                className="px-3 py-2 text-sm font-medium tracking-wide text-slate-200 hover:text-amber-300 transition-colors"
+              >
+                FAQ
+              </a>
+
               <Link
                 to="/contact-us"
                 className={`px-3 py-2 text-sm font-medium tracking-wide transition-colors ${
@@ -292,6 +299,13 @@ export const Navbar: React.FC = () => {
             >
               Careers
             </Link>
+            <a
+              href="/#faq"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-2 text-base font-medium text-slate-200 hover:text-amber-400"
+            >
+              FAQ
+            </a>
             <Link
               to="/contact-us"
               onClick={() => setMobileMenuOpen(false)}
