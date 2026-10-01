@@ -64,7 +64,7 @@ export const Portfolio: React.FC = () => {
             Our World-Class Product Portfolio
           </h1>
           <p className="text-slate-600 text-sm mt-4 leading-relaxed">
-            From the emperor's heirloom Manipur Black Rice to aromatic Balaghat Chinnor and daily luxury Jai Shree,
+            From the emperor's heirloom Manipur Black Rice to aromatic Balaghat Chinnor and daily luxury Jai Shree Ram,
             every harvest is rigorously aged, optically milled, and certified for global export.
           </p>
         </div>

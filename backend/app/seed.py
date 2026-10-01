@@ -32,41 +32,27 @@ async def seed_database():
 
         # Categories
         cat_black = Category(
-            name="Imperial Black Rice Range",
-            slug="imperial-black-rice",
+            name="Black Rice Range",
+            slug="black-rice",
             description="Rare heirloom Manipur Chak-Hao and anthocyanin-rich forbidden black rice cultivated through sustainable regenerative farming.",
             banner_image_url="https://images.unsplash.com/photo-1596797882870-8c33deeac224?auto=format&fit=crop&w=1200&q=80",
             display_order=1,
         )
         cat_chinnor = Category(
-            name="GI-Tagged Chinnor Rice Range",
-            slug="chinnor-rice-range",
+            name="Chinnor Rice Range",
+            slug="chinnor-rice",
             description="Celebrated Balaghat Chinnor rice with authentic Geographical Indication (GI) tag, famed for its divine natural aroma, tender softness, and sweet taste.",
             banner_image_url="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=1200&q=80",
             display_order=2,
         )
-        cat_jaishree = Category(
-            name="Jai Shree Traditional Rice Range",
-            slug="jai-shree-rice-range",
-            description="Premium scented fine-grain Jai Shree rice, hand-harvested for pristine pearly white luster, non-sticky fluffiness, and everyday dining luxury.",
+        cat_jaishreeram = Category(
+            name="Jai Shree Ram Rice Range",
+            slug="jai-shree-ram-rice",
+            description="Premium scented fine-grain Jai Shree Ram rice, hand-harvested for pristine pearly white luster, non-sticky fluffiness, and everyday dining luxury.",
             banner_image_url="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=1200&q=80",
             display_order=3,
         )
-        cat_health = Category(
-            name="Uplife Health & Superfoods",
-            slug="uplife-health-range",
-            description="Functional whole grain black rice flakes, gluten-free stoneground flour, sprouted seeds, and diabetic-friendly nutrition.",
-            banner_image_url="https://images.unsplash.com/photo-1505253758473-96b46deae2cd?auto=format&fit=crop&w=1200&q=80",
-            display_order=4,
-        )
-        cat_byproducts = Category(
-            name="Value-Added Agro By-Products",
-            slug="agro-by-products",
-            description="Zero-waste circular agro innovations: Physico-refined Rice Bran Oil high in Oryzanol, furfural, and green biomass pellets.",
-            banner_image_url="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&w=1200&q=80",
-            display_order=5,
-        )
-        db.add_all([cat_black, cat_chinnor, cat_jaishree, cat_health, cat_byproducts])
+        db.add_all([cat_black, cat_chinnor, cat_jaishreeram])
         await db.flush()
 
         # Products
@@ -131,11 +117,11 @@ async def seed_database():
         )
 
         p3 = Product(
-            category_id=cat_jaishree.id,
-            name="Jai Shree Select Premium Scented Rice",
-            slug="jai-shree-select-premium-rice",
+            category_id=cat_jaishreeram.id,
+            name="Jai Shree Ram Premium Rice",
+            slug="jai-shree-ram-premium-rice",
             tagline="Pristine Fine Grain Daily Luxury - Silky Texture & Gentle Fragrance",
-            description="Hand-selected from heritage fertile tracts, Jai Shree rice is an exquisite fine grain renowned for its silky slender texture, pristine pearly color, and gentle natural scent. Non-sticky and easily digestible, it elevates daily gourmet dining, biryanis, and aromatic spiced rice preparations.",
+            description="Hand-selected from heritage fertile tracts, Jai Shree Ram rice is an exquisite fine grain renowned for its silky slender texture, pristine pearly white color, and gentle natural scent. Non-sticky and easily digestible, it elevates daily gourmet dining, biryanis, and aromatic spiced rice preparations.",
             grain_length_mm="7.20 mm",
             elongation_ratio="2.0x",
             aroma_profile="Subtle Warm Scented Aroma",
@@ -144,52 +130,14 @@ async def seed_database():
             packaging_sizes="1kg, 5kg, 10kg, 25kg Non-Woven & Poly-woven Bulk",
             is_featured=True,
             is_export_grade=True,
+            is_organic=False,
             hero_image_url="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80",
             gallery_urls=[],
             nutritional_facts={"serving_size": "100g", "calories": 350, "protein": "8.1g", "fiber": "1.1g"},
             certifications=["ISO 9001", "HACCP", "Halal", "US FDA Registered"],
         )
 
-        p4 = Product(
-            category_id=cat_chinnor.id,
-            name="Balaghat Chinnor Aromatic Special",
-            slug="balaghat-chinnor-aromatic-special",
-            tagline="Traditional Soft-Grain Fragrant Rice for Gourmet Royal Delicacies",
-            description="Milled with extreme precision to protect the fragrant essential oils in the aleurone layer. When cooked, its scent fills the entire dining hall, offering an incomparable velvety softness.",
-            grain_length_mm="6.70 mm",
-            elongation_ratio="2.0x",
-            aroma_profile="Natural Sweet Pandanic Floral",
-            aging_duration="8 Months Matured",
-            origin_region="Balaghat Valley, India",
-            packaging_sizes="5kg, 10kg, 25kg Bags",
-            is_featured=False,
-            is_export_grade=True,
-            hero_image_url="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80",
-            gallery_urls=[],
-            nutritional_facts={"serving_size": "100g", "calories": 345, "protein": "7.8g"},
-            certifications=["GI Tagged", "ISO 22000"],
-        )
-
-        p5 = Product(
-            category_id=cat_byproducts.id,
-            name="Pure Gold Physically Refined Rice Bran Oil",
-            slug="pure-gold-rice-bran-oil",
-            tagline="10,000+ PPM Natural Gamma Oryzanol for Superior Heart Health",
-            description="Extracted purely from outer nutrient-rich layers of paddy. High smoke point of 232°C makes it the healthiest culinary oil for frying, sautéing, and baking without chemical solvent residue.",
-            grain_length_mm="N/A (Liquid Oil)",
-            elongation_ratio="N/A",
-            aroma_profile="Neutral Light Taste",
-            aging_duration="Freshly Processed",
-            origin_region="State-of-the-art Extraction Plant, India",
-            packaging_sizes="1L Pet Bottle, 5L Can, 15L Tin, 200L Drum, Bulk Flexitank",
-            is_featured=True,
-            is_export_grade=True,
-            hero_image_url="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&w=800&q=80",
-            gallery_urls=[],
-            nutritional_facts={"serving_size": "15ml", "oryzanol": "150mg", "vitamin_e": "High"},
-            certifications=["AGMARK Grade 1", "US FDA", "ISO 22000"],
-        )
-        db.add_all([p1, p2, p3, p4, p5])
+        db.add_all([p1, p2, p3])
 
         inv_cat_fin = InvestorCategory(
             name="Financial Results & Annual Reports",

@@ -36,14 +36,14 @@ export const AboutUs: React.FC = () => {
       <div className="bg-[#0b1320] text-white py-20 border-b border-amber-900/40 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="text-amber-400 font-mono text-xs uppercase tracking-widest font-semibold block mb-3">
-            6+ Years of Excellence • A Legacy of Purity
+            6+ Years of Proven Excellence • A Legacy of Purity
           </span>
           <h1 className="font-heading text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-100">
             About Sangamnerkar Agro
           </h1>
           <p className="mt-4 text-slate-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-            With over 6+ years of dedicated agricultural leadership, our journey is defined by grain integrity,
-            scientific innovation, and community upliftment.
+            Over the past 6+ years, our enterprise has grown to become a premier specialty grain producer and exporter,
+            defined by agricultural integrity, scientific innovation, and community upliftment.
           </p>
         </div>
       </div>
@@ -56,19 +56,19 @@ export const AboutUs: React.FC = () => {
               Our Heritage & Origin
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-slate-900 leading-tight">
-              6+ Years of Dedicated Specialty Grain Stewardship
+              6+ Years of Specialty Grain Stewardship
             </h2>
             <div className="space-y-4 text-slate-600 text-sm mt-6 leading-relaxed">
               <p>
-                Established over 6+ years ago, our enterprise has stood at the vanguard of the indigenous specialty
-                grain and superfood revolution. What began as a regional agricultural initiative in India
+                With over 6+ years of dedicated agricultural expertise, our enterprise has stood at the vanguard of the indigenous specialty
+                grain and superfood revolution. What began as a focused regional venture in India
                 has blossomed into an integrated farm-to-fork powerhouse catering to health-conscious families
-                across six continents.
+                across global markets.
               </p>
               <p>
                 Today, as <strong>Sangamnerkar Agro Black Rice & Chinnor Rice</strong>, we have pioneered the revitalization of rare heirloom grains:
                 championing the certified GI-tagged <strong>Manipur Chak-Hao Black Rice</strong>, the exquisitely aromatic <strong>GI-tagged Balaghat Chinnor Rice</strong>,
-                and the pristine, fine-grain <strong>Jai Shree Traditional Rice</strong>.
+                and the pristine, fine-grain <strong>Jai Shree Ram Traditional Rice</strong>.
               </p>
             </div>
 

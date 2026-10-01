@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              World’s premier producer and exporter of Heirloom Manipur Chak-Hao Black Rice, GI-Tagged Balaghat Chinnor Rice, and Jai Shree Traditional Rice.
+              World’s premier producer and exporter of Heirloom Manipur Chak-Hao Black Rice, GI-Tagged Balaghat Chinnor Rice, and Jai Shree Ram Traditional Rice.
               Empowering farming families across India with sustainable agriculture for over 6+ years.
             </p>
             <div className="pt-2 text-xs text-slate-400 space-y-2">
@@ -74,33 +74,18 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
-                <Link to="/portfolio?category=imperial-black-rice" className="hover:text-amber-300 transition-colors">
-                  Imperial Black Rice (Chak-Hao)
+                <Link to="/portfolio?category=black-rice" className="hover:text-amber-300 transition-colors">
+                  Sangamnerkar Royal Black Rice
                 </Link>
               </li>
               <li>
-                <Link to="/portfolio?category=chinnor-rice-range" className="hover:text-amber-300 transition-colors">
-                  GI-Tagged Balaghat Chinnor Rice
+                <Link to="/portfolio?category=chinnor-rice" className="hover:text-amber-300 transition-colors">
+                  Royal Balaghat Chinnor Rice
                 </Link>
               </li>
               <li>
-                <Link to="/portfolio?category=chinnor-rice-range" className="hover:text-amber-300 transition-colors">
-                  Balaghat Chinnor Aromatic Special
-                </Link>
-              </li>
-              <li>
-                <Link to="/portfolio?category=jai-shree-rice-range" className="hover:text-amber-300 transition-colors">
-                  Jai Shree Premium Scented Rice
-                </Link>
-              </li>
-              <li>
-                <Link to="/portfolio?category=uplife-health-range" className="hover:text-amber-300 transition-colors">
-                  Uplife Black Rice Superfoods
-                </Link>
-              </li>
-              <li>
-                <Link to="/portfolio?category=agro-by-products" className="hover:text-amber-300 transition-colors">
-                  Pure Rice Bran Oil (10,000 PPM)
+                <Link to="/portfolio?category=jai-shree-ram-rice" className="hover:text-amber-300 transition-colors">
+                  Jai Shree Ram Premium Rice
                 </Link>
               </li>
             </ul>
@@ -114,7 +99,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
                 <Link to="/about-us" className="hover:text-amber-300 transition-colors">
-                  Our 6+ Years of Excellence
+                  Our Heritage & Journey
                 </Link>
               </li>
               <li>

@@ -66,7 +66,7 @@ export const Home: React.FC = () => {
           {/* Heritage Pill */}
           <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-950/60 border border-amber-600/50 text-amber-300 text-xs font-semibold tracking-widest uppercase mb-8 shadow-lg">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>6+ YEARS OF EXCELLENCE • DEDICATED GRAIN MASTERY</span>
+            <span>6+ YEARS OF DEDICATED GRAIN MASTERY</span>
           </div>
 
           <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight max-w-5xl mx-auto drop-shadow-md">
@@ -78,7 +78,7 @@ export const Home: React.FC = () => {
 
           <p className="mt-6 text-base sm:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed">
             World-class cultivators and global exporters of certified Manipur Chak-Hao Black Rice,
-            GI-Tagged Balaghat Chinnor Rice, and pristine Jai Shree Traditional Rice to over 90+ countries.
+            GI-Tagged Balaghat Chinnor Rice, and pristine Jai Shree Ram Traditional Rice to over 90+ countries.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -138,7 +138,7 @@ export const Home: React.FC = () => {
               </div>
 
               <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                Over 6+ Years of Trusted Farmer Partnerships & Modern Agronomy
+                Honoring 6+ Years of Farmer Partnerships & Modern Agronomy
               </h2>
 
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed">

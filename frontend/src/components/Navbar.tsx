@@ -119,34 +119,22 @@ export const Navbar: React.FC = () => {
                 {portfolioDropdown && (
                   <div className="absolute top-full left-0 w-64 bg-[#0d1627] border border-amber-800/40 rounded-b-lg shadow-2xl py-2 z-50">
                     <Link
-                      to="/portfolio?category=imperial-black-rice"
+                      to="/portfolio?category=black-rice"
                       className="block px-4 py-2.5 text-xs text-amber-300 hover:bg-amber-950/50 hover:text-amber-100 transition-colors"
                     >
-                      👑 Imperial Black Rice (Chak-Hao)
+                      👑 Sangamnerkar Black Rice (Chak-Hao)
                     </Link>
                     <Link
-                      to="/portfolio?category=chinnor-rice-range"
+                      to="/portfolio?category=chinnor-rice"
                       className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-amber-950/50 hover:text-amber-300 transition-colors"
                     >
                       🌾 GI-Tagged Chinnor Rice (Balaghat)
                     </Link>
                     <Link
-                      to="/portfolio?category=jai-shree-rice-range"
+                      to="/portfolio?category=jai-shree-ram-rice"
                       className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-amber-950/50 hover:text-amber-300 transition-colors"
                     >
-                      ✨ Jai Shree Traditional Scented Rice
-                    </Link>
-                    <Link
-                      to="/portfolio?category=uplife-health-range"
-                      className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-amber-950/50 hover:text-amber-300 transition-colors"
-                    >
-                      Uplife Health (Low GI & Organic)
-                    </Link>
-                    <Link
-                      to="/portfolio?category=agro-by-products"
-                      className="block px-4 py-2.5 text-xs text-slate-200 hover:bg-amber-950/50 hover:text-amber-300 transition-colors"
-                    >
-                      Physico-Refined Rice Bran Oil
+                      ✨ Jai Shree Ram Premium Rice
                     </Link>
                   </div>
                 )}
@@ -255,7 +243,7 @@ export const Navbar: React.FC = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-2 text-base font-medium text-amber-300 hover:text-amber-100"
             >
-              Our Portfolio (Black Rice & Chinnor Rice)
+              Our Portfolio (Black Rice, Chinnor & Jai Shree Ram)
             </Link>
             <Link
               to="/explore-rice"
