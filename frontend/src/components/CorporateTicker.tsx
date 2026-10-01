@@ -11,7 +11,7 @@ export const CorporateTicker: React.FC<CorporateTickerProps> = ({ stats }) => {
     {
       icon: <Landmark className="w-6 h-6 text-amber-400" />,
       value: `${stats.heritage_years}+ Years`,
-      label: 'Generational Heritage (Est. 1889)',
+      label: 'Proven Agricultural Experience',
     },
     {
       icon: <Globe2 className="w-6 h-6 text-amber-400" />,

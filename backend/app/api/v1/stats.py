@@ -18,7 +18,7 @@ async def get_corporate_stats():
         "milling_capacity_mt_per_hour": 195,
         "farmer_network_count": 140000,
         "storage_capacity_mt": 1000000,
-        "heritage_years": 135,
+        "heritage_years": 6,
         "purity_guarantee_percent": 100,
         "green_energy_mw": 145,
     }
