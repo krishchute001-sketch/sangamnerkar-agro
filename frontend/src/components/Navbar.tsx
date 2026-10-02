@@ -55,7 +55,7 @@ export const Navbar: React.FC = () => {
                 Sangamnerkar Agro
               </span>
               <span className="text-[10px] tracking-wider uppercase font-semibold text-[#2F6B3A]">
-                Nagpur • Family-Run • 6+ Years
+                Nagpur
               </span>
             </div>
           </Link>
@@ -184,12 +184,8 @@ export const Navbar: React.FC = () => {
 
             {/* Gallery */}
             <Link
-              to="/gallery"
-              className={`px-3.5 py-2 text-sm font-medium rounded-xl transition-colors ${
-                isActive('/gallery')
-                  ? 'text-[#2F6B3A] font-semibold bg-[#EAF3EC]'
-                  : 'text-[#2C221E] hover:text-[#5A2A27] hover:bg-[#F5ECE0]'
-              }`}
+              to="/explore-rice#gallery"
+              className="px-3.5 py-2 text-sm font-medium text-[#2C221E] hover:text-[#5A2A27] hover:bg-[#F5ECE0] rounded-xl transition-colors"
             >
               Gallery
             </Link>
@@ -298,7 +294,7 @@ export const Navbar: React.FC = () => {
           </Link>
 
           <Link
-            to="/gallery"
+            to="/explore-rice#gallery"
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 text-base font-medium text-[#2C221E] rounded-xl hover:bg-[#F5ECE0]"
           >

@@ -5,7 +5,7 @@ import { HeroSlide, SlideData } from './HeroSlide';
 const SLIDES: SlideData[] = [
   {
     id: 1,
-    badge: "Nagpur Family-Run Purveyors • 6+ Years",
+    badge: "Authentic Heirloom Grains • Nagpur",
     headlineLine1: "From Our Fields to",
     headlineLine2: "Your Family's Table.",
     subline: "Authentic, antioxidant-rich Heirloom Black Rice & aromatic Balaghat Chinnor, harvested with patient care and delivered fresh.",
