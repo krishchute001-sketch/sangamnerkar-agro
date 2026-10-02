@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Globe, Award, Shield, CheckCircle2 } from 'lucide-react';
+import { LinkedInIcon } from './icons/LinkedInIcon';
 
 export const Footer: React.FC = () => {
   return (
@@ -63,6 +64,17 @@ export const Footer: React.FC = () => {
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />
                 <span>export@sangamnerkaragro.com | sales@sangamnerkaragro.com</span>
+              </div>
+              <div className="flex items-center space-x-2 pt-1">
+                <LinkedInIcon className="w-4 h-4 text-amber-400 shrink-0" />
+                <a
+                  href="https://www.linkedin.com/company/rural-roots-india/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-amber-300 transition-colors underline-offset-2 hover:underline"
+                >
+                  LinkedIn: Rural Roots India
+                </a>
               </div>
             </div>
           </div>
@@ -158,7 +170,16 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
           <p>© {new Date().getFullYear()} Sangamnerkar Agro Black Rice & Chinnor Rice Limited. All rights reserved.</p>
-          <div className="flex space-x-6">
+          <div className="flex items-center space-x-6">
+            <a
+              href="https://www.linkedin.com/company/rural-roots-india/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-400 hover:text-amber-300 transition-colors inline-flex items-center gap-1.5 font-medium"
+            >
+              <LinkedInIcon className="w-3.5 h-3.5" />
+              <span>LinkedIn</span>
+            </a>
             <span className="hover:text-slate-400 cursor-pointer">Privacy Policy</span>
             <span className="hover:text-slate-400 cursor-pointer">Terms of Use</span>
             <span className="hover:text-slate-400 cursor-pointer">Disclaimer</span>

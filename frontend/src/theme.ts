@@ -69,6 +69,7 @@ export const theme = {
     location: 'Nagpur, Maharashtra, India',
     address: 'Plot No. 6, Pragati Nagar, Ranala, Kamptee, Nagpur, Maharashtra, India',
     addressShort: 'Plot No. 6, Pragati Nagar, Ranala, Kamptee, Nagpur, Maharashtra',
+    linkedinUrl: 'https://www.linkedin.com/company/rural-roots-india/',
     experienceYears: '6+ Years',
   },
 } as const;

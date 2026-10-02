@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { api } from '../services/api';
 import { Mail, Phone, MapPin, Globe2, Send, CheckCircle2, Building, ShieldCheck } from 'lucide-react';
+import { LinkedInIcon } from '../components/icons/LinkedInIcon';
 
 export const ContactUs: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -81,6 +82,17 @@ export const ContactUs: React.FC = () => {
                 <div className="flex items-center space-x-3">
                   <Mail className="w-4 h-4 text-amber-400 shrink-0" />
                   <span>export@sangamnerkaragro.com | sales@sangamnerkaragro.com</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <LinkedInIcon className="w-4 h-4 text-amber-400 shrink-0" />
+                  <a
+                    href="https://www.linkedin.com/company/rural-roots-india/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-300 hover:text-amber-300 transition-colors underline-offset-2 hover:underline"
+                  >
+                    LinkedIn: Rural Roots India
+                  </a>
                 </div>
               </div>
 
