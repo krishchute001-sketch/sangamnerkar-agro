@@ -91,7 +91,7 @@ export const Careers: React.FC = () => {
         <div className="mb-12">
           <h2 className="font-heading text-2xl font-bold text-slate-900 mb-6">Current Openings</h2>
           <div className="space-y-4">
-            {jobs.map((job) => (
+            {Array.isArray(jobs) && jobs.map((job) => (
               <div
                 key={job.id}
                 className="bg-white p-6 rounded-2xl border border-slate-200/80 hover:border-amber-500/40 shadow-sm transition-all flex flex-col md:flex-row md:items-center justify-between gap-4"

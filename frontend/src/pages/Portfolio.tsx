@@ -46,16 +46,18 @@ export const Portfolio: React.FC = () => {
     setSearchParams(searchParams);
   };
 
-  const filteredProducts = products.filter((p) => {
-    const matchesCat =
-      selectedCategory === 'all' || p.category?.slug === selectedCategory;
-    const matchesSearch =
-      !searchQuery ||
-      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.aroma_profile?.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCat && matchesSearch;
-  });
+  const filteredProducts = Array.isArray(products)
+    ? products.filter((p) => {
+        const matchesCat =
+          selectedCategory === 'all' || p.category?.slug === selectedCategory;
+        const matchesSearch =
+          !searchQuery ||
+          p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.aroma_profile?.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCat && matchesSearch;
+      })
+    : [];
 
   return (
     <div className="bg-[#fafaf7] min-h-screen py-16">
@@ -86,9 +88,9 @@ export const Portfolio: React.FC = () => {
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
-              All Products ({products.length})
+              All Products ({Array.isArray(products) ? products.length : 0})
             </button>
-            {categories.map((cat) => (
+            {Array.isArray(categories) && categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => handleCategoryChange(cat.slug)}
@@ -117,7 +119,7 @@ export const Portfolio: React.FC = () => {
         </div>
 
         {/* Products Grid */}
-        {filteredProducts.length > 0 ? (
+        {Array.isArray(filteredProducts) && filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />

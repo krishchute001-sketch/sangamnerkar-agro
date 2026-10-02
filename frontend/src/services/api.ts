@@ -13,6 +13,12 @@ import {
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || '/api/v1';
 
+const isStaticDeployment =
+  typeof window !== 'undefined' &&
+  !import.meta.env.VITE_API_URL &&
+  window.location.hostname !== 'localhost' &&
+  window.location.hostname !== '127.0.0.1';
+
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -27,6 +33,23 @@ apiClient.interceptors.request.use((config) => {
   }
   return config;
 });
+
+// Reject HTML responses from SPAs / Netlify fallback
+apiClient.interceptors.response.use(
+  (response) => {
+    if (
+      typeof response.data === 'string' &&
+      (response.data.includes('<!doctype html') ||
+        response.data.includes('<html') ||
+        response.data.includes('<head>') ||
+        response.data.includes('<body'))
+    ) {
+      return Promise.reject(new Error('API returned HTML document instead of JSON'));
+    }
+    return response;
+  },
+  (error) => Promise.reject(error)
+);
 
 // Fallback Mock Data focusing on Black Rice, Chinnor Rice, and Jai Shree Ram Rice
 const MOCK_CATEGORIES: Category[] = [
@@ -188,27 +211,33 @@ const MOCK_INVESTOR_DOCS: InvestorCategory[] = [
 export const api = {
   // Stats
   getCorporateStats: async (): Promise<CorporateStats> => {
+    const defaultStats: CorporateStats = {
+      global_export_countries: 90,
+      milling_capacity_mt_per_hour: 195,
+      farmer_network_count: 140000,
+      storage_capacity_mt: 1000000,
+      heritage_years: 6,
+      purity_guarantee_percent: 100,
+      green_energy_mw: 145,
+    };
+    if (isStaticDeployment) return defaultStats;
     try {
       const res = await apiClient.get('/stats/corporate');
-      return res.data;
+      if (res.data && typeof res.data === 'object' && !Array.isArray(res.data) && 'heritage_years' in res.data) {
+        return res.data;
+      }
+      return defaultStats;
     } catch {
-      return {
-        global_export_countries: 90,
-        milling_capacity_mt_per_hour: 195,
-        farmer_network_count: 140000,
-        storage_capacity_mt: 1000000,
-        heritage_years: 6,
-        purity_guarantee_percent: 100,
-        green_energy_mw: 145,
-      };
+      return defaultStats;
     }
   },
 
   // Categories
   getCategories: async (): Promise<Category[]> => {
+    if (isStaticDeployment) return MOCK_CATEGORIES;
     try {
       const res = await apiClient.get('/categories');
-      return res.data.length ? res.data : MOCK_CATEGORIES;
+      return Array.isArray(res.data) && res.data.length ? res.data : MOCK_CATEGORIES;
     } catch {
       return MOCK_CATEGORIES;
     }
@@ -216,10 +245,7 @@ export const api = {
 
   // Products
   getProducts: async (params?: { category_slug?: string; search?: string; is_featured?: boolean }): Promise<Product[]> => {
-    try {
-      const res = await apiClient.get('/products', { params });
-      return res.data.length ? res.data : MOCK_PRODUCTS;
-    } catch {
+    const getFilteredMocks = () => {
       let filtered = [...MOCK_PRODUCTS];
       if (params?.category_slug) {
         filtered = filtered.filter((p) => p.category?.slug === params.category_slug);
@@ -232,13 +258,29 @@ export const api = {
         filtered = filtered.filter((p) => p.is_featured === params.is_featured);
       }
       return filtered;
+    };
+
+    if (isStaticDeployment) {
+      return getFilteredMocks();
+    }
+    try {
+      const res = await apiClient.get('/products', { params });
+      return Array.isArray(res.data) && res.data.length ? res.data : getFilteredMocks();
+    } catch {
+      return getFilteredMocks();
     }
   },
 
   getProductBySlug: async (slug: string): Promise<Product | null> => {
+    if (isStaticDeployment) {
+      return MOCK_PRODUCTS.find((p) => p.slug === slug) || null;
+    }
     try {
       const res = await apiClient.get(`/products/${slug}`);
-      return res.data;
+      if (res.data && typeof res.data === 'object' && !Array.isArray(res.data) && res.data.id) {
+        return res.data;
+      }
+      return MOCK_PRODUCTS.find((p) => p.slug === slug) || null;
     } catch {
       return MOCK_PRODUCTS.find((p) => p.slug === slug) || null;
     }
@@ -246,9 +288,10 @@ export const api = {
 
   // Investor Relations
   getInvestorCategories: async (): Promise<InvestorCategory[]> => {
+    if (isStaticDeployment) return MOCK_INVESTOR_DOCS;
     try {
       const res = await apiClient.get('/investors/categories');
-      return res.data.length ? res.data : MOCK_INVESTOR_DOCS;
+      return Array.isArray(res.data) && res.data.length ? res.data : MOCK_INVESTOR_DOCS;
     } catch {
       return MOCK_INVESTOR_DOCS;
     }
@@ -256,47 +299,51 @@ export const api = {
 
   // News
   getNews: async (): Promise<NewsArticle[]> => {
+    const mockNews: NewsArticle[] = [
+      {
+        id: 'news-1',
+        title: 'Sangamnerkar Agro Expands Organic Black Rice & GI Chinnor Export Footprint to 18 New European & Gulf Markets',
+        slug: 'sangamnerkar-agro-expands-black-rice-chinnor-europe-gulf-export',
+        category: 'Press Release',
+        excerpt: 'Shipments of certified Chak-Hao black rice and aromatic Balaghat Chinnor scaled past 15,000 metric tons this fiscal year.',
+        content_html: '<p>Direct partnerships with smallholder farmers deliver guaranteed buyback rates for indigenous specialty grains.</p>',
+        cover_image_url: 'https://plus.unsplash.com/premium_photo-1726877060096-882c2ac6d13c?auto=format&fit=crop&w=800&q=80',
+        author: 'Corporate Communications',
+        is_published: true,
+        published_at: new Date().toISOString(),
+      },
+    ];
+    if (isStaticDeployment) return mockNews;
     try {
       const res = await apiClient.get('/news');
-      return res.data;
+      return Array.isArray(res.data) && res.data.length ? res.data : mockNews;
     } catch {
-      return [
-        {
-          id: 'news-1',
-          title: 'Sangamnerkar Agro Expands Organic Black Rice & GI Chinnor Export Footprint to 18 New European & Gulf Markets',
-          slug: 'sangamnerkar-agro-expands-black-rice-chinnor-europe-gulf-export',
-          category: 'Press Release',
-          excerpt: 'Shipments of certified Chak-Hao black rice and aromatic Balaghat Chinnor scaled past 15,000 metric tons this fiscal year.',
-          content_html: '<p>Direct partnerships with smallholder farmers deliver guaranteed buyback rates for indigenous specialty grains.</p>',
-          cover_image_url: 'https://plus.unsplash.com/premium_photo-1726877060096-882c2ac6d13c?auto=format&fit=crop&w=800&q=80',
-          author: 'Corporate Communications',
-          is_published: true,
-          published_at: new Date().toISOString(),
-        },
-      ];
+      return mockNews;
     }
   },
 
   // Careers
   getJobs: async (): Promise<JobPosting[]> => {
+    const mockJobs: JobPosting[] = [
+      {
+        id: 'j-1',
+        title: 'Global Export Sales Director (Black Rice, Chinnor & Specialty Grains)',
+        department: 'International Business',
+        location: 'Nagpur Head Office, Maharashtra',
+        employment_type: 'Full-time',
+        experience_level: '8-12 Years',
+        description: 'Lead multi-million-dollar bulk rice import contracts, distributor appointment, and containerized logistics across UAE, Saudi Arabia, and Europe.',
+        requirements: 'Demonstrated track record in FMCG / agro-commodity international exports, fluent in trade finance.',
+        is_active: true,
+        created_at: new Date().toISOString(),
+      },
+    ];
+    if (isStaticDeployment) return mockJobs;
     try {
       const res = await apiClient.get('/careers/jobs');
-      return res.data;
+      return Array.isArray(res.data) && res.data.length ? res.data : mockJobs;
     } catch {
-      return [
-        {
-          id: 'j-1',
-          title: 'Global Export Sales Director (Black Rice, Chinnor & Specialty Grains)',
-          department: 'International Business',
-          location: 'Nagpur Head Office, Maharashtra',
-          employment_type: 'Full-time',
-          experience_level: '8-12 Years',
-          description: 'Lead multi-million-dollar bulk rice import contracts, distributor appointment, and containerized logistics across UAE, Saudi Arabia, and Europe.',
-          requirements: 'Demonstrated track record in FMCG / agro-commodity international exports, fluent in trade finance.',
-          is_active: true,
-          created_at: new Date().toISOString(),
-        },
-      ];
+      return mockJobs;
     }
   },
 
