@@ -1,6 +1,5 @@
 import React from 'react';
-import { Award, ShieldCheck, Hotel, Sparkles, ShoppingBag, ArrowRight, CheckCircle2, MessageCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Sparkles, ArrowRight, MessageCircle } from 'lucide-react';
 import { theme } from '../theme';
 import { Button } from '../components/ui/Button';
 
@@ -106,51 +105,7 @@ export const AboutUs: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. Pillars of Excellence */}
-      <section className="py-16 sm:py-24 bg-[#F5ECE0] border-y border-[#E8DEC8]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <span className="text-xs font-semibold tracking-widest uppercase text-[#2F6B3A] block mb-2">
-              Our Pillars of Excellence
-            </span>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#5A2A27]">
-              Why Top Hotels & Discerning Families Choose Us
-            </h2>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="bg-white p-8 rounded-3xl border border-[#E8DEC8] shadow-sm hover:shadow-md transition-shadow space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#EAF3EC] border border-[#2F6B3A]/20 flex items-center justify-center text-[#2F6B3A]">
-                <Hotel className="w-6 h-6" />
-              </div>
-              <h3 className="font-heading text-xl font-bold text-[#5A2A27]">Nagpur Hotel Confidence</h3>
-              <p className="text-xs sm:text-sm text-[#665952] leading-relaxed">
-                Trusted by Nagpur’s premier luxury hotels and fine-dining restaurants for consistent grain length, delicate aroma, and prompt, dependable wholesale delivery.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-3xl border border-[#E8DEC8] shadow-sm hover:shadow-md transition-shadow space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#EAF3EC] border border-[#2F6B3A]/20 flex items-center justify-center text-[#2F6B3A]">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <h3 className="font-heading text-xl font-bold text-[#5A2A27]">Antioxidant-Dense Black Rice</h3>
-              <p className="text-xs sm:text-sm text-[#665952] leading-relaxed">
-                Widened our specialized range with authentic Manipur Chak-Hao Black Rice, meeting the rising demand for wholesome, antioxidant-rich daily nutrition.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-3xl border border-[#E8DEC8] shadow-sm hover:shadow-md transition-shadow space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#EAF3EC] border border-[#2F6B3A]/20 flex items-center justify-center text-[#2F6B3A]">
-                <ShoppingBag className="w-6 h-6" />
-              </div>
-              <h3 className="font-heading text-xl font-bold text-[#5A2A27]">Direct Household & HoReCa Orders</h3>
-              <p className="text-xs sm:text-sm text-[#665952] leading-relaxed">
-                Making our premium rice accessible directly to households and culinary creators online, with reliable pan-India delivery logistics.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 4. Closing Commitment Banner */}
       <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
