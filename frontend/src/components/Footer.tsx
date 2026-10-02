@@ -113,6 +113,11 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/csr" className="hover:text-amber-300 transition-colors">
+                  Corporate Social Responsibility (CSR)
+                </Link>
+              </li>
+              <li>
                 <Link to="/careers" className="hover:text-amber-300 transition-colors">
                   Life at Sangamnerkar Agro / Careers
                 </Link>

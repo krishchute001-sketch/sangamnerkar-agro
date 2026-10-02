@@ -145,12 +145,16 @@ export const Navbar: React.FC = () => {
               Why Black Rice
             </Link>
 
-            {/* Gallery */}
+            {/* CSR */}
             <Link
-              to="/explore-rice#gallery"
-              className="px-3.5 py-2 text-sm font-medium text-[#2C221E] hover:text-[#5A2A27] hover:bg-[#F5ECE0] rounded-xl transition-colors"
+              to="/csr"
+              className={`px-3.5 py-2 text-sm font-medium rounded-xl transition-colors ${
+                isActive('/csr')
+                  ? 'text-[#2F6B3A] font-semibold bg-[#EAF3EC]'
+                  : 'text-[#2C221E] hover:text-[#5A2A27] hover:bg-[#F5ECE0]'
+              }`}
             >
-              Gallery
+              CSR
             </Link>
 
             {/* Contact Us */}
@@ -247,11 +251,15 @@ export const Navbar: React.FC = () => {
           </Link>
 
           <Link
-            to="/explore-rice#gallery"
+            to="/csr"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 text-base font-medium text-[#2C221E] rounded-xl hover:bg-[#F5ECE0]"
+            className={`block px-3 py-2 text-base font-medium rounded-xl transition-colors ${
+              isActive('/csr')
+                ? 'text-[#2F6B3A] font-semibold bg-[#EAF3EC]'
+                : 'text-[#2C221E] hover:bg-[#F5ECE0]'
+            }`}
           >
-            Gallery
+            CSR
           </Link>
 
           <Link

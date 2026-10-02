@@ -14,6 +14,7 @@ import { ProductDetail } from './pages/ProductDetail';
 import { ExploreRice } from './pages/ExploreRice';
 import { Sustainability } from './pages/Sustainability';
 import { Careers } from './pages/Careers';
+import { CSR } from './pages/CSR';
 import { ContactUs } from './pages/ContactUs';
 import { AdminLogin } from './pages/admin/AdminLogin';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
@@ -57,6 +58,7 @@ export const App: React.FC = () => {
             <Route path="/explore-rice" element={<ExploreRice />} />
             <Route path="/sustainability" element={<Sustainability />} />
             <Route path="/careers" element={<Careers />} />
+            <Route path="/csr" element={<CSR />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
