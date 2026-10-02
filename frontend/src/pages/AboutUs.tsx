@@ -85,8 +85,8 @@ export const AboutUs: React.FC = () => {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-md lg:max-w-none rounded-[32px] overflow-hidden shadow-xl border-2 border-[#E8DEC8] bg-white">
               <img
-                src="/images/hero-1.jpg"
-                alt="Sangamnerkar Agro Heritage Rice"
+                src="/images/cooked-black-rice.jpg"
+                alt="Cooked Heirloom Black Rice - Sangamnerkar Agro"
                 className="w-full aspect-[4/3] object-cover object-center"
               />
               <div className="p-6 bg-white space-y-2">
