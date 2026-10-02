@@ -12,7 +12,25 @@ import {
   Trash2,
   Plus,
   RefreshCw,
+  Calendar,
 } from 'lucide-react';
+
+const formatLeadDateTime = (isoString?: string) => {
+  if (!isoString) return 'Date unavailable';
+  try {
+    const d = new Date(isoString);
+    return d.toLocaleString('en-IN', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    });
+  } catch {
+    return isoString;
+  }
+};
 
 export const AdminDashboard: React.FC = () => {
   const { user, logout, isAuthenticated } = useAuth();
@@ -210,14 +228,18 @@ export const AdminDashboard: React.FC = () => {
                 inquiries.map((inq) => (
                   <div key={inq.id} className="p-6 hover:bg-slate-900/50 transition-colors space-y-3">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                      <div>
+                      <div className="flex flex-wrap items-center gap-2">
                         <span className="font-bold text-white text-sm">{inq.full_name}</span>
                         {inq.company_name && (
-                          <span className="text-slate-400 text-xs ml-2">({inq.company_name})</span>
+                          <span className="text-slate-400 text-xs">({inq.company_name})</span>
                         )}
-                        <span className="ml-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-amber-950 border border-amber-800 text-amber-400">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-amber-950 border border-amber-800 text-amber-400">
                           {inq.inquiry_type}
                         </span>
+                        <div className="inline-flex items-center space-x-1.5 text-[11px] font-medium text-amber-300/90 bg-amber-950/40 border border-amber-900/50 px-2.5 py-0.5 rounded-lg">
+                          <Calendar className="w-3 h-3 text-amber-400 shrink-0" />
+                          <span>Generated: {formatLeadDateTime(inq.created_at)}</span>
+                        </div>
                       </div>
 
                       <div className="flex items-center space-x-2">
@@ -240,6 +262,10 @@ export const AdminDashboard: React.FC = () => {
                       <div>Destination: {inq.country}</div>
                       {inq.product_interest && <div>Product: {inq.product_interest}</div>}
                       {inq.quantity_metric_tons && <div>Quantity: {inq.quantity_metric_tons}</div>}
+                      <div className="flex items-center space-x-1 text-slate-400">
+                        <Clock className="w-3 h-3 text-amber-400 shrink-0" />
+                        <span>Date & Time: <strong className="text-slate-200 font-mono text-[11px] font-semibold">{formatLeadDateTime(inq.created_at)}</strong></span>
+                      </div>
                     </div>
 
                     <p className="text-xs text-slate-300 bg-slate-950/60 p-3 rounded-xl border border-slate-800 leading-relaxed">
