@@ -6,19 +6,14 @@ import { Button } from './ui/Button';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const location = useLocation();
 
-  const aboutRef = useRef<HTMLDivElement>(null);
   const productsRef = useRef<HTMLDivElement>(null);
 
   // Close dropdowns on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (aboutRef.current && !aboutRef.current.contains(event.target as Node)) {
-        setAboutDropdownOpen(false);
-      }
       if (productsRef.current && !productsRef.current.contains(event.target as Node)) {
         setProductsDropdownOpen(false);
       }
@@ -30,7 +25,6 @@ export const Navbar: React.FC = () => {
   // Close menus on route navigation
   useEffect(() => {
     setMobileMenuOpen(false);
-    setAboutDropdownOpen(false);
     setProductsDropdownOpen(false);
   }, [location.pathname]);
 
@@ -77,48 +71,17 @@ export const Navbar: React.FC = () => {
               Home
             </Link>
 
-            {/* About Us (Dropdown) */}
-            <div
-              ref={aboutRef}
-              className="relative"
-              onMouseEnter={() => setAboutDropdownOpen(true)}
-              onMouseLeave={() => setAboutDropdownOpen(false)}
+            {/* About Us */}
+            <Link
+              to="/about-us"
+              className={`px-3.5 py-2 text-sm font-medium rounded-xl transition-colors ${
+                isActive('/about-us')
+                  ? 'text-[#2F6B3A] font-semibold bg-[#EAF3EC]'
+                  : 'text-[#2C221E] hover:text-[#5A2A27] hover:bg-[#F5ECE0]'
+              }`}
             >
-              <button
-                onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
-                aria-expanded={aboutDropdownOpen}
-                aria-haspopup="true"
-                className={`px-3.5 py-2 text-sm font-medium rounded-xl inline-flex items-center gap-1 transition-colors ${
-                  location.pathname.startsWith('/about-us')
-                    ? 'text-[#2F6B3A] font-semibold bg-[#EAF3EC]'
-                    : 'text-[#2C221E] hover:text-[#5A2A27] hover:bg-[#F5ECE0]'
-                }`}
-              >
-                <span>About Us</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${aboutDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-
-              {aboutDropdownOpen && (
-                <div className="absolute left-0 top-full pt-2 w-52 z-40">
-                  <div className="bg-[#FFFFFF] border border-[#E8DEC8] rounded-2xl p-2 shadow-xl animate-in fade-in slide-in-from-top-1 duration-150">
-                    <Link
-                      to="/about-us#story"
-                      className="block px-3 py-2 text-xs font-medium text-[#2C221E] rounded-xl hover:bg-[#F5ECE0] hover:text-[#5A2A27] transition-colors"
-                    >
-                      <span className="font-semibold block text-sm">Our Story</span>
-                      <span className="text-[#665952] text-[11px]">6+ years supplying Nagpur hotels</span>
-                    </Link>
-                    <Link
-                      to="/about-us#people"
-                      className="block px-3 py-2 text-xs font-medium text-[#2C221E] rounded-xl hover:bg-[#F5ECE0] hover:text-[#5A2A27] transition-colors mt-1"
-                    >
-                      <span className="font-semibold block text-sm">Our People</span>
-                      <span className="text-[#665952] text-[11px]">Sangamnerkar family leadership</span>
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
+              About Us
+            </Link>
 
             {/* Our Products (Dropdown) */}
             <div
@@ -242,23 +205,13 @@ export const Navbar: React.FC = () => {
             Home
           </Link>
 
-          <div className="pt-1 pb-1 pl-3 space-y-1">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#665952]">About Us</span>
-            <Link
-              to="/about-us#story"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block py-1.5 text-sm text-[#2C221E] hover:text-[#5A2A27]"
-            >
-              • Our Story & Nagpur Roots
-            </Link>
-            <Link
-              to="/about-us#people"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block py-1.5 text-sm text-[#2C221E] hover:text-[#5A2A27]"
-            >
-              • Our People (Sangamnerkar Family)
-            </Link>
-          </div>
+          <Link
+            to="/about-us"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2 text-base font-semibold text-[#5A2A27] rounded-xl hover:bg-[#F5ECE0]"
+          >
+            About Us
+          </Link>
 
           <div className="pt-1 pb-1 pl-3 space-y-1">
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#665952]">Our Products</span>
