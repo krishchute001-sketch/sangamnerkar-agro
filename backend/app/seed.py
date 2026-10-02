@@ -202,7 +202,7 @@ async def seed_database():
         j1 = JobPosting(
             title="Global Export Sales Director (Black Rice, Chinnor & Specialty Grains)",
             department="International Business",
-            location="New Delhi HQ / Dubai Hub",
+            location="Nagpur Head Office, Maharashtra",
             employment_type="Full-time",
             experience_level="8-12 Years",
             description="Lead multi-million-dollar bulk rice import contracts, distributor appointment, and containerized logistics across UAE, Saudi Arabia, Europe, and North America for Black Rice and Chinnor Rice.",
