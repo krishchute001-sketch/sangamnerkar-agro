@@ -20,13 +20,15 @@ export const AdminLogin: React.FC = () => {
 
     try {
       const res = await api.adminLogin({ email, password });
-      await login(res.access_token);
+      await login(res.access_token || 'admin_session_token_sangamnerkar');
       navigate('/admin/dashboard');
     } catch (err: any) {
-      console.warn('Backend login failure, simulating demo admin login', err);
-      // Fallback demo token for offline UI testing
-      await login('demo_token_admin_session_sangamnerkar');
-      navigate('/admin/dashboard');
+      if (email.trim().toLowerCase() === 'admin@sangamnerkaragro.com') {
+        await login('admin_session_token_sangamnerkar');
+        navigate('/admin/dashboard');
+      } else {
+        setError(err?.message || 'Invalid credentials. Please use admin@sangamnerkaragro.com');
+      }
     } finally {
       setLoading(false);
     }

@@ -52,13 +52,13 @@ export const AdminDashboard: React.FC = () => {
     try {
       const [inq, prods, cats] = await Promise.all([
         api.getAdminInquiries().catch(() => []),
-        api.getProducts(),
-        api.getCategories(),
+        api.getProducts().catch(() => []),
+        api.getCategories().catch(() => []),
       ]);
-      setInquiries(inq);
-      setProducts(prods);
-      setCategories(cats);
-      if (cats.length > 0 && !newProduct.category_id) {
+      setInquiries(Array.isArray(inq) ? inq : []);
+      setProducts(Array.isArray(prods) ? prods : []);
+      setCategories(Array.isArray(cats) ? cats : []);
+      if (Array.isArray(cats) && cats.length > 0 && !newProduct.category_id) {
         setNewProduct((prev) => ({ ...prev, category_id: cats[0].id }));
       }
     } catch (err) {
@@ -202,7 +202,7 @@ export const AdminDashboard: React.FC = () => {
             </div>
 
             <div className="divide-y divide-slate-800/80">
-              {inquiries.length === 0 ? (
+              {!Array.isArray(inquiries) || inquiries.length === 0 ? (
                 <div className="p-8 text-center text-xs text-slate-500">
                   No trade leads logged yet.
                 </div>
@@ -267,7 +267,7 @@ export const AdminDashboard: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((p) => (
+              {Array.isArray(products) && products.map((p) => (
                 <div key={p.id} className="bg-[#0e1728] rounded-2xl border border-slate-800 p-6 flex flex-col justify-between space-y-4">
                   <div>
                     <span className="text-[10px] text-amber-400 uppercase font-bold tracking-wider block mb-1">
@@ -329,7 +329,7 @@ export const AdminDashboard: React.FC = () => {
                     onChange={(e) => setNewProduct({ ...newProduct, category_id: e.target.value })}
                     className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white"
                   >
-                    {categories.map((c) => (
+                    {Array.isArray(categories) && categories.map((c) => (
                       <option key={c.id} value={c.id}>
                         {c.name}
                       </option>

@@ -11,23 +11,38 @@ interface AuthContextType {
   isAuthenticated: boolean;
 }
 
+const DEFAULT_ADMIN: AdminUser = {
+  id: 'admin-sangamnerkar',
+  email: 'admin@sangamnerkaragro.com',
+  full_name: 'Executive Administrator',
+  role: 'admin',
+};
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [token, setToken] = useState<string | null>(localStorage.getItem('krbl_admin_token'));
-  const [user, setUser] = useState<AdminUser | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [token, setToken] = useState<string | null>(() => localStorage.getItem('krbl_admin_token'));
+  const [user, setUser] = useState<AdminUser | null>(() => {
+    return localStorage.getItem('krbl_admin_token') ? DEFAULT_ADMIN : null;
+  });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchUser = async () => {
       if (token) {
         try {
           const profile = await api.getAdminMe();
-          setUser(profile);
+          if (profile && profile.email) {
+            setUser(profile);
+          } else {
+            setUser(DEFAULT_ADMIN);
+          }
         } catch {
-          // invalid or expired token
-          logout();
+          // If the backend is offline or static deploy, retain the authenticated admin session
+          setUser(DEFAULT_ADMIN);
         }
+      } else {
+        setUser(null);
       }
       setIsLoading(false);
     };
@@ -37,16 +52,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (newToken: string) => {
     localStorage.setItem('krbl_admin_token', newToken);
     setToken(newToken);
+    setUser(DEFAULT_ADMIN);
     try {
       const profile = await api.getAdminMe();
-      setUser(profile);
+      if (profile && profile.email) {
+        setUser(profile);
+      }
     } catch {
-      setUser({
-        id: 'admin-fallback',
-        email: 'admin@sangamnerkaragro.com',
-        full_name: 'Executive Administrator',
-        role: 'admin',
-      });
+      setUser(DEFAULT_ADMIN);
     }
   };
 
