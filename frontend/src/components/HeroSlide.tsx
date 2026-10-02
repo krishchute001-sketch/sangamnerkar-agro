@@ -77,7 +77,7 @@ export const HeroSlide: React.FC<HeroSlideProps> = ({ slide, isActive }) => {
 
       {/* Right Column: Big Image Showcase (5 cols on desktop) */}
       <div className="lg:col-span-5 flex justify-center lg:justify-end">
-        <div className="relative w-full max-w-md lg:max-w-none aspect-[4/3] sm:aspect-[4/3] lg:aspect-[1/1] rounded-[24px] sm:rounded-[30px] overflow-hidden shadow-xl border-2 border-[#E8DEC8] bg-[#F5ECE0]">
+        <div className="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-xl border-2 border-[#E8DEC8] bg-[#F5ECE0]">
           <img
             src={slide.imageSrc}
             alt={slide.imageAlt}
