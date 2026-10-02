@@ -43,15 +43,15 @@ export const AboutUs: React.FC = () => {
             <div className="space-y-4 text-[#665952] text-sm sm:text-base leading-relaxed">
               <p>
                 With over <strong className="text-[#5A2A27]">6 years of experience</strong>,{' '}
-                <strong className="text-[#5A2A27]">Sangamnerkar Agro</strong> has built a trusted name in rice supply in Nagpur. We focus on sourcing, processing, and supplying quality rice, and we are proud to count some of the <strong className="text-[#5A2A27]">top hotels in Nagpur</strong> among our regular customers.
+                <strong className="text-[#5A2A27]">Sangamnerkar Agro</strong> has built a trusted name in rice supply in Nagpur. Founded and guided by <strong className="text-[#5A2A27]">Sukhad Sangamnerkar</strong> and <strong className="text-[#5A2A27]">Ranjana Sangamnerkar</strong>, our endeavor began with an uncompromising focus on grain authenticity, honest sourcing, and dependable processing. Today, we are proud to count some of the premier luxury hotels in Nagpur among our regular patrons.
               </p>
 
               <p>
-                Over the years, we have worked to improve the way we source, handle, and deliver our products, always looking for new opportunities to grow. We have also widened our range to include <strong className="text-[#5A2A27]">Black Rice</strong>, a nutritious, antioxidant-rich grain, as demand grows for healthy and balanced food.
+                Together with <strong className="text-[#5A2A27]">Tushar Sangamnerkar</strong> and <strong className="text-[#5A2A27]">Kiran Sukhad Sangamnerkar</strong> steering customer relationships, rigorous quality assurance, and modern delivery logistics, we have continually elevated how our grains are selected and handled. Recognizing the rising demand for wholesome, balanced nourishment, we expanded our specialty portfolio to include authentic <strong className="text-[#5A2A27]">Black Rice (Chak-Hao)</strong>—a nutrient-dense, antioxidant-rich heirloom grain.
               </p>
 
               <p>
-                Alongside Black Rice, our signature offerings include the certified <strong className="text-[#5A2A27]">GI-Tagged Balaghat Chinnor Rice</strong> and daily luxury <strong className="text-[#5A2A27]">Jai Shree Ram Traditional Rice</strong>. Our consistent quality and dependable service have helped us earn the confidence of hotels, restaurants, and families across the region.
+                Alongside Black Rice, our signature offerings include certified <strong className="text-[#5A2A27]">GI-Tagged Balaghat Chinnor Rice</strong> and daily luxury <strong className="text-[#5A2A27]">Jai Shree Ram Traditional Rice</strong>. Backed by the personal stewardship and family commitment of the Sangamnerkar family across every batch, our consistent grain purity and prompt service have earned the enduring confidence of hotels, restaurants, and families throughout the region.
               </p>
 
               {/* Digital Expansion Highlight Box */}
