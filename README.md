@@ -1,5 +1,5 @@
 # Krish Agro & Black Rice Corporate Enterprise Platform
-*Inspired by [KRBL Limited](https://krblrice.com/) (India Gate Basmati Rice)*
+
 
 An enterprise-grade, high-performance web platform for global agricultural FMCG exports, heritage Basmati, and Manipur Chak-Hao Black Rice. Featuring a public corporate portal, B2B wholesale lead processing, investor relations filing center, and a secure staff Content Management System (CMS).
 
