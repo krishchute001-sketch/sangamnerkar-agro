@@ -14,7 +14,7 @@ const SLIDES: SlideData[] = [
     secondaryCtaText: "Bulk and Hotel Enquiry",
     secondaryCtaLink: "/contact-us?type=Institutional",
     imageSrc: "/images/hero-1.jpg",
-    imageAlt: "Authentic raw heirloom black rice grains",
+    imageAlt: "Wholesome family table dining with nutritious heirloom rice",
   },
   {
     id: 2,
@@ -39,8 +39,8 @@ const SLIDES: SlideData[] = [
     primaryCtaLink: "/portfolio?category=black-rice",
     secondaryCtaText: "Bulk and Hotel Enquiry",
     secondaryCtaLink: "/contact-us?type=Institutional",
-    imageSrc: "/images/cooked-black-rice.jpg",
-    imageAlt: "Cooked heirloom black rice in rustic bowl",
+    imageSrc: "/images/hero-3.jpg",
+    imageAlt: "Pristine raw black rice grains in ceramic bowl",
   },
 ];
 

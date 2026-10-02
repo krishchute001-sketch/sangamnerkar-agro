@@ -67,6 +67,8 @@ export const theme = {
     whatsappNumber: '919923900943',
     whatsappUrl: 'https://wa.me/919923900943?text=Hello%20Sangamnerkar%20Agro%2C%20I%20would%20like%20to%20order%20premium%20rice.',
     location: 'Nagpur, Maharashtra, India',
+    address: 'Plot No. 6, Pragati Nagar, Ranala, Kamptee, Nagpur, Maharashtra, India',
+    addressShort: 'Plot No. 6, Pragati Nagar, Ranala, Kamptee, Nagpur, Maharashtra',
     experienceYears: '6+ Years',
   },
 } as const;

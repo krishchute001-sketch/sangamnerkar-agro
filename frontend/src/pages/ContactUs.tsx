@@ -60,10 +60,10 @@ export const ContactUs: React.FC = () => {
             <div className="bg-[#0b1320] text-white p-8 rounded-3xl border border-amber-900/40 shadow-xl space-y-6">
               <div>
                 <span className="text-amber-400 font-mono text-xs uppercase tracking-widest font-semibold block mb-1">
-                  Global Headquarters
+                  Head Office & Supply Center
                 </span>
                 <h3 className="font-heading text-xl font-bold text-white">
-                  Sangamnerkar Agro Black Rice & Chinnor Rice Limited
+                  Sangamnerkar Agro
                 </h3>
               </div>
 
@@ -71,25 +71,25 @@ export const ContactUs: React.FC = () => {
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                   <span>
-                    5188, World Trade Tower, Barakhamba Road, Connaught Place, New Delhi 110001, India
+                    Plot No. 6, Pragati Nagar, Ranala, Kamptee, Nagpur, Maharashtra, India
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>+91 99239 00943 (Direct & International)</span>
+                  <span>+91 99239 00943 (Orders & Inquiries)</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>export@sangamnerkaragro.com | trade@sangamnerkaragro.com</span>
+                  <span>export@sangamnerkaragro.com | sales@sangamnerkaragro.com</span>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-slate-800">
                 <h4 className="text-xs uppercase font-bold text-amber-300 tracking-wider mb-2">
-                  Operating Export Ports
+                  Distribution & Delivery
                 </h4>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Jandiala Guru ICD (Punjab), Nhava Sheva (JNPT Mumbai), Mundra Port (Gujarat), Kolkata Port (Eastern Region).
+                  Regular wholesale deliveries to Nagpur luxury hotels, plus secure courier and freight despatch across Maharashtra and pan-India.
                 </p>
               </div>
             </div>
@@ -97,20 +97,20 @@ export const ContactUs: React.FC = () => {
             {/* Regional Presence */}
             <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
               <h4 className="font-heading text-sm font-bold text-slate-900 uppercase tracking-wider">
-                International Representative Hubs
+                Supply & Service Network
               </h4>
               <div className="space-y-3 text-xs text-slate-600">
                 <div>
-                  <span className="font-bold text-slate-800 block">🇦🇪 Middle East & GCC Desk</span>
-                  <p>Al Ras Trade Center, Deira, Dubai, UAE</p>
+                  <span className="font-bold text-slate-800 block">🏨 Nagpur Hospitality & HoReCa</span>
+                  <p>Daily & scheduled bulk delivery for premier hotels, restaurants, and catering banquets.</p>
                 </div>
                 <div>
-                  <span className="font-bold text-slate-800 block">🇬🇧 European & UK Distribution Hub</span>
-                  <p>St Mary Axe, City of London, United Kingdom</p>
+                  <span className="font-bold text-slate-800 block">📦 Direct Household Delivery</span>
+                  <p>Vacuum-sealed fresh retail packs shipped directly to homes across Central India.</p>
                 </div>
                 <div>
-                  <span className="font-bold text-slate-800 block">🇺🇸 North America Logistics</span>
-                  <p>Edison Commercial Park, New Jersey, USA</p>
+                  <span className="font-bold text-slate-800 block">💬 Quick WhatsApp Assistance</span>
+                  <p>Direct chat at +91 99239 00943 for instant pricing, samples, and inquiries.</p>
                 </div>
               </div>
             </div>

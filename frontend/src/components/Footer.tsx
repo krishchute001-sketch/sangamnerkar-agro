@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
             <div className="pt-2 text-xs text-slate-400 space-y-2">
               <div className="flex items-start space-x-2">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>Corporate Office: 5188, World Trade Tower, Barakhamba Road, Connaught Place, New Delhi 110001, India</span>
+                <span>Office: Plot No. 6, Pragati Nagar, Ranala, Kamptee, Nagpur, Maharashtra, India</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-amber-400 shrink-0" />
