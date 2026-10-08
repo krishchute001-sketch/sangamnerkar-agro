@@ -208,6 +208,80 @@ const MOCK_INVESTOR_DOCS: InvestorCategory[] = [
   },
 ];
 
+const INQUIRIES_STORAGE_KEY = 'sangamnerkar_trade_inquiries_v2';
+
+// Fixed, permanent dates that NEVER change or drift relative to today
+const INITIAL_MOCK_INQUIRIES: Inquiry[] = [
+  {
+    id: 'inq-101',
+    inquiry_type: 'Institutional / Horeca',
+    full_name: 'Executive Chef Vikram Deshmukh',
+    company_name: 'Radisson Blu Hotel Nagpur',
+    email: 'v.deshmukh@radissonblu.com',
+    phone: '+91 98220 12345',
+    country: 'India',
+    product_interest: 'Royal Balaghat Chinnor Rice',
+    quantity_metric_tons: '2.5 MT',
+    message: 'Requesting monthly contracted supply for our banquet kitchen and main dining restaurant.',
+    status: 'Under Review',
+    created_at: '2026-10-02T15:24:00.000Z',
+  },
+  {
+    id: 'inq-102',
+    inquiry_type: 'Export',
+    full_name: 'Kareem Al-Mansoor',
+    company_name: 'Gulf Heritage Foods FZE (Dubai, UAE)',
+    email: 'kareem@gulfheritagefoods.ae',
+    phone: '+971 50 123 4567',
+    country: 'United Arab Emirates',
+    product_interest: 'Sangamnerkar Royal Black Rice (Chak-Hao)',
+    quantity_metric_tons: '20 MT (1x 20ft FCL)',
+    message: 'Looking for organic phytosanitary certified vacuum-packed black rice for UAE premium supermarket distribution.',
+    status: 'Pending',
+    created_at: '2026-10-01T19:24:00.000Z',
+  },
+  {
+    id: 'inq-103',
+    inquiry_type: 'Domestic Wholesale',
+    full_name: 'Rajesh Agarwal',
+    company_name: 'Central India Gourmet Distributors',
+    email: 'rajesh@agrawaltraders.in',
+    phone: '+91 94221 88765',
+    country: 'India',
+    product_interest: 'Jai Shree Ram Premium Rice',
+    quantity_metric_tons: '10 MT',
+    message: 'Require 25kg non-woven branded bags for wholesale distribution in Vidarbha region.',
+    status: 'Completed',
+    created_at: '2026-09-30T11:15:00.000Z',
+  },
+];
+
+const getStoredInquiries = (): Inquiry[] => {
+  if (typeof window === 'undefined') return INITIAL_MOCK_INQUIRIES;
+  try {
+    const raw = localStorage.getItem(INQUIRIES_STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+    localStorage.setItem(INQUIRIES_STORAGE_KEY, JSON.stringify(INITIAL_MOCK_INQUIRIES));
+    return INITIAL_MOCK_INQUIRIES;
+  } catch {
+    return INITIAL_MOCK_INQUIRIES;
+  }
+};
+
+const saveStoredInquiries = (inquiries: Inquiry[]) => {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(INQUIRIES_STORAGE_KEY, JSON.stringify(inquiries));
+  } catch (e) {
+    console.error('Failed to save inquiries to localStorage', e);
+  }
+};
+
 export const api = {
   // Stats
   getCorporateStats: async (): Promise<CorporateStats> => {
@@ -353,24 +427,32 @@ export const api = {
 
   // Inquiries
   submitInquiry: async (data: Partial<Inquiry>): Promise<Inquiry> => {
+    const newInquiry: Inquiry = {
+      id: 'inq-' + Date.now(),
+      inquiry_type: data.inquiry_type || 'Export',
+      full_name: data.full_name || '',
+      company_name: data.company_name,
+      email: data.email || '',
+      phone: data.phone || '',
+      country: data.country || 'India',
+      product_interest: data.product_interest,
+      quantity_metric_tons: data.quantity_metric_tons,
+      message: data.message || '',
+      status: 'Pending',
+      created_at: new Date().toISOString(),
+    };
+
+    const current = getStoredInquiries();
+    saveStoredInquiries([newInquiry, ...current]);
+
+    if (isStaticDeployment) {
+      return newInquiry;
+    }
     try {
       const res = await apiClient.post('/inquiries', data);
       return res.data;
     } catch {
-      return {
-        id: 'inq-offline-' + Date.now(),
-        inquiry_type: data.inquiry_type || 'Export',
-        full_name: data.full_name || '',
-        company_name: data.company_name,
-        email: data.email || '',
-        phone: data.phone || '',
-        country: data.country || 'India',
-        product_interest: data.product_interest,
-        quantity_metric_tons: data.quantity_metric_tons,
-        message: data.message || '',
-        status: 'Pending',
-        created_at: new Date().toISOString(),
-      };
+      return newInquiry;
     }
   },
 
@@ -423,89 +505,44 @@ export const api = {
   },
 
   getAdminInquiries: async (): Promise<Inquiry[]> => {
-    const mockInquiries: Inquiry[] = [
-      {
-        id: 'inq-101',
-        inquiry_type: 'Institutional / Horeca',
-        full_name: 'Executive Chef Vikram Deshmukh',
-        company_name: 'Radisson Blu Hotel Nagpur',
-        email: 'v.deshmukh@radissonblu.com',
-        phone: '+91 98220 12345',
-        country: 'India',
-        product_interest: 'Royal Balaghat Chinnor Rice',
-        quantity_metric_tons: '2.5 MT',
-        message: 'Requesting monthly contracted supply for our banquet kitchen and main dining restaurant.',
-        status: 'Under Review',
-        created_at: new Date(Date.now() - 3600000 * 4).toISOString(),
-      },
-      {
-        id: 'inq-102',
-        inquiry_type: 'Export',
-        full_name: 'Kareem Al-Mansoor',
-        company_name: 'Gulf Heritage Foods FZE (Dubai, UAE)',
-        email: 'kareem@gulfheritagefoods.ae',
-        phone: '+971 50 123 4567',
-        country: 'United Arab Emirates',
-        product_interest: 'Sangamnerkar Royal Black Rice (Chak-Hao)',
-        quantity_metric_tons: '20 MT (1x 20ft FCL)',
-        message: 'Looking for organic phytosanitary certified vacuum-packed black rice for UAE premium supermarket distribution.',
-        status: 'Pending',
-        created_at: new Date(Date.now() - 3600000 * 24).toISOString(),
-      },
-      {
-        id: 'inq-103',
-        inquiry_type: 'Domestic Wholesale',
-        full_name: 'Rajesh Agarwal',
-        company_name: 'Central India Gourmet Distributors',
-        email: 'rajesh@agrawaltraders.in',
-        phone: '+91 94221 88765',
-        country: 'India',
-        product_interest: 'Jai Shree Ram Premium Rice',
-        quantity_metric_tons: '10 MT',
-        message: 'Require 25kg non-woven branded bags for wholesale distribution in Vidarbha region.',
-        status: 'Completed',
-        created_at: new Date(Date.now() - 3600000 * 48).toISOString(),
-      },
-    ];
-
-    if (isStaticDeployment) return mockInquiries;
+    const localInquiries = getStoredInquiries();
+    if (isStaticDeployment) return localInquiries;
     try {
       const res = await apiClient.get('/inquiries');
-      return Array.isArray(res.data) && res.data.length ? res.data : mockInquiries;
+      if (Array.isArray(res.data) && res.data.length) {
+        return res.data;
+      }
+      return localInquiries;
     } catch {
-      return mockInquiries;
+      return localInquiries;
     }
   },
 
   updateInquiryStatus: async (id: string, status: string): Promise<Inquiry> => {
+    const current = getStoredInquiries();
+    const updated = current.map((item) => (item.id === id ? { ...item, status } : item));
+    saveStoredInquiries(updated);
+
+    const target = updated.find((item) => item.id === id) || {
+      id,
+      inquiry_type: 'Institutional',
+      full_name: 'Trade Client',
+      email: 'trade@example.com',
+      phone: '+91 99239 00943',
+      country: 'India',
+      message: 'Status updated',
+      status,
+      created_at: '2026-10-02T15:24:00.000Z',
+    };
+
     if (isStaticDeployment) {
-      return {
-        id,
-        inquiry_type: 'Institutional',
-        full_name: 'Trade Client',
-        email: 'trade@example.com',
-        phone: '+91 99239 00943',
-        country: 'India',
-        message: 'Status updated',
-        status,
-        created_at: new Date().toISOString(),
-      };
+      return target;
     }
     try {
       const res = await apiClient.patch(`/inquiries/${id}/status`, { status });
       return res.data;
     } catch {
-      return {
-        id,
-        inquiry_type: 'Institutional',
-        full_name: 'Trade Client',
-        email: 'trade@example.com',
-        phone: '+91 99239 00943',
-        country: 'India',
-        message: 'Status updated',
-        status,
-        created_at: new Date().toISOString(),
-      };
+      return target;
     }
   },
 
