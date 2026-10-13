@@ -212,5 +212,16 @@ VALUES
     '6.8 mm', '1.8x', 'Sweet Jasmine & Honey Floral', '12 Months Matured', 'Wainganga Basin, Balaghat',
     '1kg, 5kg, 10kg, 25kg Bags', TRUE, TRUE, FALSE,
     'https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=1200&q=80'
+),
+(
+    'prod-jai-shree-ram',
+    'cat-jai-shree-ram',
+    'Jai Shree Ram Premium Rice',
+    'jai-shree-ram-premium-rice',
+    'Pristine Fine Grain Daily Luxury - Silky Texture & Gentle Fragrance',
+    'Hand-selected from heritage fertile tracts, Jai Shree Ram rice is an exquisite fine grain renowned for its silky slender texture, pristine pearly white color, and gentle natural scent. Non-sticky and easily digestible, it elevates daily gourmet dining, biryanis, and aromatic spiced rice preparations.',
+    '7.20 mm', '2.0x', 'Subtle Warm Scented Aroma', '12 Months Aged in Climate-Controlled Silos', 'Central Agro Plains, India',
+    '1kg, 5kg, 10kg, 25kg Non-Woven & Poly-woven Bulk', TRUE, TRUE, FALSE,
+    'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=1200&q=80'
 )
 ON CONFLICT (slug) DO NOTHING;
