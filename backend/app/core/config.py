@@ -18,6 +18,12 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 days
     
+    # Gmail SMTP Automation Settings
+    GMAIL_USER: str = "exportsangamnerkaragro@gmail.com"
+    GMAIL_APP_PASSWORD: str = ""  # 16-character Google App Password
+    EMAIL_AUTOMATION_HOURS: int = 8
+    EMAIL_AUTOMATION_ENABLED: bool = True
+    
     # CORS
     BACKEND_CORS_ORIGINS: List[str] = [
         "http://localhost:5173",

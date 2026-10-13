@@ -7,12 +7,19 @@ from app.seed import seed_database
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    import asyncio
+    from app.services.email_service import email_automation_background_worker
+
     # Ensure tables and seed data exist
     try:
         await seed_database()
     except Exception as e:
         print(f"Startup warning during seeding: {e}")
+
+    # Start automated 8-hour email follow-up background worker
+    worker_task = asyncio.create_task(email_automation_background_worker(interval_seconds=600))
     yield
+    worker_task.cancel()
 
 app = FastAPI(
     title=settings.PROJECT_NAME,

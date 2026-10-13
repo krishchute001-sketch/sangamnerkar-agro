@@ -56,3 +56,24 @@ async def update_inquiry_status(
     await db.commit()
     await db.refresh(inquiry)
     return inquiry
+
+@router.post("/{inquiry_id}/send-followup")
+async def trigger_followup_email(
+    inquiry_id: str,
+    db: AsyncSession = Depends(get_db),
+    admin: AdminUser = Depends(get_current_admin),
+):
+    from app.services.email_service import send_single_followup_now
+    success = await send_single_followup_now(inquiry_id)
+    if not success:
+        return {"status": "error", "message": "Failed to send email. Ensure GMAIL_APP_PASSWORD is set in backend/.env"}
+    return {"status": "success", "message": f"Follow-up email dispatched to lead"}
+
+@router.post("/process-followups-now")
+async def trigger_all_due_followups(
+    admin: AdminUser = Depends(get_current_admin),
+):
+    from app.services.email_service import process_due_followups
+    count = await process_due_followups()
+    return {"status": "success", "processed_count": count}
+

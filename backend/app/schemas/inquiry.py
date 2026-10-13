@@ -19,6 +19,8 @@ class InquiryUpdate(BaseModel):
 class InquiryResponse(InquiryCreate):
     id: str
     status: str
+    followup_email_sent: bool = False
+    followup_email_sent_at: Optional[datetime] = None
     created_at: datetime
 
     model_config = ConfigDict(from_attributes=True)

@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime, timezone
-from sqlalchemy import String, Text, DateTime
+from sqlalchemy import String, Text, DateTime, Boolean
 from sqlalchemy.orm import Mapped, mapped_column
 from app.core.database import Base
 
@@ -21,4 +21,6 @@ class Inquiry(Base):
     quantity_metric_tons: Mapped[str] = mapped_column(String(50), nullable=True)
     message: Mapped[str] = mapped_column(Text, nullable=False)
     status: Mapped[str] = mapped_column(String(50), default="Pending")
+    followup_email_sent: Mapped[bool] = mapped_column(Boolean, default=False)
+    followup_email_sent_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
