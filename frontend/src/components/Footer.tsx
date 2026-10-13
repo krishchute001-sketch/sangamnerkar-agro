@@ -1,198 +1,174 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Globe, Award, Shield, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, MapPin, ExternalLink, ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { BRAND_CONFIG } from '../config/brand';
 import { LinkedInIcon } from './icons/LinkedInIcon';
-import { theme } from '../theme';
 
 export const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-[#070d18] text-slate-300 border-t-2 border-amber-600/30">
-      {/* Certifications Banner */}
-      <div className="bg-[#0b1424] py-8 border-b border-slate-800">
+    <footer className="bg-[#140a18] text-[#faf6ee]/80 border-t border-[#c9a24b]/20 font-sans">
+      {/* Top Heritage Badge Bar */}
+      <div className="border-b border-[#c9a24b]/15 bg-[#1a0f1f]/90 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-xs uppercase tracking-widest text-amber-400 font-semibold mb-6">
-            Global Quality & Food Safety Accreditations
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center text-center">
-            {[
-              'BRCGS Grade AA',
-              'US FDA Registered',
-              'ISO 22000 & 9001',
-              'USDA Organic',
-              'Halal Certified',
-              'Kosher Certified',
-            ].map((badge, idx) => (
-              <div
-                key={idx}
-                className="flex items-center justify-center p-3 rounded-lg bg-slate-900/60 border border-slate-800/80 text-xs font-medium text-slate-300 shadow-sm hover:border-amber-500/40 transition-colors"
-              >
-                <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 mr-2 shrink-0" />
-                <span>{badge}</span>
-              </div>
-            ))}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#faf6ee]/70">
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-[#c9a24b]" />
+              <span className="font-medium tracking-wide">
+                Nagpur's Family-Run Heirloom Purveyors &bull; FSSAI Lic. #{BRAND_CONFIG.fssaiNumber}
+              </span>
+            </div>
+            <div className="flex items-center gap-6">
+              <span className="text-[#c9a24b]">Balaghat GI-696 Certified Lineage</span>
+              <span className="hidden md:inline text-white/30">&bull;</span>
+              <span className="hidden md:inline">Small-Batch Moisture Milled</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Footer Links */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          {/* Brand Column */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-500 to-amber-200 p-0.5">
-                <div className="w-full h-full bg-[#0b1320] rounded-full flex items-center justify-center text-lg">
-                  🌾
-                </div>
+      {/* Main Footer Body */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+          
+          {/* Brand & About Line (lg: 5 cols) */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full border border-[#c9a24b]/40 bg-[#1a0f1f] flex items-center justify-center text-lg shadow-inner">
+                🌾
               </div>
-              <span className="font-heading text-xl sm:text-2xl font-bold tracking-wider text-amber-200">
-                SANGAMNERKAR AGRO
-              </span>
+              <div>
+                <span className="font-serif text-2xl font-bold tracking-tight text-[#faf6ee] block">
+                  {BRAND_CONFIG.companyName}
+                </span>
+                <span className="text-xs uppercase tracking-widest text-[#c9a24b] font-medium block">
+                  {BRAND_CONFIG.tagline}
+                </span>
+              </div>
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              World’s premier producer and exporter of Heirloom Manipur Chak-Hao Black Rice, GI-Tagged Balaghat Chinnor Rice, and Jai Shree Ram Traditional Rice.
-              Empowering farming families across India with sustainable agriculture for over 6+ years.
+
+            <p className="text-sm text-[#faf6ee]/70 leading-relaxed max-w-md">
+              Family-run purveyors dedicated to reviving indigenous Indian grains. We supply pure heirloom Chak-Hao Black Rice and GI-tagged Balaghat Chinnor Rice directly from certified regional grower networks to homes, chefs, and hospitality partners.
             </p>
-            <div className="pt-2 text-xs text-slate-400 space-y-2">
-              <div className="flex items-start space-x-2">
-                <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>Office: Plot No. 6, Pragati Nagar, Ranala, Kamptee, Nagpur, Maharashtra, India</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                <a
-                  href={theme.contact.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-amber-300 transition-colors"
-                  title="Chat on WhatsApp"
-                >
-                  +91 99239 00943
-                </a>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <a
-                  href="mailto:exportsangamnerkaragro@gmail.com"
-                  className="hover:text-amber-300 transition-colors"
-                >
-                  exportsangamnerkaragro@gmail.com
-                </a>
-              </div>
-              <div className="flex items-center space-x-2 pt-1">
-                <LinkedInIcon className="w-4 h-4 text-amber-400 shrink-0" />
-                <a
-                  href="https://www.linkedin.com/company/rural-roots-india/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-amber-300 transition-colors underline-offset-2 hover:underline"
-                >
-                  LinkedIn: Rural Roots India
-                </a>
-              </div>
+
+            <div className="flex items-center gap-3 pt-2">
+              <a
+                href={BRAND_CONFIG.getWhatsappUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/30 text-[#faf6ee] text-xs font-medium transition-colors"
+              >
+                <span>WhatsApp Desk</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#25D366]" />
+              </a>
+
+              <a
+                href={BRAND_CONFIG.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[#faf6ee] text-xs font-medium transition-colors"
+              >
+                <LinkedInIcon className="w-3.5 h-3.5 text-[#c9a24b]" />
+                <span>LinkedIn</span>
+                <ArrowUpRight className="w-3 h-3 text-[#faf6ee]/50" />
+              </a>
             </div>
           </div>
 
-          {/* Portfolios */}
-          <div>
-            <h4 className="font-heading text-sm font-semibold tracking-wider text-amber-300 uppercase mb-4">
-              Our Portfolio
+          {/* Quick Links (lg: 3 cols) */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="font-serif text-base font-semibold tracking-wide text-[#faf6ee] border-b border-[#c9a24b]/20 pb-2">
+              Navigation
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400">
+            <ul className="space-y-3 text-sm text-[#faf6ee]/70">
               <li>
-                <Link to="/portfolio?category=black-rice" className="hover:text-amber-300 transition-colors">
-                  Sangamnerkar Royal Black Rice
-                </Link>
+                <a href="#home" className="hover:text-[#c9a24b] transition-colors inline-flex items-center gap-1.5">
+                  &bull; Home
+                </a>
               </li>
               <li>
-                <Link to="/portfolio?category=chinnor-rice" className="hover:text-amber-300 transition-colors">
-                  Royal Balaghat Chinnor Rice
-                </Link>
+                <a href="#products" className="hover:text-[#c9a24b] transition-colors inline-flex items-center gap-1.5">
+                  &bull; Heirloom Products
+                </a>
               </li>
               <li>
-                <Link to="/portfolio?category=jai-shree-ram-rice" className="hover:text-amber-300 transition-colors">
-                  Jai Shree Ram Premium Rice
-                </Link>
+                <a href="#quality" className="hover:text-[#c9a24b] transition-colors inline-flex items-center gap-1.5">
+                  &bull; Quality & Certifications
+                </a>
+              </li>
+              <li>
+                <a href="#story" className="hover:text-[#c9a24b] transition-colors inline-flex items-center gap-1.5">
+                  &bull; Our Story & Sourcing
+                </a>
+              </li>
+              <li>
+                <a href="#enquiry" className="hover:text-[#c9a24b] transition-colors inline-flex items-center gap-1.5">
+                  &bull; Hotel & Bulk Enquiry
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-heading text-sm font-semibold tracking-wider text-amber-300 uppercase mb-4">
-              Corporate
+          {/* Contact Details (lg: 4 cols) */}
+          <div className="lg:col-span-4 space-y-4">
+            <h4 className="font-serif text-base font-semibold tracking-wide text-[#faf6ee] border-b border-[#c9a24b]/20 pb-2">
+              Nagpur Depot & Contact
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400">
-              <li>
-                <Link to="/about-us" className="hover:text-amber-300 transition-colors">
-                  Our Heritage & Story
-                </Link>
-              </li>
-              <li>
-                <Link to="/explore-rice" className="hover:text-amber-300 transition-colors">
-                  Farm-to-Fork Traceability
-                </Link>
-              </li>
-              <li>
-                <Link to="/sustainability" className="hover:text-amber-300 transition-colors">
-                  ESG & Farmer Prosperity
-                </Link>
-              </li>
-              <li>
-                <Link to="/csr" className="hover:text-amber-300 transition-colors">
-                  Corporate Social Responsibility (CSR)
-                </Link>
-              </li>
-              <li>
-                <Link to="/careers" className="hover:text-amber-300 transition-colors">
-                  Life at Sangamnerkar Agro / Careers
-                </Link>
-              </li>
-            </ul>
-          </div>
+            
+            <div className="space-y-3.5 text-xs text-[#faf6ee]/80">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-[#c9a24b] shrink-0 mt-0.5" />
+                <span className="leading-relaxed">
+                  {BRAND_CONFIG.address}
+                </span>
+              </div>
 
-          {/* B2B Inquiries & Disclosures */}
-          <div>
-            <h4 className="font-heading text-sm font-semibold tracking-wider text-amber-300 uppercase mb-4">
-              Global Trade
-            </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400">
-              <li>
-                <Link to="/contact-us?type=Export" className="text-amber-400 font-medium hover:text-amber-300">
-                  Bulk Container Export Inquiries
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact-us?type=Domestic" className="hover:text-amber-300 transition-colors">
-                  Distributor Network Application
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact-us?type=Institutional" className="hover:text-amber-300 transition-colors">
-                  Horeca & Hotel Institutional Supply
-                </Link>
-              </li>
-            </ul>
+              <div className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-[#c9a24b] shrink-0" />
+                <a
+                  href={BRAND_CONFIG.getWhatsappUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#c9a24b] transition-colors font-medium text-sm tracking-wide"
+                  title="Direct WhatsApp & Phone"
+                >
+                  {BRAND_CONFIG.phoneDisplay}
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-[#c9a24b] shrink-0" />
+                <a
+                  href={`mailto:${BRAND_CONFIG.email}`}
+                  className="hover:text-[#c9a24b] transition-colors break-all"
+                >
+                  {BRAND_CONFIG.email}
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-4 p-3 rounded-lg bg-[#1a0f1f] border border-[#c9a24b]/20 text-[11px] text-[#faf6ee]/70 flex items-center gap-2.5">
+              <ShieldCheck className="w-4 h-4 text-[#c9a24b] shrink-0" />
+              <span>Direct dispatch across India via insured courier & freight lines.</span>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
-          <p>© {new Date().getFullYear()} Sangamnerkar Agro Black Rice & Chinnor Rice Limited. All rights reserved.</p>
-          <div className="flex items-center space-x-6">
-            <a
-              href="https://www.linkedin.com/company/rural-roots-india/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-amber-400 hover:text-amber-300 transition-colors inline-flex items-center gap-1.5 font-medium"
-            >
-              <LinkedInIcon className="w-3.5 h-3.5" />
-              <span>LinkedIn</span>
+        {/* Bottom Legal Bar */}
+        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-xs text-[#faf6ee]/50 gap-4">
+          <p>
+            &copy; {currentYear} {BRAND_CONFIG.companyName}. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6">
+            <a href="#products" className="hover:text-[#faf6ee] transition-colors">
+              Products
             </a>
-            <span className="hover:text-slate-400 cursor-pointer">Privacy Policy</span>
-            <span className="hover:text-slate-400 cursor-pointer">Terms of Use</span>
-            <span className="hover:text-slate-400 cursor-pointer">Disclaimer</span>
-            <span className="hover:text-slate-400 cursor-pointer">Sitemap</span>
+            <a href="#quality" className="hover:text-[#faf6ee] transition-colors">
+              FSSAI Compliance
+            </a>
+            <a href="#enquiry" className="hover:text-[#faf6ee] transition-colors">
+              Wholesale Enquiries
+            </a>
           </div>
         </div>
       </div>
