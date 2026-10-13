@@ -81,7 +81,12 @@ export const ContactUs: React.FC = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>export@sangamnerkaragro.com | sales@sangamnerkaragro.com</span>
+                  <a
+                    href="mailto:exportsangamnerkaragro@gmail.com"
+                    className="text-slate-300 hover:text-amber-300 transition-colors"
+                  >
+                    exportsangamnerkaragro@gmail.com
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <LinkedInIcon className="w-4 h-4 text-amber-400 shrink-0" />

@@ -63,7 +63,12 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>export@sangamnerkaragro.com | sales@sangamnerkaragro.com</span>
+                <a
+                  href="mailto:exportsangamnerkaragro@gmail.com"
+                  className="hover:text-amber-300 transition-colors"
+                >
+                  exportsangamnerkaragro@gmail.com
+                </a>
               </div>
               <div className="flex items-center space-x-2 pt-1">
                 <LinkedInIcon className="w-4 h-4 text-amber-400 shrink-0" />
