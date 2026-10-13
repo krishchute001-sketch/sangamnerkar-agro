@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { api } from '../services/api';
 import { Mail, Phone, MapPin, Globe2, Send, CheckCircle2, Building, ShieldCheck } from 'lucide-react';
 import { LinkedInIcon } from '../components/icons/LinkedInIcon';
+import { theme } from '../theme';
 
 export const ContactUs: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -77,7 +78,15 @@ export const ContactUs: React.FC = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>+91 99239 00943 (Orders & Inquiries)</span>
+                  <a
+                    href={theme.contact.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-300 hover:text-amber-300 transition-colors"
+                    title="Chat on WhatsApp"
+                  >
+                    +91 99239 00943 (Orders & Inquiries)
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-4 h-4 text-amber-400 shrink-0" />
@@ -127,7 +136,19 @@ export const ContactUs: React.FC = () => {
                 </div>
                 <div>
                   <span className="font-bold text-slate-800 block">💬 Quick WhatsApp Assistance</span>
-                  <p>Direct chat at +91 99239 00943 for instant pricing, samples, and inquiries.</p>
+                  <p>
+                    Direct chat at{' '}
+                    <a
+                      href={theme.contact.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-bold text-emerald-700 hover:text-emerald-800 underline underline-offset-2"
+                      title="Chat on WhatsApp"
+                    >
+                      +91 99239 00943
+                    </a>{' '}
+                    for instant pricing, samples, and inquiries.
+                  </p>
                 </div>
               </div>
             </div>

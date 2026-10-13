@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Globe, Award, Shield, CheckCircle2 } from 'lucide-react';
 import { LinkedInIcon } from './icons/LinkedInIcon';
+import { theme } from '../theme';
 
 export const Footer: React.FC = () => {
   return (
@@ -59,7 +60,15 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>+91 99239 00943</span>
+                <a
+                  href={theme.contact.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-amber-300 transition-colors"
+                  title="Chat on WhatsApp"
+                >
+                  +91 99239 00943
+                </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />
