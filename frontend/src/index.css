@@ -1,66 +1,79 @@
 @import "tailwindcss";
 
 @theme {
-  --color-purple-black: #1a0f1f;
-  --color-purple-dark: #120917;
-  --color-purple-subtle: #2d1e34;
-  --color-cream: #faf6ee;
-  --color-cream-surface: #f4ede1;
-  --color-cream-card: #ffffff;
-  --color-gold: #c9a24b;
-  --color-gold-hover: #b48e3a;
-  --color-gold-light: #f7f1e1;
-  --color-gold-dark: #9f7b2c;
-  --color-warm-border: #e8decb;
-  --color-text-primary: #1a0f1f;
-  --color-text-muted: #5e5261;
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', sans-serif;
+  --color-cream: #FBF6EE;
+  --color-cream-surface: #F5ECE0;
+  --color-maroon: #5A2A27;
+  --color-maroon-dark: #441F1D;
+  --color-maroon-muted: #784340;
+  --color-forest-green: #2F6B3A;
+  --color-forest-green-hover: #24542D;
+  --color-forest-green-light: #EAF3EC;
+  --color-gold: #C9962B;
+  --color-gold-light: #FDF7EB;
+  --color-warm-border: #E8DEC8;
+  --color-espresso: #2C221E;
+  --font-heading: 'Fraunces', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
 }
 
 :root {
-  --color-purple-black: #1a0f1f;
-  --color-cream: #faf6ee;
-  --color-gold: #c9a24b;
-  --color-gold-hover: #b48e3a;
-  --color-gold-light: #f7f1e1;
-  --color-warm-border: #e8decb;
-  --color-text-primary: #1a0f1f;
-  --color-text-muted: #5e5261;
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
+  --font-heading: 'Fraunces', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --bg-primary: #FBF6EE;
+  --text-primary: #2C221E;
+  --color-maroon: #5A2A27;
+  --color-forest-green: #2F6B3A;
+  --color-gold: #C9962B;
 }
 
 body {
   font-family: var(--font-body);
-  color: var(--color-purple-black);
-  background-color: var(--color-cream);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   overflow-x: hidden;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease, font-size 0.2s ease;
 }
 
-h1, h2, h3, h4, h5, h6, .font-heading {
+/* Accessibility High-Contrast Mode */
+body.high-contrast {
+  --bg-primary: #FFFFFF;
+  --text-primary: #000000;
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  filter: contrast(115%);
+}
+
+body.high-contrast * {
+  border-color: #000000 !important;
+}
+
+/* Accessibility Text Size Modifiers */
+body.text-size-lg {
+  font-size: 110%;
+}
+
+body.text-size-xl {
+  font-size: 122%;
+}
+
+h1, h2, h3, h4, .font-heading {
   font-family: var(--font-heading);
   letter-spacing: -0.015em;
 }
 
-/* Elegant Custom Scrollbar */
+/* Warm Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #faf6ee;
+  background: #FBF6EE;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c9a24b;
+  background: #DFBA6A;
   border-radius: 6px;
-  border: 2px solid #faf6ee;
+  border: 2px solid #FBF6EE;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #1a0f1f;
+  background: #5A2A27;
 }

@@ -28,59 +28,63 @@ export const AccessibilityWidget: React.FC = () => {
   };
 
   return (
-    <div className="fixed right-3 top-1/2 -translate-y-1/2 z-40 print:hidden font-sans">
+    <div className="fixed right-3 top-1/2 -translate-y-1/2 z-40 print:hidden">
       {/* Floating Trigger Tab */}
       {!isOpen ? (
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Open accessibility settings (text size and contrast)"
-          className="flex flex-col items-center justify-center w-11 h-12 bg-[#1a0f1f] text-[#faf6ee] rounded-l-2xl shadow-xl hover:bg-[#281730] border-l border-y border-[#c9a24b]/40 hover:w-12 transition-all focus:outline-none focus:ring-2 focus:ring-[#c9a24b]"
+          className="flex flex-col items-center justify-center w-11 h-12 bg-[#5A2A27] text-[#FBF6EE] rounded-l-2xl shadow-lg hover:bg-[#441F1D] hover:w-12 transition-all focus:outline-none focus:ring-2 focus:ring-[#C9962B]"
         >
-          <Eye className="w-5 h-5 text-[#c9a24b]" />
-          <span className="text-[9px] font-bold tracking-tighter uppercase mt-0.5 text-[#c9a24b]">A11y</span>
+          <Eye className="w-5 h-5 text-[#C9962B]" />
+          <span className="text-[9px] font-bold tracking-tighter uppercase mt-0.5">A11y</span>
         </button>
       ) : (
         /* Expanded Accessible Control Panel */
         <div
           role="dialog"
           aria-label="Accessibility options"
-          className="w-72 bg-[#faf6ee] border-2 border-[#c9a24b]/30 rounded-3xl p-5 shadow-2xl text-[#1a0f1f] animate-in fade-in slide-in-from-right duration-200"
+          className="w-72 bg-[#FBF6EE] border-2 border-[#E8DEC8] rounded-3xl p-5 shadow-2xl text-[#2C221E] animate-in fade-in slide-in-from-right duration-200"
         >
-          <div className="flex items-center justify-between pb-3 border-b border-[#e8decb]">
+          <div className="flex items-center justify-between pb-3 border-b border-[#E8DEC8]">
             <div className="flex items-center space-x-2">
-              <Eye className="w-4 h-4 text-[#c9a24b]" />
-              <h3 className="font-serif text-sm font-bold text-[#1a0f1f]">
+              <Eye className="w-4 h-4 text-[#2F6B3A]" />
+              <h3 className="font-heading text-sm font-bold text-[#5A2A27]">
                 Accessibility Tools
               </h3>
             </div>
             <button
               onClick={() => setIsOpen(false)}
               aria-label="Close accessibility options"
-              className="p-1 rounded-full text-[#5e5261] hover:bg-[#e8decb] hover:text-[#1a0f1f]"
+              className="p-1 rounded-full text-[#665952] hover:bg-[#F5ECE0] hover:text-[#5A2A27]"
             >
               <X className="w-4 h-4" />
             </button>
           </div>
 
-          <div className="py-4 space-y-4">
-            {/* Text Resizer */}
+          <div className="space-y-4 pt-3">
+            {/* Text Size Control */}
             <div>
-              <label className="text-xs font-semibold text-[#5e5261] flex items-center mb-2">
-                <Type className="w-3.5 h-3.5 mr-1.5 text-[#c9a24b]" />
-                Font Sizing
-              </label>
-              <div className="grid grid-cols-3 gap-2">
-                {(['normal', 'lg', 'xl'] as const).map((size) => (
+              <div className="flex items-center space-x-1.5 text-xs font-semibold text-[#5A2A27] mb-2">
+                <Type className="w-3.5 h-3.5" />
+                <span>Text Sizing</span>
+              </div>
+              <div className="grid grid-cols-3 gap-1.5">
+                {[
+                  { id: 'normal', label: 'Default' },
+                  { id: 'lg', label: 'Large (A+)' },
+                  { id: 'xl', label: 'X-Large (A++)' },
+                ].map((item) => (
                   <button
-                    key={size}
-                    onClick={() => setTextSize(size)}
-                    className={`py-1.5 rounded-xl text-xs font-bold transition-all border ${
-                      textSize === size
-                        ? 'bg-[#1a0f1f] text-[#faf6ee] border-[#1a0f1f]'
-                        : 'bg-white text-[#5e5261] border-[#e8decb] hover:bg-slate-50'
+                    key={item.id}
+                    onClick={() => setTextSize(item.id as 'normal' | 'lg' | 'xl')}
+                    className={`py-1.5 px-2 text-xs font-medium rounded-xl border transition-all ${
+                      textSize === item.id
+                        ? 'bg-[#2F6B3A] text-white border-[#2F6B3A] shadow-xs'
+                        : 'bg-white text-[#2C221E] border-[#E8DEC8] hover:bg-[#F5ECE0]'
                     }`}
                   >
-                    {size === 'normal' ? '100%' : size === 'lg' ? '115%' : '130%'}
+                    {item.label}
                   </button>
                 ))}
               </div>
@@ -88,37 +92,37 @@ export const AccessibilityWidget: React.FC = () => {
 
             {/* High Contrast Toggle */}
             <div>
-              <label className="text-xs font-semibold text-[#5e5261] flex items-center mb-2">
-                <Sun className="w-3.5 h-3.5 mr-1.5 text-[#c9a24b]" />
-                Display Contrast
-              </label>
+              <div className="flex items-center space-x-1.5 text-xs font-semibold text-[#5A2A27] mb-2">
+                <Sun className="w-3.5 h-3.5" />
+                <span>Display Contrast</span>
+              </div>
               <button
                 onClick={() => setHighContrast(!highContrast)}
-                className={`w-full py-2 px-3 rounded-xl text-xs font-semibold flex items-center justify-between transition-all border ${
+                className={`w-full py-2 px-3 text-xs font-medium rounded-xl border flex items-center justify-between transition-all ${
                   highContrast
-                    ? 'bg-[#1a0f1f] text-[#faf6ee] border-[#1a0f1f]'
-                    : 'bg-white text-[#1a0f1f] border-[#e8decb] hover:bg-slate-50'
+                    ? 'bg-[#5A2A27] text-white border-[#5A2A27]'
+                    : 'bg-white text-[#2C221E] border-[#E8DEC8] hover:bg-[#F5ECE0]'
                 }`}
               >
-                <span>Monochrome High Contrast</span>
+                <span>{highContrast ? 'High Contrast Active' : 'Standard Contrast'}</span>
                 <span
-                  className={`w-3.5 h-3.5 rounded-full ${
-                    highContrast ? 'bg-[#c9a24b]' : 'bg-slate-300'
+                  className={`w-3.5 h-3.5 rounded-full border ${
+                    highContrast ? 'bg-[#C9962B] border-white' : 'bg-transparent border-[#9A8E87]'
                   }`}
                 />
               </button>
             </div>
-          </div>
 
-          {/* Reset All */}
-          <div className="pt-2 border-t border-[#e8decb]">
-            <button
-              onClick={handleReset}
-              className="w-full flex items-center justify-center space-x-1.5 py-2 text-xs font-semibold text-[#5e5261] hover:text-[#1a0f1f] hover:bg-white rounded-xl transition-colors"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              <span>Reset to Defaults</span>
-            </button>
+            {/* Reset to defaults */}
+            <div className="pt-2 border-t border-[#E8DEC8] flex justify-end">
+              <button
+                onClick={handleReset}
+                className="text-xs text-[#665952] hover:text-[#5A2A27] flex items-center space-x-1 font-medium"
+              >
+                <RotateCcw className="w-3 h-3 mr-1" />
+                Reset Defaults
+              </button>
+            </div>
           </div>
         </div>
       )}
