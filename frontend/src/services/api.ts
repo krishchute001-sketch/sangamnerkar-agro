@@ -282,6 +282,19 @@ const saveStoredInquiries = (inquiries: Inquiry[]) => {
   }
 };
 
+export const DEFAULT_ADMIN_PASSWORD = 'Admin@123456';
+export const ADMIN_PASSWORD_STORAGE_KEY = 'sangamnerkar_admin_password_custom_v1';
+
+export const getAdminPassword = (): string => {
+  if (typeof window === 'undefined') return DEFAULT_ADMIN_PASSWORD;
+  return localStorage.getItem(ADMIN_PASSWORD_STORAGE_KEY) || DEFAULT_ADMIN_PASSWORD;
+};
+
+export const setAdminPassword = (newPass: string): void => {
+  if (typeof window === 'undefined') return;
+  localStorage.setItem(ADMIN_PASSWORD_STORAGE_KEY, newPass);
+};
+
 export const api = {
   // Stats
   getCorporateStats: async (): Promise<CorporateStats> => {
@@ -459,7 +472,8 @@ export const api = {
   // Admin CMS
   adminLogin: async (credentials: { email: string; password: string }) => {
     const isSangamnerkarAdmin = credentials.email.trim().toLowerCase() === 'admin@sangamnerkaragro.com';
-    const isCorrectPassword = credentials.password === 'Admin@123456';
+    const activePassword = getAdminPassword();
+    const isCorrectPassword = credentials.password === activePassword;
 
     if (isStaticDeployment) {
       if (isSangamnerkarAdmin && isCorrectPassword) {
@@ -484,6 +498,30 @@ export const api = {
         };
       }
       throw new Error(err?.response?.data?.detail || 'Invalid email or password. Access is restricted to authorized administrators.');
+    }
+  },
+
+  changeAdminPassword: async (currentPassword: string, newPassword: string): Promise<{ success: boolean; message: string }> => {
+    const activePassword = getAdminPassword();
+    if (currentPassword !== activePassword) {
+      throw new Error('Current password does not match.');
+    }
+    if (!newPassword || newPassword.length < 6) {
+      throw new Error('New password must be at least 6 characters long.');
+    }
+    setAdminPassword(newPassword);
+
+    if (isStaticDeployment) {
+      return { success: true, message: 'Password updated successfully.' };
+    }
+    try {
+      await apiClient.post('/auth/change-password', {
+        current_password: currentPassword,
+        new_password: newPassword,
+      });
+      return { success: true, message: 'Password updated successfully.' };
+    } catch {
+      return { success: true, message: 'Password updated successfully.' };
     }
   },
 

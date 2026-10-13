@@ -3,9 +3,9 @@ from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
-from app.core.security import verify_password, create_access_token
+from app.core.security import verify_password, get_password_hash, create_access_token
 from app.models.user import AdminUser
-from app.schemas.user import Token, LoginRequest, AdminUserResponse
+from app.schemas.user import Token, LoginRequest, AdminUserResponse, ChangePasswordRequest
 from app.api.deps import get_current_admin
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
@@ -53,3 +53,25 @@ async def login_json(
 @router.get("/me", response_model=AdminUserResponse)
 async def get_me(current_user: AdminUser = Depends(get_current_admin)):
     return current_user
+
+@router.post("/change-password")
+async def change_password(
+    body: ChangePasswordRequest,
+    current_user: AdminUser = Depends(get_current_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    if not verify_password(body.current_password, current_user.hashed_password):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Current password does not match",
+        )
+    if len(body.new_password) < 6:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="New password must be at least 6 characters long",
+        )
+    current_user.hashed_password = get_password_hash(body.new_password)
+    db.add(current_user)
+    await db.commit()
+    return {"message": "Password updated successfully"}
+

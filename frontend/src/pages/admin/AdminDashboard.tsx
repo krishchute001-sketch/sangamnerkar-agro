@@ -13,6 +13,9 @@ import {
   Plus,
   RefreshCw,
   Calendar,
+  Key,
+  Lock,
+  X,
 } from 'lucide-react';
 
 const formatLeadDateTime = (isoString?: string) => {
@@ -56,6 +59,47 @@ export const AdminDashboard: React.FC = () => {
     is_featured: true,
     is_export_grade: true,
   });
+
+  // Change Password Modal State
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [pwdError, setPwdError] = useState('');
+  const [pwdSuccess, setPwdSuccess] = useState('');
+  const [pwdLoading, setPwdLoading] = useState(false);
+
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPwdError('');
+    setPwdSuccess('');
+
+    if (newPassword !== confirmPassword) {
+      setPwdError('New passwords do not match.');
+      return;
+    }
+    if (newPassword.length < 6) {
+      setPwdError('New password must be at least 6 characters long.');
+      return;
+    }
+
+    setPwdLoading(true);
+    try {
+      await api.changeAdminPassword(currentPassword, newPassword);
+      setPwdSuccess('Password changed successfully! Keep your new password safe.');
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+      setTimeout(() => {
+        setShowPasswordModal(false);
+        setPwdSuccess('');
+      }, 2000);
+    } catch (err: any) {
+      setPwdError(err?.message || 'Failed to update password.');
+    } finally {
+      setPwdLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -147,6 +191,17 @@ export const AdminDashboard: React.FC = () => {
             <span className="text-slate-400">
               Logged in: <strong className="text-amber-400">{user?.email || 'admin@sangamnerkaragro.com'}</strong>
             </span>
+            <button
+              onClick={() => {
+                setPwdError('');
+                setPwdSuccess('');
+                setShowPasswordModal(true);
+              }}
+              className="px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 hover:bg-amber-500/20 transition-colors flex items-center gap-1.5"
+            >
+              <Key className="w-3.5 h-3.5" />
+              Change Password
+            </button>
             <button
               onClick={() => {
                 logout();
@@ -407,6 +462,108 @@ export const AdminDashboard: React.FC = () => {
                     className="px-6 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold uppercase tracking-wider"
                   >
                     Publish Product
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {/* Change Password Modal */}
+        {showPasswordModal && (
+          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div className="bg-[#0e1728] border border-amber-900/50 rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center">
+                    <Key className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-lg font-bold text-white">Change Admin Password</h3>
+                    <p className="text-[11px] text-slate-400">Update your private portal credentials</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowPasswordModal(false)}
+                  className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {pwdError && (
+                <div className="mt-4 p-3 rounded-xl bg-rose-950/60 border border-rose-800 text-rose-300 text-xs">
+                  {pwdError}
+                </div>
+              )}
+
+              {pwdSuccess && (
+                <div className="mt-4 p-3 rounded-xl bg-emerald-950/60 border border-emerald-800 text-emerald-300 text-xs">
+                  {pwdSuccess}
+                </div>
+              )}
+
+              <form onSubmit={handleChangePassword} className="space-y-4 mt-4 text-xs">
+                <div>
+                  <label className="block text-slate-300 font-medium mb-1.5">Current Password</label>
+                  <div className="relative">
+                    <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-3" />
+                    <input
+                      required
+                      type="password"
+                      value={currentPassword}
+                      onChange={(e) => setCurrentPassword(e.target.value)}
+                      placeholder="Enter current password"
+                      className="w-full pl-10 pr-3 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-slate-300 font-medium mb-1.5">New Password</label>
+                  <div className="relative">
+                    <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-3" />
+                    <input
+                      required
+                      type="password"
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      placeholder="Minimum 6 characters"
+                      className="w-full pl-10 pr-3 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-slate-300 font-medium mb-1.5">Confirm New Password</label>
+                  <div className="relative">
+                    <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-3" />
+                    <input
+                      required
+                      type="password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      placeholder="Re-enter new password"
+                      className="w-full pl-10 pr-3 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex justify-end space-x-3 pt-3">
+                  <button
+                    type="button"
+                    onClick={() => setShowPasswordModal(false)}
+                    className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={pwdLoading}
+                    className="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold uppercase tracking-wider transition-all disabled:opacity-50"
+                  >
+                    {pwdLoading ? 'Updating...' : 'Update Password'}
                   </button>
                 </div>
               </form>
