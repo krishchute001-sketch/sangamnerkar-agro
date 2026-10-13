@@ -21,7 +21,7 @@ export const AboutUs: React.FC = () => {
 
           <p className="mt-4 text-base sm:text-lg text-[#665952] leading-relaxed max-w-2xl mx-auto">
             With over 6 years of experience, Sangamnerkar Agro has built a trusted name in rice supply in Nagpur.
-            From supplying top luxury hotels to health-conscious families, consistent quality and dependable service guide everything we do.
+            From supplying premier hotels and restaurants to health-conscious families, consistent quality and dependable service guide everything we do.
           </p>
         </div>
       </section>
@@ -43,7 +43,7 @@ export const AboutUs: React.FC = () => {
             <div className="space-y-4 text-[#665952] text-sm sm:text-base leading-relaxed">
               <p>
                 With over <strong className="text-[#5A2A27]">6 years of experience</strong>,{' '}
-                <strong className="text-[#5A2A27]">Sangamnerkar Agro</strong> has built a trusted name in rice supply in Nagpur. Founded and guided by <strong className="text-[#5A2A27]">Sukhad Sangamnerkar</strong> and <strong className="text-[#5A2A27]">Ranjana Sangamnerkar</strong>, our endeavor began with an uncompromising focus on grain authenticity, honest sourcing, and dependable processing. Today, we are proud to count some of the premier luxury hotels in Nagpur among our regular patrons.
+                <strong className="text-[#5A2A27]">Sangamnerkar Agro</strong> has built a trusted name in rice supply in Nagpur. Founded and guided by <strong className="text-[#5A2A27]">Sukhad Sangamnerkar</strong> and <strong className="text-[#5A2A27]">Ranjana Sangamnerkar</strong>, our endeavor began with an uncompromising focus on grain authenticity, honest sourcing, and dependable processing. Today, we are proud to supply respected hotels and dining establishments across Nagpur.
               </p>
 
               <p>
@@ -72,8 +72,8 @@ export const AboutUs: React.FC = () => {
                 <span className="text-[11px] font-medium text-[#665952] mt-0.5 block">Nagpur Experience</span>
               </div>
               <div className="p-4 rounded-2xl bg-white border border-[#E8DEC8] text-center shadow-2xs">
-                <span className="font-heading text-2xl font-bold text-[#5A2A27] block">Top Hotels</span>
-                <span className="text-[11px] font-medium text-[#665952] mt-0.5 block">Regular HoReCa Clients</span>
+                <span className="font-heading text-2xl font-bold text-[#5A2A27] block">Hotels & HoReCa</span>
+                <span className="text-[11px] font-medium text-[#665952] mt-0.5 block">Trusted Supply Partner</span>
               </div>
               <div className="p-4 rounded-2xl bg-white border border-[#E8DEC8] text-center shadow-2xs">
                 <span className="font-heading text-2xl font-bold text-[#5A2A27] block">3 Varieties</span>
@@ -114,7 +114,7 @@ export const AboutUs: React.FC = () => {
               Our Pillars of Excellence
             </span>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#5A2A27]">
-              Why Top Hotels & Discerning Families Choose Us
+              Why Hotels & Discerning Families Choose Us
             </h2>
           </div>
 
@@ -123,9 +123,9 @@ export const AboutUs: React.FC = () => {
               <div className="w-12 h-12 rounded-2xl bg-[#EAF3EC] border border-[#2F6B3A]/20 flex items-center justify-center text-[#2F6B3A]">
                 <Hotel className="w-6 h-6" />
               </div>
-              <h3 className="font-heading text-xl font-bold text-[#5A2A27]">Nagpur Hotel Confidence</h3>
+              <h3 className="font-heading text-xl font-bold text-[#5A2A27]">Nagpur Hospitality Confidence</h3>
               <p className="text-xs sm:text-sm text-[#665952] leading-relaxed">
-                Trusted by Nagpur’s premier luxury hotels and fine-dining restaurants for consistent grain length, delicate aroma, and prompt, dependable wholesale delivery.
+                Trusted by hotels, restaurants, and catering banquets across Nagpur for consistent grain length, delicate aroma, and prompt, dependable wholesale delivery.
               </p>
             </div>
 

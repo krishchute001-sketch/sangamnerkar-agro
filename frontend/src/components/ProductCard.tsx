@@ -24,7 +24,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
             {product.is_organic && (
               <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white shadow-md">
-                🌱 100% Organic
+                🌱 Naturally Grown
               </span>
             )}
             {product.is_export_grade && (

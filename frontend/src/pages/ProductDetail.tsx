@@ -78,7 +78,7 @@ export const ProductDetail: React.FC = () => {
               <div className="absolute top-4 left-4 flex flex-col gap-2">
                 {product.is_organic && (
                   <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-600 text-white shadow-lg">
-                    🌱 100% Certified Organic
+                    🌱 Naturally Cultivated Heirloom
                   </span>
                 )}
                 {product.is_export_grade && (

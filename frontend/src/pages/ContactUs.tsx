@@ -115,7 +115,7 @@ export const ContactUs: React.FC = () => {
                   Distribution & Delivery
                 </h4>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Regular wholesale deliveries to Nagpur luxury hotels, plus secure courier and freight despatch across Maharashtra and pan-India.
+                  Regular wholesale deliveries to Nagpur hotels and restaurants, plus secure courier and freight despatch across Maharashtra and pan-India.
                 </p>
               </div>
             </div>
