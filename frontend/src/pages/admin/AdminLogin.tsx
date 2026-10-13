@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
 import { ShieldCheck, Lock, Mail, ArrowRight, ArrowLeft } from 'lucide-react';
 
 export const AdminLogin: React.FC = () => {
-  const [email, setEmail] = useState('admin@sangamnerkaragro.com');
-  const [password, setPassword] = useState('Admin@123456');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/admin/dashboard', { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,12 +29,7 @@ export const AdminLogin: React.FC = () => {
       await login(res.access_token || 'admin_session_token_sangamnerkar');
       navigate('/admin/dashboard');
     } catch (err: any) {
-      if (email.trim().toLowerCase() === 'admin@sangamnerkaragro.com') {
-        await login('admin_session_token_sangamnerkar');
-        navigate('/admin/dashboard');
-      } else {
-        setError(err?.message || 'Invalid credentials. Please use admin@sangamnerkaragro.com');
-      }
+      setError(err?.message || 'Invalid email or password. Access is restricted to authorized personnel.');
     } finally {
       setLoading(false);
     }
@@ -49,8 +50,8 @@ export const AdminLogin: React.FC = () => {
           <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mx-auto mb-4">
             <ShieldCheck className="w-8 h-8" />
           </div>
-          <h2 className="font-heading text-2xl font-bold text-white">Staff CMS Portal</h2>
-          <p className="text-xs text-slate-400 mt-1">Authorized personnel and administrative access</p>
+          <h2 className="font-heading text-2xl font-bold text-white">Administrative Portal</h2>
+          <p className="text-xs text-slate-400 mt-1">Authorized Sangamnerkar Agro personnel only</p>
         </div>
 
         {error && (
@@ -69,9 +70,10 @@ export const AdminLogin: React.FC = () => {
               <input
                 required
                 type="email"
+                placeholder="admin@sangamnerkaragro.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 bg-slate-900/80 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-amber-500"
+                className="w-full pl-10 pr-4 py-2.5 bg-slate-900/80 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
               />
             </div>
           </div>
@@ -85,9 +87,10 @@ export const AdminLogin: React.FC = () => {
               <input
                 required
                 type="password"
+                placeholder="••••••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 bg-slate-900/80 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-amber-500"
+                className="w-full pl-10 pr-4 py-2.5 bg-slate-900/80 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
               />
             </div>
           </div>
@@ -106,7 +109,7 @@ export const AdminLogin: React.FC = () => {
 
         <div className="mt-6 pt-4 border-t border-slate-800/80 text-center">
           <p className="text-[11px] text-slate-500">
-            Default credentials pre-filled for administrative evaluation.
+            Secure administrative access. All sessions are encrypted and logged.
           </p>
         </div>
       </div>

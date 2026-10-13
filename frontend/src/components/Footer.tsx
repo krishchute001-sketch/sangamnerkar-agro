@@ -158,11 +158,6 @@ export const Footer: React.FC = () => {
                   Horeca & Hotel Institutional Supply
                 </Link>
               </li>
-              <li>
-                <Link to="/admin/login" className="text-slate-500 hover:text-slate-300 text-[11px] block pt-2">
-                  Staff CMS Portal →
-                </Link>
-              </li>
             </ul>
           </div>
         </div>

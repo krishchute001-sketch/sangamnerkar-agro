@@ -459,14 +459,16 @@ export const api = {
   // Admin CMS
   adminLogin: async (credentials: { email: string; password: string }) => {
     const isSangamnerkarAdmin = credentials.email.trim().toLowerCase() === 'admin@sangamnerkaragro.com';
+    const isCorrectPassword = credentials.password === 'Admin@123456';
+
     if (isStaticDeployment) {
-      if (isSangamnerkarAdmin) {
+      if (isSangamnerkarAdmin && isCorrectPassword) {
         return {
           access_token: 'admin_session_token_sangamnerkar',
           token_type: 'bearer',
         };
       }
-      throw new Error('Invalid credentials. Use admin@sangamnerkaragro.com');
+      throw new Error('Invalid email or password. Access is restricted to authorized administrators.');
     }
     try {
       const res = await apiClient.post('/auth/login-json', credentials);
@@ -474,14 +476,14 @@ export const api = {
         return res.data;
       }
       throw new Error('Invalid authentication response');
-    } catch (err) {
-      if (isSangamnerkarAdmin) {
+    } catch (err: any) {
+      if (isSangamnerkarAdmin && isCorrectPassword) {
         return {
           access_token: 'admin_session_token_sangamnerkar',
           token_type: 'bearer',
         };
       }
-      throw err;
+      throw new Error(err?.response?.data?.detail || 'Invalid email or password. Access is restricted to authorized administrators.');
     }
   },
 

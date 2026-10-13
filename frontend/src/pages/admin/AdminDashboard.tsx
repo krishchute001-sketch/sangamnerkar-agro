@@ -130,18 +130,27 @@ export const AdminDashboard: React.FC = () => {
           <div className="flex items-center space-x-3">
             <span className="text-xl">🌾</span>
             <span className="font-heading text-lg font-bold text-amber-300">
-              SANGAMNERKAR AGRO • Staff CMS
+              SANGAMNERKAR AGRO • Executive Admin Portal
             </span>
           </div>
 
           <div className="flex items-center space-x-4 text-xs">
+            <a
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-amber-300 transition-colors hidden sm:inline-flex items-center gap-1"
+            >
+              Public Website ↗
+            </a>
+            <span className="text-slate-500 hidden sm:inline">|</span>
             <span className="text-slate-400">
-              Logged in as: <strong className="text-amber-400">{user?.email || 'admin@sangamnerkaragro.com'}</strong>
+              Logged in: <strong className="text-amber-400">{user?.email || 'admin@sangamnerkaragro.com'}</strong>
             </span>
             <button
               onClick={() => {
                 logout();
-                navigate('/');
+                navigate('/admin/login');
               }}
               className="px-3 py-1.5 rounded-lg bg-rose-950/60 border border-rose-800 text-rose-300 hover:bg-rose-900 transition-colors flex items-center"
             >
