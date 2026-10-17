@@ -11,13 +11,15 @@ import {
   AdminUser,
 } from '../types';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api/v1';
-
-const isStaticDeployment =
+const isLocalhost =
   typeof window !== 'undefined' &&
-  !import.meta.env.VITE_API_URL &&
-  window.location.hostname !== 'localhost' &&
-  window.location.hostname !== '127.0.0.1';
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  (isLocalhost ? '/api/v1' : 'https://sangamnerkar-agro.onrender.com/api/v1');
+
+const isStaticDeployment = false;
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,

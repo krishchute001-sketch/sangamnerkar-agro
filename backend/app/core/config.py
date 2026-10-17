@@ -6,8 +6,8 @@ class Settings(BaseSettings):
     VERSION: str = "1.0.0"
     API_V1_STR: str = "/api/v1"
     
-    # Database
-    DATABASE_URL: str = "postgresql+asyncpg://postgres:fe4vjji3zPJuQT31@db.leattadrbioqhiphnjts.supabase.co:5432/postgres"
+    # Database (Supabase IPv4 Pooler)
+    DATABASE_URL: str = "postgresql+asyncpg://postgres.leattadrbioqhiphnjts:fe4vjji3zPJuQT31@aws-0-ap-northeast-2.pooler.supabase.com:5432/postgres"
     
     # Redis Cache (Optional)
     REDIS_URL: str = "redis://localhost:6379/0"
