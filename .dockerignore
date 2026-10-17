@@ -1,0 +1,9 @@
+node_modules
+.venv
+__pycache__
+*.pyc
+.git
+frontend/
+backend/.venv
+backend/__pycache__
+backend/krbl_agro.db
