@@ -7,20 +7,20 @@ class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     
     # Database
-    DATABASE_URL: str = "sqlite+aiosqlite:///./krbl_agro.db"
+    DATABASE_URL: str = "postgresql+asyncpg://postgres:fe4vjji3zPJuQT31@db.leattadrbioqhiphnjts.supabase.co:5432/postgres"
     
     # Redis Cache (Optional)
     REDIS_URL: str = "redis://localhost:6379/0"
     REDIS_ENABLED: bool = False
     
     # Security
-    SECRET_KEY: str = "krbl_enterprise_secret_key_change_in_production_99887766"
+    SECRET_KEY: str = "sangamnerkar_agro_secure_key_change_in_production_2026"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 days
     
     # Gmail SMTP Automation Settings
     GMAIL_USER: str = "exportsangamnerkaragro@gmail.com"
-    GMAIL_APP_PASSWORD: str = ""  # 16-character Google App Password
+    GMAIL_APP_PASSWORD: str = "iaydccnbbshyvpou"  # 16-character Google App Password
     EMAIL_AUTOMATION_HOURS: int = 8
     EMAIL_AUTOMATION_ENABLED: bool = True
     
