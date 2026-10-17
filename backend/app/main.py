@@ -56,11 +56,14 @@ async def health_check():
         db_status = "error"
         db_error = str(e)
 
+    host = settings.async_database_url.split("@")[-1] if "@" in settings.async_database_url else "unknown"
+
     return {
         "status": "healthy" if db_status == "connected" else "degraded",
         "service": settings.PROJECT_NAME,
         "version": settings.VERSION,
-        "commit": "live-v2",
+        "commit": "live-v4",
+        "database_host": host,
         "database": db_status,
         "database_error": db_error,
     }

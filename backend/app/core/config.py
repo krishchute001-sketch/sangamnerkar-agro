@@ -8,6 +8,19 @@ class Settings(BaseSettings):
     
     # Database (Supabase IPv4 Pooler)
     DATABASE_URL: str = "postgresql+asyncpg://postgres.leattadrbioqhiphnjts:fe4vjji3zPJuQT31@aws-0-ap-northeast-2.pooler.supabase.com:5432/postgres"
+
+    @property
+    def async_database_url(self) -> str:
+        url = self.DATABASE_URL
+        if "db.leattadrbioqhiphnjts.supabase.co" in url:
+            url = url.replace(
+                "postgres:fe4vjji3zPJuQT31@db.leattadrbioqhiphnjts.supabase.co:5432",
+                "postgres.leattadrbioqhiphnjts:fe4vjji3zPJuQT31@aws-0-ap-northeast-2.pooler.supabase.com:5432"
+            ).replace(
+                "@db.leattadrbioqhiphnjts.supabase.co:5432",
+                "@aws-0-ap-northeast-2.pooler.supabase.com:5432"
+            )
+        return url
     
     # Redis Cache (Optional)
     REDIS_URL: str = "redis://localhost:6379/0"
