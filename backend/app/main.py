@@ -44,10 +44,25 @@ app.include_router(api_v1_router)
 
 @app.get("/health", tags=["Health"])
 async def health_check():
+    db_status = "unknown"
+    db_error = None
+    try:
+        from app.core.database import AsyncSessionLocal
+        from sqlalchemy import text
+        async with AsyncSessionLocal() as session:
+            await session.execute(text("SELECT 1"))
+            db_status = "connected"
+    except Exception as e:
+        db_status = "error"
+        db_error = str(e)
+
     return {
-        "status": "healthy",
+        "status": "healthy" if db_status == "connected" else "degraded",
         "service": settings.PROJECT_NAME,
         "version": settings.VERSION,
+        "commit": "live-v2",
+        "database": db_status,
+        "database_error": db_error,
     }
 
 @app.get("/", tags=["Root"])
