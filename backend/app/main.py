@@ -56,22 +56,49 @@ async def health_check():
         db_status = "error"
         db_error = str(e)
 
-    host = settings.async_database_url.split("@")[-1] if "@" in settings.async_database_url else "unknown"
-
     return {
         "status": "healthy" if db_status == "connected" else "degraded",
         "service": settings.PROJECT_NAME,
         "version": settings.VERSION,
-        "commit": "live-v4",
-        "database_host": host,
+        "commit": "live-v2",
         "database": db_status,
         "database_error": db_error,
     }
 
-@app.get("/", tags=["Root"])
-async def root():
-    return {
-        "message": f"Welcome to {settings.PROJECT_NAME}",
-        "documentation": "/docs",
-        "health": "/health",
-    }
+# Mount frontend SPA static files
+STATIC_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "static"))
+if not os.path.isdir(STATIC_DIR):
+    alt_static = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "dist"))
+    if os.path.isdir(alt_static):
+        STATIC_DIR = alt_static
+
+if os.path.isdir(STATIC_DIR):
+    import os
+    from fastapi.staticfiles import StaticFiles
+    from fastapi.responses import FileResponse
+
+    assets_dir = os.path.join(STATIC_DIR, "assets")
+    if os.path.isdir(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+    images_dir = os.path.join(STATIC_DIR, "images")
+    if os.path.isdir(images_dir):
+        app.mount("/images", StaticFiles(directory=images_dir), name="images")
+
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        file_path = os.path.join(STATIC_DIR, full_path)
+        if full_path and os.path.isfile(file_path):
+            return FileResponse(file_path)
+        index_file = os.path.join(STATIC_DIR, "index.html")
+        if os.path.isfile(index_file):
+            return FileResponse(index_file)
+        return {"message": f"Welcome to {settings.PROJECT_NAME}", "documentation": "/docs"}
+else:
+    @app.get("/", tags=["Root"])
+    async def root():
+        return {
+            "message": f"Welcome to {settings.PROJECT_NAME}",
+            "documentation": "/docs",
+            "health": "/health",
+        }

@@ -3,7 +3,8 @@ node_modules
 __pycache__
 *.pyc
 .git
-frontend/
+frontend/node_modules
+frontend/dist
 backend/.venv
 backend/__pycache__
 backend/krbl_agro.db
