@@ -1,0 +1,10 @@
+{
+  "name": "sangamnerkar-agro-workspace",
+  "private": true,
+  "scripts": {
+    "build": "npm run --prefix frontend build"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
